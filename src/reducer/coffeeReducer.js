@@ -3,14 +3,23 @@
 const initialState = {key: 'initial state'}
 
 const state = {
-    //just have placeholders in state right now. Need to remove once setup.
-    key: 'value'
+    user: {
+        name: '',
+        email_address: '',
+        preps: []
+    },
+
 }
 
 export const reducer = (state={initialState}, action) => {
     switch (action.type) {
-        case 'EXAMPLE':
-            return state
+        case 'LOGGED_IN_USER':
+            return {...state, user: {
+                name: action.name,
+                email_address: action.email_address,
+                preps: [action.preps]
+                    }
+                }
         default:
             return state
     }

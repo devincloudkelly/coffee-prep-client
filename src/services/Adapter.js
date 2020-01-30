@@ -21,7 +21,7 @@ class Adapter {
                 })
             })
             .then(r => r.json())
-            .then(console.log)
+            .then(data => {return data})
     }
 
     static signup = (name, email, pass) => {
@@ -41,8 +41,7 @@ class Adapter {
                 })
             })
             .then(r => r.json())
-            .then(console.log)
+            .then(data => {return data})
     }
 }
-
 export default Adapter
