@@ -4,7 +4,7 @@ const initialState = {key: 'initial state'}
 
 const state = {
     //just have placeholders in state right now. Need to remove once setup.
-    key: value
+    key: 'value'
 }
 
 export const reducer = (state={initialState}, action) => {
@@ -15,3 +15,5 @@ export const reducer = (state={initialState}, action) => {
             return state
     }
 }
+
+export default reducer
