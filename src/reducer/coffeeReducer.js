@@ -1,4 +1,4 @@
-//
+
 
 const initialState = {key: 'initial state'}
 
@@ -7,20 +7,23 @@ const state = {
         name: '',
         email_address: '',
         preps: []
-    },
-
+    }
 }
 
-export const reducer = (state={initialState}, action) => {
-    switch (action.type) {
+const reducer = (state=initialState, action) => {
+    console.log('log from reducer, here is state and action', state, action)
+    switch(action.type){
         case 'LOGGED_IN_USER':
-            return {...state, user: {
-                name: action.name,
-                email_address: action.email_address,
-                preps: [action.preps]
-                    }
+            console.log('updating state in reducer w/ logged in user...', action.user.name, action.user.email_address, action.user.preps)
+            return { user: 'hello'
+                // ...state, user: {
+                // name: action.user.name,
+                // email_address: action.user.email_address,
+                // preps: [action.user.preps]
+                //     }
                 }
         default:
+            console.log('hitting default case statement..')
             return state
     }
 }

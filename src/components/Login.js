@@ -15,15 +15,18 @@ export class Login extends Component {
             [e.target.name]: e.target.value
         })
     }
-
+    
+    
     handleLogin = (e) => {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
-        .then(data => {return loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
+        .then(data => {loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
+        .then(setTimeout(() => console.log('here are props after dispatching action', this.props), 4000))
     }
     render() {
         return (
             <div>
+                {console.log(this.props)}
                 This is the login component
                 <form onSubmit={e=> this.handleLogin(e)}>
                     <label>
@@ -39,10 +42,16 @@ export class Login extends Component {
     }
 }
 
+const mapStateToProps= state => {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         loggedInUser: (name, email, preps) => dispatch(loggedInUser(name, email, preps))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

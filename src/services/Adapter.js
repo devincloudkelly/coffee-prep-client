@@ -25,7 +25,7 @@ class Adapter {
     }
 
     static signup = (name, email, pass) => {
-        console.log('credentials being passed in the fetch to login', name, email, pass)
+        console.log('credentials being passed in the fetch to signup', name, email, pass)
         return fetch(SIGNUP, {
                 method: 'POST',
                 headers: {
