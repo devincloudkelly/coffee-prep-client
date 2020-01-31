@@ -3,6 +3,7 @@
 const initialState = {key: 'initial state'}
 
 const state = {
+    loggedIn: false,
     user: {
         name: '',
         email_address: '',
@@ -11,11 +12,11 @@ const state = {
 }
 
 const reducer = (state=initialState, action) => {
-    console.log('log from reducer, here is state and action', state, action)
     switch(action.type){
         case 'LOGGED_IN_USER':
             console.log('updating state in reducer w/ logged in user...', action.user.name, action.user.email_address, action.user.preps)
             return { 
+                loggedIn: true,
                 ...state, user: {
                 name: action.user.name,
                 email_address: action.user.email_address,

@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import reducer from './reducer/coffeeReducer'
 
 const store = createStore(reducer)
+
 ReactDOM.render(
 <Provider store={store}>
     <App />   

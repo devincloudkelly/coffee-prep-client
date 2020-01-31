@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Login from '../components/Login'
 import Signup from '../components/Signup';
+import {connect} from 'react-redux'
+import LoginHOC from '../HOCs/LoginHOC'
 
-export class HomeScreen extends Component {
+class HomeScreen extends Component {
     render() {
         return (
             <div>
@@ -14,4 +16,4 @@ export class HomeScreen extends Component {
     }
 }
 
-export default HomeScreen;
+export default connect(null, null, null, LoginHOC)(HomeScreen)
