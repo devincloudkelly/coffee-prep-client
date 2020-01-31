@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux' 
 import {loggedInUser} from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
+// import { Redirect } from 'react-router-dom'
 
 
 export class Login extends Component {
@@ -21,7 +22,11 @@ export class Login extends Component {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
         .then(data => {this.props.loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
-        .then(setTimeout(() => console.log('here are props after dispatching action', this.props), 4000))
+        .then( this.setState({
+            email_address: '',
+            password: ''
+        }))
+       
     }
     render() {
         return (
