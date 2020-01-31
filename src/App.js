@@ -1,23 +1,29 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Redirect, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import HomeScreen from './containers/HomeScreen';
 import Profile from './containers/Profile';
 import NewPreparation from './containers/NewPreparation';
 import ShowPreparation from './containers/ShowPreparation';
 import Adapter from './services/Adapter'
+import NavBar from './components/NavBar';
+// import PrivateRoute from './components/PrivateRoute'
 
 
 
 
 const PrivateRoute = (props, {component: Component, ...rest}) => {
-  return <Route {...rest} render={(props) => (
+  console.log(props)
+   return <Route {...rest} render={(props) => (
     Adapter.isAuthenticated() === true
     ? <Component {...props} />
-    : <Redirect to='/'/>
+    : <Redirect to={{
+      pathname: '/',
+      state: { from: props.location}
+    }}/>
     )} />
-  }
+   }
   
   const token = localStorage.getItem('jwt')
 // home screen and ShowPreparation is public
@@ -27,13 +33,22 @@ function App() {
   return (
     <div >
       <Router>
-        <Route exact path='/' component={HomeScreen} />
-
+        <NavBar/>
+        <Switch>
+        {/* <Route path='/' component={HomeScreen} /> */}
+        {/* <Route path='/preparations' component={ShowPreparation} />
         <PrivateRoute path='/profile' component={Profile} />
-
-        <PrivateRoute exact path='/preparations/new' component={NewPreparation} />
-
-        <Route path='/preparations' component={ShowPreparation} />
+      <PrivateRoute path='/preparations/new' component={NewPreparation} /> */}
+        <Route path='/'>
+          <HomeScreen/>
+        </Route>
+        <PrivateRoute path='/preparations'>
+          <ShowPreparation/>
+        </PrivateRoute>
+        <Route path='/profile'>
+          <Profile/>
+        </Route>
+        </Switch>
 
       </Router>
       

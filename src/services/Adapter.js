@@ -6,6 +6,7 @@ let token = localStorage.getItem('jwt')
 
 class Adapter {
 
+    
     static isAuthenticated = () => {
         return localStorage.getItem('jwt')
     }

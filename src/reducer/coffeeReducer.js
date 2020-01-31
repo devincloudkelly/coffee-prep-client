@@ -27,6 +27,18 @@ const reducer = (state=initialState, action) => {
                 preps: [action.user.preps]
                     }
                 }
+        case 'LOG_OUT':
+            console.log('logging out in reducer')
+            return {
+                loggedIn: false,
+                jwt: '',
+                ...state, user: {
+                    id: 0,
+                    name: '',
+                    email_address: '',
+                    preps: []
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state

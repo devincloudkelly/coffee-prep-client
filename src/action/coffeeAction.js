@@ -11,3 +11,11 @@ export const loggedInUser = (id, name, email, preps, jwt) => {
         jwt: jwt
     }
 }
+
+export const logOut = () => {
+    console.log('logging out user...')
+    return {
+        type: 'LOG_OUT',
+        payload: 'logging out user'
+    }
+}

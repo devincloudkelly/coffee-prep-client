@@ -3,11 +3,14 @@ import Login from '../components/Login'
 import Signup from '../components/Signup';
 import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import App from '../App'
 
+// const {from} = this.props.location.state
 class HomeScreen extends Component {
+
     render() {
         if (localStorage.getItem('jwt')) {
-            return <Redirect  />
+            return <Redirect to='/profile'/>
         }
         return (
             <div>
