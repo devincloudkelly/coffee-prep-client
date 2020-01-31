@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {loggedInUser} from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
 import { withRouter } from 'react-router-dom'
+import Profile from '../containers/Profile'
 
 
 export class Login extends Component {

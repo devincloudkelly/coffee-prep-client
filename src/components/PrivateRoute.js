@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Redirect, withRouter} from 'react-router-dom'
-// import { connect } from 'react-redux'
+import { Route, Redirect} from 'react-router-dom'
 import Adapter from '../services/Adapter'
 
-
+// const token = Props.jwt
 const PrivateRoute = ({component: Component, ...rest}) => {
-    console.log('the private router is working...')
+    console.log('the private router is working...', Adapter.isAuthenticated().length>0)
      return <Route {...rest} render={(props) => (
-      Adapter.isAuthenticated() === true
+      Adapter.isAuthenticated().length > 0
       ? <Component {...props} />
       : <Redirect to={{
         pathname: '/',
@@ -16,10 +15,5 @@ const PrivateRoute = ({component: Component, ...rest}) => {
       )} />
      }  
 
-// const mapStateToProps = state => {
-//     return {
-//         jwt: state.jwt
-//     }
-// }
 
-export default withRouter(PrivateRoute);
+export default PrivateRoute;

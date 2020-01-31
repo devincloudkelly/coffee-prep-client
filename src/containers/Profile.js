@@ -4,7 +4,7 @@ import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom'
 
 
-export const Profile = () => {
+const Profile = () => {
 
 
         return (
