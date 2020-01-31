@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux' 
 import {loggedInUser} from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
-import LoginHOC from '../HOCs/LoginHOC'
-
 
 
 export class Login extends Component {
@@ -23,14 +21,11 @@ export class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
-        .then(data => {this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})
-        
-        
-        // .then(() => {
-        //     if (this.props.loggedIn){
-        //        return <Redirect to='/profile' />
-        //     }
-        // })
+        .then(data => {
+            localStorage.setItem('jwt', data.jwt)
+            this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})
+
+        // add code below to clear state after user logs in.
         // .then( this.setState({
         //     email_address: '',
         //     password: ''
@@ -38,12 +33,8 @@ export class Login extends Component {
        
     }
     render() {
-        console.log(this.props)
-        if (this.props.jwt) {
-            return <Redirect to='/profile' />
-        }
-        return (
-            <div>
+            return (
+                <div>
                 This is the login component
                 <form onSubmit={e=> this.handleLogin(e)}>
                     <label>
@@ -55,17 +46,11 @@ export class Login extends Component {
                     <input type='submit' value='Log In'></input>
                 </form>
             </div>
-        );
+            );
+         
     }
 }
 
-const mapStateToProps= state => {
-    return {
-        loggedIn: state.loggedIn,
-        user: state.user,
-        jwt: state.jwt
-    }
-}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -73,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, null, LoginHOC)(Login)
+export default connect(null, mapDispatchToProps)(Login)

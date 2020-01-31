@@ -8,16 +8,17 @@ import NewPreparation from './containers/NewPreparation';
 import ShowPreparation from './containers/ShowPreparation';
 
 
+
 const PrivateRoute = (props, {component: Component, ...rest}) => {
-  console.log(props.jwt)
   return <Route {...rest} render={(props) => (
-    props.jwt ?
+     props.jwt
+     ?
     <Component {...props} />
     :
     <Redirect to='/'/>
-  )} />
-}
-
+    )} />
+  }
+  
 // home screen and ShowPreparation is public
 // everthing else private
 
