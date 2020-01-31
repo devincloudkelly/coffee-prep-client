@@ -6,19 +6,20 @@ import HomeScreen from './containers/HomeScreen';
 import Profile from './containers/Profile';
 import NewPreparation from './containers/NewPreparation';
 import ShowPreparation from './containers/ShowPreparation';
+import Adapter from './services/Adapter'
+
 
 
 
 const PrivateRoute = (props, {component: Component, ...rest}) => {
   return <Route {...rest} render={(props) => (
-     props.jwt
-     ?
-    <Component {...props} />
-    :
-    <Redirect to='/'/>
+    Adapter.isAuthenticated() === true
+    ? <Component {...props} />
+    : <Redirect to='/'/>
     )} />
   }
   
+  const token = localStorage.getItem('jwt')
 // home screen and ShowPreparation is public
 // everthing else private
 
@@ -30,9 +31,9 @@ function App() {
 
         <PrivateRoute path='/profile' component={Profile} />
 
-        <PrivateRoute exact path='/preparation/new' component={NewPreparation} />
+        <PrivateRoute exact path='/preparations/new' component={NewPreparation} />
 
-        <Route path='/preparation' component={ShowPreparation} />
+        <Route path='/preparations' component={ShowPreparation} />
 
       </Router>
       
