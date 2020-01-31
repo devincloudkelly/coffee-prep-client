@@ -20,7 +20,7 @@ export class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
-        .then(data => {loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
+        .then(data => {this.props.loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
         .then(setTimeout(() => console.log('here are props after dispatching action', this.props), 4000))
     }
     render() {
