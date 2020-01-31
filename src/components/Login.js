@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux' 
 import {loggedInUser} from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
+import { withRouter } from 'react-router-dom'
 
 
 export class Login extends Component {
@@ -9,6 +10,7 @@ export class Login extends Component {
         email_address: '',
         password: ''
     }
+    
 
     handleInput = (e) => {
         return this.setState({
@@ -23,6 +25,9 @@ export class Login extends Component {
         .then(data => {
             localStorage.setItem('jwt', data.jwt)
             this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})
+        .then(()=> {
+            this.props.history.push('/profile')
+        })
 
         // add code below to clear state after user logs in.
         // .then( this.setState({
@@ -50,6 +55,11 @@ export class Login extends Component {
     }
 }
 
+// const mapStateToProps = state => {
+//     return {
+        
+//     }
+// }
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -57,4 +67,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))

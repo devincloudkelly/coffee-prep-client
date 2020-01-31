@@ -4,20 +4,18 @@ import NavBar from '../components/NavBar';
 import { Link } from 'react-router-dom'
 
 
-export class Profile extends Component {
+export const Profile = () => {
 
 
-
-    render() {
         return (
             <div>
-                I am the Profile screen
-                <Link to='/preparations/new'>Link to new preparation</Link>
                 <NavBar />
+                <h1>I am the Profile screen</h1>
                 <MainContainer />
+                <Link to='/preparations/new'>Link to new preparation</Link>
             </div>
         );
-    }
+    
 }
 
 export default Profile;

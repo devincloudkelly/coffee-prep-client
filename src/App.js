@@ -8,22 +8,22 @@ import NewPreparation from './containers/NewPreparation';
 import ShowPreparation from './containers/ShowPreparation';
 import Adapter from './services/Adapter'
 import NavBar from './components/NavBar';
-// import PrivateRoute from './components/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute'
 
 
 
 
-const PrivateRoute = (props, {component: Component, ...rest}) => {
-  console.log(props)
-   return <Route {...rest} render={(props) => (
-    Adapter.isAuthenticated() === true
-    ? <Component {...props} />
-    : <Redirect to={{
-      pathname: '/',
-      state: { from: props.location}
-    }}/>
-    )} />
-   }
+// const PrivateRoute = (props, {component: Component, ...rest}) => {
+//   console.log('the private router is working...')
+//    return <Route {...rest} render={(props) => (
+//     Adapter.isAuthenticated() === true
+//     ? <Component {...props} />
+//     : <Redirect to={{
+//       pathname: '/',
+//       state: { from: props.location}
+//     }}/>
+//     )} />
+//    }
   
   const token = localStorage.getItem('jwt')
 // home screen and ShowPreparation is public
@@ -34,25 +34,13 @@ function App() {
     <div >
       <Router>
         <NavBar/>
-        <Switch>
-        {/* <Route path='/' component={HomeScreen} /> */}
-        {/* <Route path='/preparations' component={ShowPreparation} />
-        <PrivateRoute path='/profile' component={Profile} />
-      <PrivateRoute path='/preparations/new' component={NewPreparation} /> */}
-        <Route path='/'>
-          <HomeScreen/>
-        </Route>
-        <PrivateRoute path='/preparations'>
-          <ShowPreparation/>
-        </PrivateRoute>
-        <Route path='/profile'>
-          <Profile/>
-        </Route>
-        </Switch>
-
+        {/* <Switch> */}
+          <Route exact path='/' render={(props) => <HomeScreen {...props} />} />
+          <Route path='/preparations' component={ShowPreparation} />
+          <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} />
+          <PrivateRoute path='/preparations/new' component={NewPreparation} />
+        {/* </Switch> */}
       </Router>
-      
-      This is the App
     </div>
   );
 }
