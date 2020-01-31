@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux' 
 import {loggedInUser} from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
 import LoginHOC from '../HOCs/LoginHOC'
-import { Redirect } from 'react-router-dom'
 
 
 
@@ -23,12 +23,14 @@ export class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
-        .then(data => {this.props.loggedInUser(data.user.name, data.user.email_address, data.userPreps)})
-        .then(() => {
-            if (this.props.loggedIn){
-               return <Redirect to='/profile' />
-            }
-        })
+        .then(data => {this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})
+        
+        
+        // .then(() => {
+        //     if (this.props.loggedIn){
+        //        return <Redirect to='/profile' />
+        //     }
+        // })
         // .then( this.setState({
         //     email_address: '',
         //     password: ''
@@ -36,6 +38,10 @@ export class Login extends Component {
        
     }
     render() {
+        console.log(this.props)
+        if (this.props.jwt) {
+            return <Redirect to='/profile' />
+        }
         return (
             <div>
                 This is the login component
@@ -56,13 +62,14 @@ export class Login extends Component {
 const mapStateToProps= state => {
     return {
         loggedIn: state.loggedIn,
-        user: state.user
+        user: state.user,
+        jwt: state.jwt
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        loggedInUser: (name, email, preps) => dispatch(loggedInUser(name, email, preps))
+        loggedInUser: (id, name, email, preps, jwt) => dispatch(loggedInUser(id, name, email, preps, jwt))
     }
 }
 
