@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import { connect } from 'react-redux'
 import HomeScreen from './containers/HomeScreen';
 import Profile from './containers/Profile';
@@ -18,14 +18,15 @@ function App() {
 
       <Router>
         <NavBar/>
-        {/* <Switch> */}
+        {/* This works with switch either on or off..need to investigate further when/why I'd want it or not */}
+        <Switch>
           <Route exact path='/' render={(props) => <HomeScreen {...props} />} />
           <Route exact path='/preparations' component={ShowPreparation} />
           {/* Do not use routes as below, they do not work with Redux because they are 'blocked updates'. The component below is not a 'route component' */}
           {/* <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} /> */}
           <PrivateRoute path='/profile' component={Profile} />
           <PrivateRoute path='/preparations/new' component={NewPreparation} />
-        {/* </Switch> */}
+        </Switch>
       </Router>
 
   );
