@@ -5,7 +5,7 @@ export class MainContainer extends Component {
     render() {
         return (
             <div>
-                Main Container
+                Main Container. This is just a container
                 <PrepViewer />
             </div>
         );
