@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {logOut} from '../action/coffeeAction'
+import CoffeeAction from '../action/coffeeAction'
 
 export class NavBar extends Component {
 
@@ -13,7 +13,7 @@ export class NavBar extends Component {
     render() {
         return (
             <div>
-                <Link>
+                <Link to='/'>
                 <button onClick={this.handleLogout}>Logout</button>
                 </Link>
                 NavBar
@@ -24,7 +24,7 @@ export class NavBar extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logOut: () => dispatch(logOut())
+        logOut: () => dispatch(CoffeeAction.logOut())
     }
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux' 
-import {loggedInUser} from '../action/coffeeAction'
+// import {loggedInUser} from '../action/coffeeAction'
+import CoffeeAction from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
 import { withRouter } from 'react-router-dom'
-import Profile from '../containers/Profile'
 
 
 export class Login extends Component {
@@ -64,7 +64,7 @@ export class Login extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loggedInUser: (id, name, email, preps, jwt) => dispatch(loggedInUser(id, name, email, preps, jwt))
+        loggedInUser: (id, name, email, preps, jwt) => dispatch(CoffeeAction.loggedInUser(id, name, email, preps, jwt))
     }
 }
 

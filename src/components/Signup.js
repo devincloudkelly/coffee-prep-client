@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Fetch from '../services/Adapter'
-import {loggedInUser} from '../action/coffeeAction'
+// import {loggedInUser} from '../action/coffeeAction'
+import CoffeeAction from '../action/coffeeAction'
 import { connect } from 'react-redux'
 
 
@@ -52,7 +53,7 @@ export class Signup extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loggedInUser: (id, name, email, preps, jwt) => dispatch(loggedInUser(id, name, email, preps, jwt))
+        loggedInUser: (id, name, email, preps, jwt) => dispatch(CoffeeAction.loggedInUser(id, name, email, preps, jwt))
     }
 }
 

@@ -1,5 +1,11 @@
-export const loggedInUser = (id, name, email, preps, jwt) => {
-    console.log('this is the logged in action')
+
+class CoffeeAction {
+
+    
+    
+    
+    static loggedInUser = (id, name, email, preps, jwt) => {
+        console.log('this is the logged in action')
     return {
         type: 'LOGGED_IN_USER',
         user: {
@@ -12,10 +18,13 @@ export const loggedInUser = (id, name, email, preps, jwt) => {
     }
 }
 
-export const logOut = () => {
+  static logOut = () => {
     console.log('logging out user...')
     return {
         type: 'LOG_OUT',
         payload: 'logging out user'
     }
 }
+
+}
+export default CoffeeAction;

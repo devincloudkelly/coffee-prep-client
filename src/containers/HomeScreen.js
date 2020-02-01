@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../components/Login'
 import Signup from '../components/Signup';
 import {connect} from 'react-redux'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // const {from} = this.props.location.state
 class HomeScreen extends Component {
