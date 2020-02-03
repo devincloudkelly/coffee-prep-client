@@ -21,11 +21,11 @@ function App() {
         {/* This works with switch either on or off..need to investigate further when/why I'd want it or not */}
         <Switch>
           <Route exact path='/' render={(props) => <HomeScreen {...props} />} />
-          <Route exact path='/preparations' component={ShowPreparation} />
+          <PrivateRoute exact path='/preparations/new' component={NewPreparation} />
+          <Route exact path='/preparations/:id' component={ShowPreparation} />
           {/* Do not use routes as below, they do not work with Redux because they are 'blocked updates'. The component below is not a 'route component' */}
           {/* <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} /> */}
           <PrivateRoute path='/profile' component={Profile} />
-          <PrivateRoute path='/preparations/new' component={NewPreparation} />
         </Switch>
       </Router>
 
