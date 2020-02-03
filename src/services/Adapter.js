@@ -2,6 +2,7 @@ const ROOT = 'http://localhost:3000/api/v1'
 const LOGIN = `${ROOT}/login`
 const SIGNUP = `${ROOT}/users`
 const PROFILE = `${ROOT}/users/`
+const PREPARATION = `${ROOT}/preparations`
 let token = localStorage.getItem('jwt')
 
 class Adapter {
@@ -62,6 +63,31 @@ class Adapter {
                 jwt: token
             })
         })
+    }
+
+    static addPreparation = (prep) => {
+        return fetch(PREPARATION, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${prep.jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: prep.user_id,
+                device: prep.device,
+                coffee_brand: prep.coffee_brand,
+                coffee_name: prep.coffee_name,
+                coffee_amount: prep.coffee_amount,
+                coffee_grind: prep.coffee_grind,
+                total_time: prep.total_time,
+                total_water: prep.total_water,
+                water_temp: prep.water_temp,
+                notes: prep.notes
+            })
+        })
+        .then(resp => resp.json())
+        .then(console.log)
     }
 }
 export default Adapter

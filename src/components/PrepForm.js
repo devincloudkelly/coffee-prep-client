@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-
+import Adapter from '../services/Adapter'
 
 export class PrepForm extends Component {
     state = {
         user_id: this.props.user_id,
-        method: null,
+        device: null,
         coffee_brand: '',
         coffee_name: '',
-        coffee_amount: null,
+        coffee_amount: 0,
         coffee_grind: '',
-        total_time: null,
-        total_water: null,
-        water_temp: null,
+        total_time: 0,
+        total_water: 0,
+        water_temp: 0,
         notes: ''
     }
     
@@ -22,23 +22,30 @@ export class PrepForm extends Component {
         }, ()=>console.log(this.state))
     }
     
+    createPreparation = (e) => {
+        e.preventDefault()
+        let prep = this.state
+        prep.jwt = this.props.jwt
+        console.log('this is the prep being sent to create...', prep)
+        Adapter.addPreparation(prep)
+    }
     
     
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.createPreparation}>
                     <h3>Method:</h3>
                     <label>
-                        <input type='radio' name='method' value='aeropress' onChange={e => this.handleInput(e)}/>
+                        <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
                         Aeropress
                     </label>
                     <label>
-                        <input type='radio' name='method' value='chemex' onChange={e => this.handleInput(e)}/>
+                        <input type='radio' name='device' value='chemex' onChange={e => this.handleInput(e)}/>
                         Chemex
                     </label>
                     <label>
-                        <input type='radio' name='method' value='pourover' onChange={e => this.handleInput(e)}/>
+                        <input type='radio' name='device' value='pourover' onChange={e => this.handleInput(e)}/>
                         Pour Over
                     </label>
                     <h3>Coffee:</h3>
@@ -85,8 +92,10 @@ export class PrepForm extends Component {
 
 const mapState = state => {
     return {
-        user_id: state.user.id
+        user_id: state.user.id,
+        jwt: state.jwt
     }
 }
+
 
 export default connect(mapState)(PrepForm);
