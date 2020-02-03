@@ -1,6 +1,4 @@
 import React from 'react';
-// import MainContainer from './MainContainer';
-import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import PrepViewer from './PrepViewer';
 
@@ -12,7 +10,7 @@ console.log(props)
             <div>
                 <h5>Welcome back {props.name}</h5>
                 <PrepViewer />
-                <Link to='/preparations/new'>Link to new preparation</Link>
+                
             </div>
         );
     
