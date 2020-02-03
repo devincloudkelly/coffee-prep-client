@@ -5,7 +5,7 @@ import NewPrepCard from '../components/NewPrepCard';
 
 export class PrepViewer extends Component {
 
-    renderPreps = (props) => {
+    renderPreps = () => {
         console.log('preps in the prep viewer...', this.props.preps)
         return this.props.preps.map( prep => {
             return <PrepCard key={Math.random()} prep={prep} />
