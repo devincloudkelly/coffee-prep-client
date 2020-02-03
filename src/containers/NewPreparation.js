@@ -6,7 +6,11 @@ export class NewPreparation extends Component {
         coffee_brand: '',
         coffee_name: '',
         coffee_amount: null,
-        coffee_grind: ''
+        coffee_grind: '',
+        total_time: null,
+        total_water: null,
+        water_temp: null,
+        notes: ''
     }
 
     handleInput = (e) => {
@@ -43,7 +47,7 @@ export class NewPreparation extends Component {
                     <label>
                         <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
                     </label>
-                    <select name='coffee_grind' onChange={e => this.handleInput(e)}>
+                    <select name='coffee_grind' value={this.state.value} onChange={e => this.handleInput(e)}>
                         <option type='text' value=''>Choose grind</option>
                         <option type='text' value='extra coarse'>Extra Coarse</option>
                         <option type='text' value='coarse'>Coarse</option>
@@ -53,6 +57,19 @@ export class NewPreparation extends Component {
                         <option type='text' value='fine'>Fine</option>
                         <option type='text' value='extra-fine'>Extra Fine</option>
                     </select>
+                    <h3>Prep Specs: </h3>
+                    <label> 
+                        <input type='text' name='total_time' value={this.state.total_time} onChange={e => this.handleInput(e)} placeholder='total brew time'/>
+                    </label>
+                    <label> 
+                        <input type='text' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
+                    </label>
+                    <label> 
+                        <input type='text' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
+                    </label> <br/>
+                    <label> 
+                        <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
+                    </label>
                 </form>
             </div>
         );
