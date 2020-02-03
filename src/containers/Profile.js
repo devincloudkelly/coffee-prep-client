@@ -1,7 +1,8 @@
 import React from 'react';
-import MainContainer from './MainContainer';
+// import MainContainer from './MainContainer';
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import PrepViewer from './PrepViewer';
 
 
 const Profile = (props) => {
@@ -10,7 +11,7 @@ console.log(props)
         return (
             <div>
                 <h5>Welcome back {props.name}</h5>
-                <MainContainer />
+                <PrepViewer />
                 <Link to='/preparations/new'>Link to new preparation</Link>
             </div>
         );

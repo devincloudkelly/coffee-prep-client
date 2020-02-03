@@ -24,7 +24,7 @@ const reducer = (state=initialState, action) => {
                     id: action.user.id,
                     name: action.user.name,
                     email_address: action.user.email_address,
-                    preps: [action.user.preps]
+                    preps: action.user.preps
                 }
             }
         case 'LOG_OUT':
