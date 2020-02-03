@@ -24,11 +24,11 @@ class CoffeeAction {
     }
 
 }
-    static addStepToPrep = () => {
-        console.log('adding step to a prep...')
+    static toggleStepToPrep = () => {
+        console.log('toggline add step to a prep...')
         return {
-            type: 'ADD_STEP_TO_PREP',
-            payload: 'adding step to prep, toggle addNewStep...'
+            type: 'TOGGLE_STEP_TO_PREP',
+            payload: 'toggling step to prep...'
         }
     }
 

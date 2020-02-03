@@ -3,10 +3,11 @@ import PrepForm from '../components/PrepForm';
 import StepForm from '../components/StepForm';
 import NewStepCard from '../components/NewStepCard';
 import {connect} from 'react-redux'
+import StepViewer from './StepViewer';
 
 export class NewPreparation extends Component {
     
-    toggleStepsView = () => {
+    toggleStepsForm = () => {
         console.log('toggling steps view')
         if (this.props.addNewStep === true){
             return <StepForm />
@@ -20,7 +21,8 @@ export class NewPreparation extends Component {
             <div>
                 I am the new preparation screen
                 <PrepForm />
-                {this.toggleStepsView()}
+                <StepViewer />
+                {this.toggleStepsForm()}
             </div>
         );
     }

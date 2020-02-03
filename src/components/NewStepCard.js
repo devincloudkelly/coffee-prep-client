@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 class NewStepCard extends Component {
 
     handleNewStepClick = () => {
-        console.log('adding new step')
-        this.props.addStepToPrep()
+        console.log('toggling add new step')
+        this.props.toggleStepToPrep()
     }
 
     render() {
@@ -22,7 +22,7 @@ class NewStepCard extends Component {
 
 const mapDispatch = dispatch => {
     return {
-        addStepToPrep: () => dispatch(CoffeeAction.addStepToPrep())
+        toggleStepToPrep: () => dispatch(CoffeeAction.toggleStepToPrep())
     }
 }
 

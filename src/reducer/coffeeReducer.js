@@ -38,11 +38,11 @@ const reducer = (state={initialState}, action) => {
                 },
                 addNewStep: false
             }
-        case 'ADD_STEP_TO_PREP':
-            console.log('adding step in reducer...')
+        case 'TOGGLE_STEP_TO_PREP':
+            console.log('toggling step in reducer...')
             return {
                 ...state,
-                addNewStep: true
+                addNewStep: !state.addNewStep
             }
         default:
             console.log('hitting default case statement..')

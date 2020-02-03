@@ -52,29 +52,30 @@ export class PrepForm extends Component {
                         <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
                     </label>
                     <select name='coffee_grind' value={this.state.value} onChange={e => this.handleInput(e)}>
-                        <option type='text' value=''>Choose grind</option>
-                        <option type='text' value='extra coarse'>Extra Coarse</option>
-                        <option type='text' value='coarse'>Coarse</option>
-                        <option type='text' value='medium-coarse'>Medium-Coarse</option>
-                        <option type='text' value='medium'>Medium</option>
-                        <option type='text' value='medium-fine'>Medium-Fine</option>
-                        <option type='text' value='fine'>Fine</option>
-                        <option type='text' value='extra-fine'>Extra Fine</option>
+                        <option value=''>Choose grind</option>
+                        <option value='extra coarse'>Extra Coarse</option>
+                        <option value='coarse'>Coarse</option>
+                        <option value='medium-coarse'>Medium-Coarse</option>
+                        <option value='medium'>Medium</option>
+                        <option value='medium-fine'>Medium-Fine</option>
+                        <option value='fine'>Fine</option>
+                        <option value='extra-fine'>Extra Fine</option>
                     </select>
-                    <h3>Specs: </h3>
+                    <h3>Water: </h3>
+                    {/* <label> 
+                        <input type='number' name='total_time' value={this.state.total_time} onChange={e => this.handleInput(e)} placeholder='total brew time'/>
+                    </label> */}
                     <label> 
-                        <input type='text' name='total_time' value={this.state.total_time} onChange={e => this.handleInput(e)} placeholder='total brew time'/>
+                        <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
                     </label>
                     <label> 
-                        <input type='text' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
-                    </label>
-                    <label> 
-                        <input type='text' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
+                        <input type='number' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
                     </label>
                     <h3>Notes: </h3>
                     <label> 
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
-                    </label>
+                    </label><br/>
+                    <input type='submit' value='Add Steps'/>
                 </form>
                 
             </div>
