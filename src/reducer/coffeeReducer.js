@@ -1,8 +1,5 @@
 
-
-const initialState = {key: 'initial state'}
-
-const state = {
+const initialState = {
     loggedIn: false,
     user: {
         id: 0,
@@ -10,14 +7,15 @@ const state = {
         email_address: '',
         preps: []
     },
-    jwt: ''
+    jwt: '',
+    addNewStep: false
 }
 
-const reducer = (state=initialState, action) => {
+const reducer = (state={initialState}, action) => {
     switch(action.type){
         case 'LOGGED_IN_USER':
             console.log('updating state in reducer w/ logged in user, here is current state and what I am passing in...', state, action.user.name, action.user.email_address, action.user.preps)
-            return { 
+            return { ...state,
                 loggedIn: true,
                 jwt: action.jwt,
                 user: {
@@ -29,15 +27,22 @@ const reducer = (state=initialState, action) => {
             }
         case 'LOG_OUT':
             console.log('logging out in reducer')
-            return {
+            return {...state,
                 loggedIn: false,
                 jwt: '',
-                ...state, user: {
+                user: {
                     id: 0,
                     name: '',
                     email_address: '',
                     preps: []
-                }
+                },
+                addNewStep: false
+            }
+        case 'ADD_STEP_TO_PREP':
+            console.log('adding step in reducer...')
+            return {
+                ...state,
+                addNewStep: true
             }
         default:
             console.log('hitting default case statement..')
