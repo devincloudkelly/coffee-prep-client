@@ -81,6 +81,7 @@ const reducer = (state={initialState}, action) => {
                 addNewStep: false
             }
         case 'UPDATE_CURRENT_PREP':
+            console.log('updating current prep in reducer...', action.prep)
             return {
                 ...state,
                 currentPrep: action.prep

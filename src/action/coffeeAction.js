@@ -55,6 +55,7 @@ class CoffeeAction {
     }
 
     static updateCurrentPrep = (prep) => {
+        console.log('updating current prep in action...', prep)
         return {
             type: 'UPDATE_CURRENT_PREP',
             prep: prep

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 export class PrepSpecs extends Component {
     render() {
         console.log('current Prep in prepSpecs...', this.props)
-        const { device, coffee_brand, coffee_name, coffee_amount, coffee_grind, total_water, total_time, water_temp, notes} = this.props.currentPrep
+        const { device, coffee_brand, coffee_name, coffee_amount, coffee_grind, total_water, total_time, water_temp, notes} = this.props.prep
         return (
             <div>
                 These are the prep specs
@@ -18,10 +18,6 @@ export class PrepSpecs extends Component {
     }
 }
 
-const mapState = state => {
-    return {
-        currentPrep: state.currentPrep
-    }
-}
 
-export default connect(mapState)(PrepSpecs);
+
+export default withRouter(PrepSpecs);

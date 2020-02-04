@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route exact path='/' render={(props) => <HomeScreen {...props} />} />
           <PrivateRoute exact path='/preparations/new' component={NewPreparation} />
-          <Route exact path='/preparations/:id' component={ShowPreparation} />
+          <Route path='/preparations/:id' component={ShowPreparation} />
           {/* Do not use routes as below, they do not work with Redux because they are 'blocked updates'. The component below is not a 'route component' */}
           {/* <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} /> */}
           <PrivateRoute path='/profile' component={Profile} />
