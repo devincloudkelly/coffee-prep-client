@@ -11,7 +11,7 @@ export class PrepCard extends Component {
         const prepUrl = `/preparations/${id}`
         // const redirect = `/preparations/${id}`
         this.props.updateCurrentPrep(this.props.prep)
-        .then(this.props.history.push(prepUrl))
+        this.props.history.push(prepUrl)
     }
     
     render() {
