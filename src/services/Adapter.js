@@ -87,7 +87,7 @@ class Adapter {
             })
         })
         .then(resp => resp.json())
-        .then(console.log)
+        .then(data => {return data})
     }
 }
 export default Adapter

@@ -23,6 +23,7 @@ export class Login extends Component {
     handleLogin = (e) => {
         e.preventDefault()
         Fetch.login(this.state.email_address, this.state.password)
+        // .then(console.log)
         .then(data => {
             localStorage.setItem('jwt', data.jwt)
             this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})

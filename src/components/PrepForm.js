@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Adapter from '../services/Adapter'
+import CoffeeAction from '../action/coffeeAction';
 
 export class PrepForm extends Component {
     state = {
@@ -28,6 +29,7 @@ export class PrepForm extends Component {
         prep.jwt = this.props.jwt
         console.log('this is the prep being sent to create...', prep)
         Adapter.addPreparation(prep)
+        .then()
     }
     
     
@@ -97,5 +99,11 @@ const mapState = state => {
     }
 }
 
+const mapDispatch = dispatch => {
+    return {
+        addPrepToStore: prep => dispatch(CoffeeAction.addPrepToStore(prep))
+    }
+}
 
-export default connect(mapState)(PrepForm);
+
+export default connect(mapState, mapDispatch)(PrepForm);
