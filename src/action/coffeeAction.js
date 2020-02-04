@@ -47,5 +47,11 @@ class CoffeeAction {
             step: step
         }
     }
+    static resetAddNewStep = () => {
+        return {
+            type: 'RESET_ADD_NEW_STEP',
+            payload: 'reseting addNewStep...'
+        }
+    }
 }
 export default CoffeeAction;

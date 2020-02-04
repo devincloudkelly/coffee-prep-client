@@ -66,6 +66,11 @@ const reducer = (state={initialState}, action) => {
                     ...state.editingPrep, steps: [...state.editingPrep.steps, action.step]
                 }
             }
+        case 'RESET_ADD_NEW_STEP':
+            return {
+                ...state,
+                addNewStep: false
+            }
         default:
             console.log('hitting default case statement..')
             return state

@@ -26,6 +26,7 @@ export class StepForm extends Component {
         console.log('submitting step, this is step...', step)
         Adapter.addStep(step, jwt)
         .then(data => this.props.addStepToStore(data))
+        .then(this.props.resetAddNewStep())
     }
 
     render() {
@@ -74,7 +75,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        addStepToStore: (step) => dispatch(CoffeeAction.addStepToStore(step))
+        addStepToStore: (step) => dispatch(CoffeeAction.addStepToStore(step)),
+        resetAddNewStep: () => dispatch(CoffeeAction.resetAddNewStep())
     }
 }
 

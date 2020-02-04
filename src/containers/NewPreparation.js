@@ -6,24 +6,6 @@ import {connect} from 'react-redux'
 import StepViewer from './StepViewer';
 
 export class NewPreparation extends Component {
-    
-    toggleStepsForm = () => {
-        console.log('toggling steps view', this.props)
-        if (!this.props.showSteps){
-            return <NewStepCard />
-        } else {
-            if (!this.props.editingPrep || this.props.editingPrep.steps.length < 1){
-                return <StepForm />
-            } else {
-                return <NewStepCard />
-            }
-        }
-    }
-
-    showStepsSection = () => {
-        if (this.props.showSteps === true) this.toggleStepsForm()
-        return null
-    }
 
     render() {
         return (
@@ -32,8 +14,11 @@ export class NewPreparation extends Component {
                 <PrepForm />
                 <StepViewer />
                 {this.props.showSteps 
-                ? this.toggleStepsForm()
+                ? this.props.addNewStep
+                    ? <StepForm />
+                    : <NewStepCard />            
                 : null }
+                <button>Create New Coffee Guide</button>
             </div>
         );
     }
