@@ -8,20 +8,12 @@ export class BrewTimer extends Component {
     }
 
     render() {
+        console.log('these are my checkpoints..', this.props.checkpoints)
         return (
             <div>
                 This is the timer
                 <Timer className='timer' startImmediately={false}
-                    checkpoints={[
-                        {
-                            time: 5000,
-                            callback: () => console.log('5 seconds'),
-                        },
-                        {
-                            time: 20000,
-                            callback: () => console.log('20 seconds'),
-                        }
-                     ]}>
+                    checkpoints={this.props.checkpoints}>
                          {({start, resume, pause, stop, reset, timerState}) => (
                              <div>
 

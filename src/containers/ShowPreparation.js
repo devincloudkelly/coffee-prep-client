@@ -29,15 +29,27 @@ export class ShowPreparation extends Component {
         console.log('starting brew...')
     }
 
+    createCheckpoints = (steps) => {
+        console.log('creating checkpoints...')
+        let counter = 0
+        const checkpoints = []
+        steps.map(step => {
+            counter += step.duration
+            checkpoints.push({time: (counter * 1000), callback: ()=>console.log('function for this step', step)})
+        })
+        return checkpoints
+    }
+
     render() {
         console.log('props in ShowPrep container...', this.props)
+        const { steps } = this.props.currentPrep
         return (
             <div>
                 <PrepSpecs prep={this.props.currentPrep}/>
                 <br/>
                 {/* <button onClick={this.handleBeginBrew}>Begin Brew</button> */}
                 <br/>
-                <BrewTimer />
+                <BrewTimer checkpoints={this.createCheckpoints(steps)}/>
                 <br/>
                 {this.renderSteps()}
             </div>
