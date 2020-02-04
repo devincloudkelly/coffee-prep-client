@@ -120,5 +120,19 @@ class Adapter {
         .then(data => {return data})
     }
 
+    static fetchPreparation = (id, jwt) => {
+        console.log('editing prep in adapter... here is what I am passing in...', id, jwt)
+        return fetch(PREPARATION + '/' + id, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
+
 }
 export default Adapter

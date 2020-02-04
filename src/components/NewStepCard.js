@@ -17,7 +17,6 @@ class NewStepCard extends Component {
             <div onClick={this.handleNewStepClick}>
                 {/* <Icon name='plus' size='huge'/>  */}
                 <button className='ui button large'>Add NewStep</button>
-                {/* Add new step. Need to write action so when this is clicked, it triggers an action to toggle an 'adding new step' key in the store. This toggle will hid this component and bring up the form. */}
             </div>
         );
     }

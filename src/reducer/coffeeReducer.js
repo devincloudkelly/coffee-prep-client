@@ -15,7 +15,8 @@ const initialState = {
     },
     currentPrep: {
         steps: []
-    }
+    },
+    currentStep: {}
 }
 
 const reducer = (state={initialState}, action) => {

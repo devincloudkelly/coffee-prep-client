@@ -15,6 +15,10 @@ export class PrepSpecs extends Component {
                     Total Time: {total_time} seconds <br/>
                     Notes: {notes} <br/>
                 </div>
+                <br/>
+                <div>
+        <p>Once your water is up to temp, grind your coffee and add it to your {device}. Once ready, press the start button below to begin brewing.</p>
+                </div>
             </div>
         );
     }
