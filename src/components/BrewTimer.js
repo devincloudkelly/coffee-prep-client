@@ -6,7 +6,7 @@ export class BrewTimer extends Component {
         return (
             <div>
                 This is the timer
-                <Timer className='timer' 
+                <Timer className='timer' startImmediately={false}
                     checkpoints={[
                         {
                             time: 5000,
@@ -17,7 +17,21 @@ export class BrewTimer extends Component {
                             callback: () => console.log('20 seconds'),
                         }
                      ]}>
-                    <h1><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
+                         {({start, resume, pause, stop, reset, timerState}) => (
+                             <div>
+
+                             <h1><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
+                            <div>{timerState}</div>
+                            <br/>
+                            <div>
+                                <button onClick={start}>Start</button>
+                <button onClick={pause}>Pause</button>
+                <button onClick={resume}>Resume</button>
+                <button onClick={stop}>Stop</button>
+                <button onClick={reset}>Reset</button>
+                            </div>
+                             </div>
+                         )}
                 </Timer>
             </div>
         );
