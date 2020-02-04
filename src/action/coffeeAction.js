@@ -61,5 +61,13 @@ class CoffeeAction {
             prep: prep
         }
     }
+
+    static updateCurrentStep = (step) => {
+        console.log('updating current prep in action...', step)
+        return {
+            type: 'UPDATE_CURRENT_STEP',
+            step: step
+        }
+    }
 }
 export default CoffeeAction;

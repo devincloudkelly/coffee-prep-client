@@ -6,8 +6,10 @@ import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
 
+
 export class ShowPreparation extends Component {
 
+    // once component mounts, fetch this prep and nested steps and update currentPrep in store
     componentDidMount() {
         console.log('props in prep show page', this.props)
         const id = this.props.match.params.id
@@ -18,6 +20,7 @@ export class ShowPreparation extends Component {
         })
     }
     
+    // render steps to the screen based on the currentPrep in store.
     renderSteps = () => {
         console.log('rendering steps in prepshow...')
         return this.props.currentPrep.steps.map(step => {
@@ -25,19 +28,27 @@ export class ShowPreparation extends Component {
         })
     }
 
+    // this is for the button I created outside of the timer. Will likely use the buttons built into the timer
     handleBeginBrew = () => {
         console.log('starting brew...')
     }
 
-    createCheckpoints = (steps) => {
+    // create checkpoints to pass into the timer. These are used to trigger events as one step ends and another begins.
+    createCheckpoints = () => {
         console.log('creating checkpoints...')
         let counter = 0
         const checkpoints = []
-        steps.map(step => {
+        this.props.currentPrep.steps.map(step => {
             counter += step.duration
-            checkpoints.push({time: (counter * 1000), callback: ()=>console.log('function for this step', step)})
+            checkpoints.push({time: (counter * 1000), callback: step=>(this.updateCurrentStep(step))})
         })
+        console.log(checkpoints)
         return checkpoints
+    }
+
+    // using this ensure that BrewTimer gets the correct checkpoints. Does not serve any other purpose
+    checkpointLength = () => {
+        return this.createCheckpoints().length
     }
 
     render() {
@@ -49,7 +60,7 @@ export class ShowPreparation extends Component {
                 <br/>
                 {/* <button onClick={this.handleBeginBrew}>Begin Brew</button> */}
                 <br/>
-                <BrewTimer checkpoints={this.createCheckpoints(steps)}/>
+                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
                 <br/>
                 {this.renderSteps()}
             </div>
@@ -66,7 +77,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        updateCurrentPrep: (prep) => dispatch(CoffeeAction.updateCurrentPrep(prep))
+        updateCurrentPrep: prep => dispatch(CoffeeAction.updateCurrentPrep(prep)),
+        updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
     }
 }
 

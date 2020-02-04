@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Timer from 'react-compound-timer'
+import CoffeeAction from '../action/coffeeAction';
+import { connect } from 'react-redux';
 
 export class BrewTimer extends Component {
 
@@ -35,4 +37,10 @@ export class BrewTimer extends Component {
     }
 }
 
-export default BrewTimer;
+const mapDispatch = dispatch => {
+    return {
+        updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
+    }
+}
+
+export default connect(mapDispatch)(BrewTimer);
