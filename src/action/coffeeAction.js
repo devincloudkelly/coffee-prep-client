@@ -53,5 +53,12 @@ class CoffeeAction {
             payload: 'reseting addNewStep...'
         }
     }
+
+    static updateCurrentPrep = (prep) => {
+        return {
+            type: 'UPDATE_CURRENT_PREP',
+            prep: prep
+        }
+    }
 }
 export default CoffeeAction;

@@ -12,6 +12,9 @@ const initialState = {
     addNewStep: false,
     editingPrep: {
         steps: []
+    },
+    currentPrep: {
+        steps: []
     }
 }
 
@@ -41,7 +44,13 @@ const reducer = (state={initialState}, action) => {
                     preps: []
                 },
                 addNewStep: false,
-                showSteps: false
+                showSteps: false,
+                editingPrep: {
+                    steps: []
+                },
+                currentPrep: {
+                    steps: []
+                }
             }
         case 'TOGGLE_STEP_TO_PREP':
             console.log('toggling step in reducer...')
@@ -70,6 +79,11 @@ const reducer = (state={initialState}, action) => {
             return {
                 ...state,
                 addNewStep: false
+            }
+        case 'UPDATE_CURRENT_PREP':
+            return {
+                ...state,
+                currentPrep: action.prep
             }
         default:
             console.log('hitting default case statement..')

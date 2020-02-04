@@ -104,5 +104,21 @@ class Adapter {
         .then(resp => resp.json())
         .then(data => {return data})
     }
+
+    static editPreparation = (patchObj, id, jwt) => {
+        console.log('editing prep in adapter... here is what I am passing in...', patchObj, id, jwt)
+        return fetch(PREPARATION + '/' + id, {
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(patchObj)
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
+
 }
 export default Adapter

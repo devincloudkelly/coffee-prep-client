@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { PrepSpecs } from './PrepSpecs';
 
 export class ShowPreparation extends Component {
     render() {
         return (
             <div>
-                I am the Show Preparation screen
+                This is the Show Preparation card
+                <PrepSpecs />
             </div>
         );
     }
 }
+
+
 
 export default ShowPreparation;

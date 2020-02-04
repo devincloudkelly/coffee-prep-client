@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect, withRouter} from 'react-router-dom'
+import CoffeeAction from '../action/coffeeAction';
+import { connect } from 'react-redux';
 
 
 export class PrepCard extends Component {
@@ -7,7 +9,11 @@ export class PrepCard extends Component {
     handleClick = (id) => {
         console.log('handling click on prep card. Id being passed through...', id)
         const prepUrl = `/preparation/${id}`
-        this.props.history.push(prepUrl)
+        const redirect = `/preparations/${id}`
+        this.props.updateCurrentPrep(this.props.prep)
+        // this.props.history.push(prepUrl)
+        return <Redirect to={redirect}/>
+
     }
     
     render() {
@@ -24,4 +30,11 @@ export class PrepCard extends Component {
     }
 }
 
-export default withRouter(PrepCard);
+
+const mapDispatch = dispatch => {
+    return {
+        updateCurrentPrep: prep => dispatch(CoffeeAction.updateCurrentPrep(prep))
+    }
+}
+
+export default withRouter(connect(null, mapDispatch)(PrepCard));
