@@ -5,8 +5,10 @@ import { connect } from 'react-redux';
 
 export class BrewTimer extends Component {
 
-    renderCheckpoints = () => {
-        console.log('rendering checkpoints...')
+
+    handleStepChange = (step) => {
+        console.log('handling step change from checkpoint callback...' ,step)
+        // this.updateCurrentStep(step)
     }
 
     render() {
@@ -15,7 +17,7 @@ export class BrewTimer extends Component {
             <div>
                 This is the timer
                 <Timer className='timer' startImmediately={false}
-                    checkpoints={this.props.checkpoints}>
+                    checkpoints={this.props.checkpoints()}>
                          {({start, resume, pause, stop, reset, timerState}) => (
                              <div>
 
@@ -37,10 +39,17 @@ export class BrewTimer extends Component {
     }
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
     return {
-        updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
+        currentPrep: state.currentPrep
     }
 }
 
-export default connect(mapDispatch)(BrewTimer);
+// const mapDispatch = dispatch => {
+//     console.log('is dispatch being called')
+//     return {
+//         updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
+//     }
+// }
+
+export default connect(mapState)(BrewTimer);

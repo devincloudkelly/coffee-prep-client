@@ -40,7 +40,7 @@ export class ShowPreparation extends Component {
         const checkpoints = []
         this.props.currentPrep.steps.map(step => {
             counter += step.duration
-            checkpoints.push({time: (counter * 1000), callback: step=>(this.updateCurrentStep(step))})
+            checkpoints.push({time: (counter * 1000), callback: (step)=>this.handleStepChange(step)})
         })
         console.log(checkpoints)
         return checkpoints
@@ -49,6 +49,10 @@ export class ShowPreparation extends Component {
     // using this ensure that BrewTimer gets the correct checkpoints. Does not serve any other purpose
     checkpointLength = () => {
         return this.createCheckpoints().length
+    }
+    
+    handleStepChange = (step) => {
+        console.log('handling step change, here is the step that was passed up...', step)
     }
 
     render() {
@@ -60,7 +64,7 @@ export class ShowPreparation extends Component {
                 <br/>
                 {/* <button onClick={this.handleBeginBrew}>Begin Brew</button> */}
                 <br/>
-                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
+                <BrewTimer checkpoints={this.createCheckpoints}/>
                 <br/>
                 {this.renderSteps()}
             </div>
