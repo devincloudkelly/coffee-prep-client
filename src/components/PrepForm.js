@@ -25,11 +25,11 @@ export class PrepForm extends Component {
     
     createPreparation = (e) => {
         e.preventDefault()
-        let prep = this.state
-        prep.jwt = this.props.jwt
+        const prep = this.state
+        const jwt = this.props.jwt
         console.log('this is the prep being sent to create...', prep)
-        Adapter.addPreparation(prep)
-        .then()
+        Adapter.addPreparation(prep, jwt)
+        .then(data => this.props.addPrepToStore(data))
     }
     
     

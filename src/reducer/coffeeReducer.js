@@ -38,7 +38,8 @@ const reducer = (state={initialState}, action) => {
                     email_address: '',
                     preps: []
                 },
-                addNewStep: false
+                addNewStep: false,
+                showSteps: false
             }
         case 'TOGGLE_STEP_TO_PREP':
             console.log('toggling step in reducer...')

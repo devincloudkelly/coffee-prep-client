@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Adapter from '../services/Adapter'
 
 export class StepForm extends Component {
     state = {
@@ -16,11 +17,20 @@ export class StepForm extends Component {
         }, ()=>console.log(this.state))
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const step = this.state
+        step.preparation_id = this.props.preparation_id
+        const jwt = this.props.jwt
+        console.log('submitting step, this is step...', step)
+        Adapter.addStep(step, jwt)
+    }
+
     render() {
         return (
             <div>
                 <h4>Add steps to your preparation</h4>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         <h3>Prep Action: </h3>
                         <select name='action' value={this.state.action} onChange={e => this.handleInput(e)}>
@@ -46,13 +56,18 @@ export class StepForm extends Component {
                     <label>
                     <textarea type='text' name='directions' value={this.state.directions} onChange={e => this.handleInput(e)} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>
                     </label>
-                    
+                    <input type='submit' value='Add Step' />
                 </form>
             </div>
         );
     }
 }
 
+const mapState = state => {
+    return {
+        jwt: state.jwt,
+        preparation_id: state.editingPrep.id
+    }
+}
 
-
-export default StepForm;
+export default connect(mapState)(StepForm);

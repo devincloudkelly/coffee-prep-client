@@ -3,6 +3,7 @@ const LOGIN = `${ROOT}/login`
 const SIGNUP = `${ROOT}/users`
 const PROFILE = `${ROOT}/users/`
 const PREPARATION = `${ROOT}/preparations`
+const STEP = `${ROOT}/steps`
 let token = localStorage.getItem('jwt')
 
 class Adapter {
@@ -65,11 +66,11 @@ class Adapter {
         })
     }
 
-    static addPreparation = (prep) => {
+    static addPreparation = (prep, jwt) => {
         return fetch(PREPARATION, {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${prep.jwt}`,
+                Authorization: `Bearer ${jwt}`,
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
             },
@@ -85,6 +86,20 @@ class Adapter {
                 water_temp: prep.water_temp,
                 notes: prep.notes
             })
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
+
+    static addStep = (step, jwt) => {
+        return fetch(STEP, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(step)
         })
         .then(resp => resp.json())
         .then(data => {return data})

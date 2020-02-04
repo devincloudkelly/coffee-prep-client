@@ -9,11 +9,20 @@ export class NewPreparation extends Component {
     
     toggleStepsForm = () => {
         console.log('toggling steps view')
-        if (this.props.addNewStep === true){
-            return <StepForm />
-        } else {
+        if (!this.props.showSteps){
             return <NewStepCard />
+        } else {
+            if (!this.props.editingPrep.steps || this.props.editingPreps.steps.length < 1){
+                return <StepForm />
+            } else {
+                return <NewStepCard />
+            }
         }
+    }
+
+    showStepsSection = () => {
+        if (this.props.showSteps === true) this.toggleStepsForm()
+        return null
     }
 
     render() {
@@ -22,7 +31,9 @@ export class NewPreparation extends Component {
                 I am the new preparation screen
                 <PrepForm />
                 <StepViewer />
-                {this.toggleStepsForm()}
+                {this.props.showSteps 
+                ? this.toggleStepsForm()
+                : null }
             </div>
         );
     }
@@ -30,7 +41,9 @@ export class NewPreparation extends Component {
 
 const mapState = state => {
     return {
-        addNewStep: state.addNewStep
+        addNewStep: state.addNewStep,
+        showSteps: state.showSteps,
+        editingPrep: state.editingPrep
     }
 }
 
