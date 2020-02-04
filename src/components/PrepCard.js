@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect, withRouter} from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
 
@@ -9,8 +9,7 @@ export class PrepCard extends Component {
     handleClick = (id) => {
         console.log('handling click on prep card. Id being passed through...', id)
         const prepUrl = `/preparations/${id}`
-        // const redirect = `/preparations/${id}`
-        this.props.updateCurrentPrep(this.props.prep)
+        // this.props.updateCurrentPrep(this.props.prep)
         this.props.history.push(prepUrl)
     }
     

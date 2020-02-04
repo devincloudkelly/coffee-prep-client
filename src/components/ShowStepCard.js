@@ -5,7 +5,8 @@ export class ShowStepCard extends Component {
         const { action, duration, amount, order, directions } = this.props.step
         return (
             <div>
-                Here's a step
+                <h1>{action}</h1>
+                <br/>
             </div>
         );
     }
