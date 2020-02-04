@@ -40,7 +40,7 @@ export class ShowPreparation extends Component {
         const checkpoints = []
         this.props.currentPrep.steps.map(step => {
             counter += step.duration
-            checkpoints.push({time: (counter * 1000), callback: (step)=>this.handleStepChange(step)})
+            checkpoints.push({time: (counter * 1000), callback: () => this.handleStepChange(step)})
         })
         console.log(checkpoints)
         return checkpoints

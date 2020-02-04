@@ -12,7 +12,6 @@ export class BrewTimer extends Component {
     }
 
     render() {
-        console.log('these are my checkpoints..', this.props.checkpoints)
         return (
             <div>
                 This is the timer
