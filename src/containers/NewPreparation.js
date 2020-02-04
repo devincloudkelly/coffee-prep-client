@@ -38,11 +38,13 @@ export class NewPreparation extends Component {
                 <PrepForm />
                 <StepViewer />
                 {this.props.showSteps 
-                ? this.props.addNewStep
+                ? this.props.addNewStep || this.props.editingPrep.steps.length < 1
                     ? <StepForm />
                     : <NewStepCard />            
                 : null }
-                <button onClick={this.handleNewGuideClick}>Create New Coffee Guide</button>
+                <br />
+                <br />
+                <button className='ui button huge' onClick={this.handleNewGuideClick}>Create New Coffee Guide</button>
             </div>
         );
     }

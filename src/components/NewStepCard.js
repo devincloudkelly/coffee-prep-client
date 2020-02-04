@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
+import { Icon } from 'semantic-ui-react'
 
 
 
@@ -14,7 +15,9 @@ class NewStepCard extends Component {
     render() {
         return (
             <div onClick={this.handleNewStepClick}>
-                Add new step. Need to write action so when this is clicked, it triggers an action to toggle an 'adding new step' key in the store. This toggle will hid this component and bring up the form.
+                {/* <Icon name='plus' size='huge'/>  */}
+                <button className='ui button large'>Add NewStep</button>
+                {/* Add new step. Need to write action so when this is clicked, it triggers an action to toggle an 'adding new step' key in the store. This toggle will hid this component and bring up the form. */}
             </div>
         );
     }

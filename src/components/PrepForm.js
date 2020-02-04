@@ -34,6 +34,7 @@ export class PrepForm extends Component {
     
     
     render() {
+        const showSteps = this.props.showSteps
         return (
             <div>
                 <form onSubmit={this.createPreparation}>
@@ -84,7 +85,9 @@ export class PrepForm extends Component {
                     <label> 
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
                     </label><br/>
-                    <input type='submit' value='Add Steps'/>
+                    {!showSteps
+                    ? <input type='submit' value='Add Steps'/>
+                    : null}
                 </form>
                 
             </div>
@@ -95,7 +98,8 @@ export class PrepForm extends Component {
 const mapState = state => {
     return {
         user_id: state.user.id,
-        jwt: state.jwt
+        jwt: state.jwt,
+        showSteps: state.showSteps
     }
 }
 
