@@ -11,7 +11,10 @@ export class PrepSpecs extends Component {
                 <h3>Brew Specs: </h3>
                 <div className='prep-specs'>
                     Method: {device} <br/>
-                    Coffee: {coffee_amount}g of {coffee_brand} {coffee_name} <br/>
+                    Coffee: {coffee_amount}g of {coffee_brand} {coffee_name}, {coffee_grind} grind<br/>
+                    Water: {water_temp}deg. F,  {total_water}ml total <br/>
+                    Total Time: {total_time} seconds <br/>
+                    Notes: {notes} <br/>
                 </div>
             </div>
         );
