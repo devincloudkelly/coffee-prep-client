@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter'
+import CoffeeAction from '../action/coffeeAction';
 
 export class StepForm extends Component {
     state = {
@@ -24,6 +25,7 @@ export class StepForm extends Component {
         const jwt = this.props.jwt
         console.log('submitting step, this is step...', step)
         Adapter.addStep(step, jwt)
+        .then(data => this.props.addStepToStore(data))
     }
 
     render() {
@@ -70,4 +72,10 @@ const mapState = state => {
     }
 }
 
-export default connect(mapState)(StepForm);
+const mapDispatch = dispatch => {
+    return {
+        addStepToStore: (step) => dispatch(CoffeeAction.addStepToStore(step))
+    }
+}
+
+export default connect(mapState, mapDispatch)(StepForm);

@@ -39,5 +39,13 @@ class CoffeeAction {
             prep: prep
         }
     }
+
+    static addStepToStore = (step) => {
+        console.log('adding step to store..', step)
+        return {
+            type: 'ADD_STEP_TO_STORE',
+            step: step
+        }
+    }
 }
 export default CoffeeAction;

@@ -10,7 +10,9 @@ const initialState = {
     jwt: '',
     showSteps: false,
     addNewStep: false,
-    editingPrep: {}
+    editingPrep: {
+        steps: []
+    }
 }
 
 const reducer = (state={initialState}, action) => {
@@ -47,13 +49,23 @@ const reducer = (state={initialState}, action) => {
                 ...state,
                 addNewStep: !state.addNewStep
             }
-            case 'ADD_PREP_TO_STORE':
-                console.log('adding prep in reducer')
-                return {
-                    ...state,
-                    showSteps: true,
-                    editingPrep: action.prep
+        case 'ADD_PREP_TO_STORE':
+            console.log('adding prep in reducer')
+            return {
+                ...state,
+                showSteps: true,
+                editingPrep: {
+                    ...state.editingPrep, ...action.prep
                 }
+            }
+        case 'ADD_STEP_TO_STORE':
+            console.log('adding step to store in reducer...')
+            return {
+                ...state,
+                editingPrep: {
+                    ...state.editingPrep, steps: [...state.editingPrep.steps, action.step]
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state
