@@ -63,7 +63,7 @@ class CoffeeAction {
     }
 
     static updateCurrentStep = (step) => {
-        console.log('updating current prep in action...', step)
+        console.log('updating current step in action...', step)
         return {
             type: 'UPDATE_CURRENT_STEP',
             step: step

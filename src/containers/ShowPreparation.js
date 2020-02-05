@@ -11,8 +11,8 @@ import { StepSummary } from '../components/StepSummary';
 export class ShowPreparation extends Component {
 
     // once component mounts, fetch this prep and nested steps and update currentPrep in store
-    componentDidMount() {
-        console.log('props in prep show page', this.props)
+    componentWillMount() {
+        console.log('props in prep show page, component will mount', this.props)
         const id = this.props.match.params.id
         const jwt = this.props.jwt
         Adapter.fetchPreparation(id, jwt)
@@ -30,19 +30,14 @@ export class ShowPreparation extends Component {
         })
     }
 
-    // this is for the button I created outside of the timer. Will likely use the buttons built into the timer
-    handleBeginBrew = () => {
-        console.log('starting brew...')
-    }
-
     // create checkpoints to pass into the timer. These are used to trigger events as one step ends and another begins.
     createCheckpoints = () => {
         console.log('creating checkpoints...')
         let counter = 0
         const checkpoints = []
-        this.props.currentPrep.steps.map(step => {
+        this.props.currentPrep.steps.map((step, index) => {
             counter += step.duration
-            checkpoints.push({time: (counter * 1000), callback: () => this.handleStepChange(step)})
+            checkpoints.push({time: (counter * 1000), callback: () => this.handleStepChange(index)})
         })
         console.log(checkpoints)
         return checkpoints
@@ -52,10 +47,13 @@ export class ShowPreparation extends Component {
     checkpointLength = () => {
         return this.createCheckpoints().length
     }
-    
-    handleStepChange = (step) => {
-        console.log('handling step change, here is the step that was passed up...', step)
-        this.props.updateCurrentStep(this.props.currentPrep.steps[step.id])
+    // step change logic is breaking here. Step is passed in correctly, but the logic to get the next step is broken
+    handleStepChange = (index) => {
+        console.log('handling step change, here is the step that was passed up...', index)
+        let nextStep = index + 1
+        if (nextStep < this.props.currentPrep.steps.length){
+            this.props.updateCurrentStep(this.props.currentPrep.steps[nextStep])
+        }
     }
 
     render() {
@@ -65,7 +63,6 @@ export class ShowPreparation extends Component {
             <div>
                 <PrepSpecs prep={this.props.currentPrep}/>
                 <br/>
-                {/* <button onClick={this.handleBeginBrew}>Begin Brew</button> */}
                 <br/>
                 <BrewTimer checkpoints={this.createCheckpoints}/>
                 <br/>

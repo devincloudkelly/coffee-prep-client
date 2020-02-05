@@ -50,11 +50,11 @@ export class StepForm extends Component {
                         <input type='number' name='duration' value={this.state.duration} onChange={e => this.handleInput(e)} placeholder='Duration in seconds'/>
                     </label>
                     <label>
-                        <input type='number' name='amount' value={this.state.amount} onChange={e => this.handleInput(e)} placeholder='Amount in grams'/>
+                        <input type='number' name='amount' value={this.state.amount} onChange={e => this.handleInput(e)} placeholder='Amount in ml'/>
                     </label>
-                    <label>
+                    {/* <label>
                         <input type='number' name='order' value={this.state.order} onChange={e => this.handleInput(e)} placeholder='Order'/>
-                    </label>
+                    </label> */}
                     <h3>Step notes:</h3>
                     <label>
                     <textarea type='text' name='directions' value={this.state.directions} onChange={e => this.handleInput(e)} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>

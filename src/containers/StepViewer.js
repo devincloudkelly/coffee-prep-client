@@ -15,7 +15,7 @@ export class StepViewer extends Component {
     render() {
         console.log(this.props.steps)
         return (
-            <div>
+            <div className='ui four stackable cards'>
                 {this.renderSteps()}
             </div>
         );
