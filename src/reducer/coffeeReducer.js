@@ -94,6 +94,12 @@ const reducer = (state={initialState}, action) => {
                 ...state,
                 currentStep: action.step
             }
+        case 'UPDATING_PREPS':
+            return {
+                ...state, user: {
+                    ...state.user, preps: action.preps
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state

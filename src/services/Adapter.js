@@ -134,5 +134,18 @@ class Adapter {
         .then(data => {return data})
     }
 
+    static deletePreparation = (id, jwt) => {
+        console.log('deleting prep in adapter... here is what I am passing in...', id, jwt)
+        return fetch(PREPARATION + '/' + id, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
 }
 export default Adapter

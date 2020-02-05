@@ -9,13 +9,13 @@ export class ShowStepCard extends Component {
         return (
                 (currentStep.id === id 
                 ?
-                <div style={currentStyle}>
+                <div className='ui raised card' style={currentStyle}>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>
                 </div>
                 : 
-                <div>
+                <div className='ui raised card'>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>

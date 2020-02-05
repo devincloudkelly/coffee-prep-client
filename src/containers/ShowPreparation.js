@@ -69,7 +69,9 @@ export class ShowPreparation extends Component {
                 <br/>
                 <BrewTimer checkpoints={this.createCheckpoints}/>
                 <br/>
+                <div className='ui four stackable cards'>
                 {this.renderSteps()}
+                </div>
                 <StepSummary currentStep={this.props.currentStep}/>
             </div>
         );
