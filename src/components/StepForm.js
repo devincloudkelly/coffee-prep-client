@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
-import {Segment} from 'semantic-ui-react'
+import { Form, Container, Segment, Select, Button} from 'semantic-ui-react'
 
 export class StepForm extends Component {
     state = {
@@ -33,9 +33,12 @@ export class StepForm extends Component {
     render() {
         return (
             <Segment>
-                <form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Field>
+
                     <label>
                         <h3>Prep Action: </h3>
+                    </label>
                         <select name='action' value={this.state.action} onChange={e => this.handleInput(e)}>
                             <option value=''>Choose Action</option>
                             <option value='bloom'>Bloom</option>
@@ -44,23 +47,28 @@ export class StepForm extends Component {
                             <option value='wait'>Wait</option>
                             <option value='press'>Press</option>
                         </select>
-                    </label>
+                    </Form.Field>
                         <h3>Step Specs: </h3>
-                    <label>
-                        <input type='number' name='duration' value={this.state.duration} onChange={e => this.handleInput(e)} placeholder='Duration in seconds'/>
-                    </label>
-                    <label>
-                        <input type='number' name='amount' value={this.state.amount} onChange={e => this.handleInput(e)} placeholder='Amount in ml'/>
-                    </label>
-                    {/* <label>
-                        <input type='number' name='order' value={this.state.order} onChange={e => this.handleInput(e)} placeholder='Order'/>
-                    </label> */}
+                        <Form.Group widths='equal'>
+                        <Form.Field>
+                            <label>Duration (seconds)
+                            </label>
+                            <input type='number' name='duration' value={this.state.duration} onChange={e => this.handleInput(e)} placeholder='Duration in seconds'/>
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Amount of Water (ml)
+                            </label>
+                            <input type='number' name='amount' value={this.state.amount} onChange={e => this.handleInput(e)} placeholder='Amount in ml'/>
+                        </Form.Field>
+                        </Form.Group>
                     <h3>Step notes:</h3>
-                    <label>
-                    <textarea type='text' name='directions' value={this.state.directions} onChange={e => this.handleInput(e)} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>
-                    </label>
-                    <input type='submit' value='Add Step' />
-                </form>
+                    <Form.Field>
+                        <label>
+                        <textarea type='text' name='directions' value={this.state.directions} onChange={e => this.handleInput(e)} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>
+                        </label>
+                    </Form.Field>
+                    <Form.Field control={Button}>Add Step</Form.Field>
+                </Form>
             </Segment>
         );
     }
