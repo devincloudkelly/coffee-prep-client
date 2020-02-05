@@ -79,65 +79,64 @@ export class PrepForm extends Component {
                     <h3>Method:</h3>
                     <Form.Group inline>
                         <Form.Field>
-                        <label>
                             <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
+                        <label>
                             Aeropress
                         </label>
                         </Form.Field>
                         <Form.Field>
-                        <label>
                             <input type='radio' name='device' value='chemex' onChange={e => this.handleInput(e)}/>
+                        <label>
                             Chemex
                         </label>
                         </Form.Field>
                         <Form.Field>
-                        <label>
                             <input type='radio' name='device' value='pourover' onChange={e => this.handleInput(e)}/>
+                        <label>
                             Pour Over
                         </label>
                         </Form.Field>
                     </Form.Group>
-                    
-                    {/* <Form.group widths='equal'> */}
                         <h3>Coffee:</h3>
                     <Form.Field>
-                        <label> 
+                        <label>Brand</label>
                             <input type='text' name='coffee_brand' value={this.state.coffee_brand} onChange={e => this.handleInput(e)} placeholder='coffee brand'/>
-                        </label>
                     </Form.Field>
                     <Form.Field>
-                        <label>
+                        <label>Name</label>
                             <input type='text' name='coffee_name' value={this.state.coffee_name} onChange={e => this.handleInput(e)} placeholder='coffee name'/>
-                        </label>
                     </Form.Field>
-                    <Form.Field>
-                        <label>
-                            <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
-                        </label>
-                    </Form.Field>
-                    <Form.Select 
-                        // control={Select}
-                        // fluid
-                        label='Grind'
-                        options={this.grindOptions}
-                        placeholder='Grind'
-                        onChange={e => this.handleInput(e)}
-                    />
+                    <Form.Group widths='equal'>
+                        <Form.Field>
+                            <label>Amount (g)</label>
+                                <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
+                        </Form.Field>
+                        <Form.Select 
+                            // control={Select}
+                            // fluid
+                            label='Grind'
+                            options={this.grindOptions}
+                            placeholder='Grind'
+                            onChange={e => this.handleInput(e)}
+                            />
+                    </Form.Group>
 
                     <h3>Water: </h3>
+                    <Form.Group widths='equal'>
+
                     <Form.Field>
-                    <label>Total Water (ml)</label>
+                        <label>Total Water (ml)</label>
                         <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
                     </Form.Field>
                     <Form.Field>
-                    <label>Water Temp (F)</label>
+                        <label>Water Temp (F)</label>
                         <input type='number' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
                     </Form.Field>
+                    </Form.Group>
                     <h3>Notes: </h3>
                     <Form.Field>
-                    <label> 
+                        <label></label>
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
-                    </label>
                     </Form.Field>
    
                     <Form.Field control={Button}>
