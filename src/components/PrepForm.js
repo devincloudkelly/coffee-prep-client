@@ -5,6 +5,7 @@ import CoffeeAction from '../action/coffeeAction';
 
 export class PrepForm extends Component {
     state = {
+        id: null,
         user_id: this.props.user_id,
         device: null,
         coffee_brand: '',
@@ -26,10 +27,21 @@ export class PrepForm extends Component {
     createPreparation = (e) => {
         e.preventDefault()
         const prep = this.state
+        console.log(prep, this.props.id)
         const jwt = this.props.jwt
-        console.log('this is the prep being sent to create...', prep)
-        Adapter.addPreparation(prep, jwt)
-        .then(data => this.props.addPrepToStore(data))
+        if (!this.state.id){
+            console.log('this is the prep being sent to create...', prep)
+            Adapter.addPreparation(prep, jwt)
+            .then(data => {
+                this.props.addPrepToStore(data)
+                this.setState({
+                    id: data.id
+                })
+            })
+            
+        } else {
+            console.log('this is the prep being sent to edit...', prep)
+        }
     }
     
     
@@ -38,6 +50,7 @@ export class PrepForm extends Component {
         return (
             <div>
                 <form onSubmit={this.createPreparation}>
+                {/* <form onSubmit={this.handleFormSubmit}> */}
                     <h3>Method:</h3>
                     <label>
                         <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
@@ -72,9 +85,6 @@ export class PrepForm extends Component {
                         <option value='extra-fine'>Extra Fine</option>
                     </select>
                     <h3>Water: </h3>
-                    {/* <label> 
-                        <input type='number' name='total_time' value={this.state.total_time} onChange={e => this.handleInput(e)} placeholder='total brew time'/>
-                    </label> */}
                     <label> 
                         <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
                     </label>
@@ -85,9 +95,8 @@ export class PrepForm extends Component {
                     <label> 
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
                     </label><br/>
-                    {!showSteps
-                    ? <input type='submit' value='Add Steps'/>
-                    : null}
+                     <input type='submit' value='Add Steps'/>
+                  
                 </form>
                 
             </div>
@@ -99,7 +108,8 @@ const mapState = state => {
     return {
         user_id: state.user.id,
         jwt: state.jwt,
-        showSteps: state.showSteps
+        showSteps: state.showSteps,
+        id: state.editingPrep.id
     }
 }
 
