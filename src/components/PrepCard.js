@@ -24,12 +24,15 @@ export class PrepCard extends Component {
         this.props.updatePreps(newPreps)
     }
 
-    handleEdit = () => {
-        console.log('editing prep from prepcard...')
+    handleEdit = (prep) => {
+        console.log('editing prep from prepcard...', prep)
+        this.props.history.push('/preparations/new')
+
     }
     
     render() {
         const { id, device, coffee_brand, coffee_name, notes } = this.props.prep
+        const prep = this.props.prep
         return (
             <div className='ui raised card'>
                 <div onClick={() => this.handleClick(id)} className='ui attached segment'>
@@ -38,7 +41,7 @@ export class PrepCard extends Component {
                 <p>{notes}</p>
                 </div>
                 <div className='ui two bottom attached buttons'>
-                    <button className='ui button'>Edit</button>
+                    <button className='ui button' onClick={() => this.handleEdit(prep)}>Edit</button>
                     <button className='ui button' onClick={() => this.handleDelete(id)}>Delete</button>
                 </div>
             </div>
