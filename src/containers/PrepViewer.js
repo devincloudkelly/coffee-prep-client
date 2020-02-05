@@ -15,13 +15,16 @@ export class PrepViewer extends Component {
     render() {
         return (
             <div>
-                My Coffee Preparations <br/>
+                <h4 className='ui horizontal divider header'>
+                <i className="coffee icon"></i>
+                My Coffee Preparations
+                </h4>
                 <div className='ui four stackable cards'>
                 {this.renderPreps()}
 
+                <NewPrepCard />
                 </div>
                 <br/>
-                <NewPrepCard />
             </div>
         );
     }

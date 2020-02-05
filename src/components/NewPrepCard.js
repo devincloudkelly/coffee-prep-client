@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export class NewPrepCard extends Component {
     render() {
         return (
-            <div>
+            <div className='ui raised card'>
                 insert plus logo here and wrap with link <br/>
                 <Link to='/preparations/new'>Create a new prep</Link>
             </div>

@@ -7,8 +7,11 @@ const Profile = (props) => {
 
 console.log(props)
         return (
-            <div>
-                <h5>Welcome back {props.name}</h5>
+            <div >
+                <div className='ui yellow label'>
+                Welcome back 
+                <div className='detail'>{props.name}</div>
+                </div>
                 <PrepViewer />
                 
             </div>
