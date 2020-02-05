@@ -7,6 +7,7 @@ import NewStepCard from '../components/NewStepCard';
 import StepViewer from './StepViewer';
 import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
+import {Container, Segment} from 'semantic-ui-react'
 
 export class NewPreparation extends Component {
 
@@ -33,22 +34,21 @@ export class NewPreparation extends Component {
 
     render() {
         return (
-            <div>
-                I am the new preparation screen
-                <div>
+            <Container>
                 <PrepForm />
-
-                </div>
+                <Segment.Group>
                 <StepViewer />
+
                 {this.props.showSteps 
                 ? this.props.addNewStep || this.props.editingPrep.steps.length < 1
-                    ? <StepForm />
-                    : <NewStepCard />            
+                ? <StepForm />
+                : <NewStepCard />            
                 : null }
+                </Segment.Group>
                 <br />
                 <br />
                 <button className='ui button huge' onClick={this.handleNewGuideClick}>Create New Coffee Guide</button>
-            </div>
+            </Container>
         );
     }
 }

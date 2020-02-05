@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
+import {Segment} from 'semantic-ui-react'
 
 export class StepForm extends Component {
     state = {
@@ -31,8 +32,7 @@ export class StepForm extends Component {
 
     render() {
         return (
-            <div>
-                <h4>Add steps to your preparation</h4>
+            <Segment>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <h3>Prep Action: </h3>
@@ -61,7 +61,7 @@ export class StepForm extends Component {
                     </label>
                     <input type='submit' value='Add Step' />
                 </form>
-            </div>
+            </Segment>
         );
     }
 }

@@ -32,7 +32,8 @@ export class PrepViewer extends Component {
 
 const mapState = state => {
     return {
-        preps: state.user.preps
+        preps: state.user.preps,
+        editingId: state.editingId
     }
 }
 

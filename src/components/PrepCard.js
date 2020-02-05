@@ -31,21 +31,21 @@ export class PrepCard extends Component {
     handleEdit = (prep) => {
         console.log('editing prep from prepcard...', prep)
         // this.props.addPrepToStore(prep)
-        // this.props.history.push('/preparations/new')
         this.props.addPrepToStore(prep)
         this.props.addEditingId(prep.id)
-        return this.setState({
+        this.setState({
             isEditing: true
         })
+        this.props.history.push('/preparations/new')
 
     }
     
     render() {
         const { id, device, coffee_brand, coffee_name, notes } = this.props.prep
         const prep = this.props.prep
-        if (this.state.isEditing === true ){
-            return <Redirect to='/preparations/new'/>
-        }
+        // if (this.state.isEditing === true ){
+        //     return <Redirect to='/preparations/new'/>
+        // }
         return (
             <div className='ui raised card attached segment'>
                 <div onClick={() => this.handleClick(id)} className='ui attached segment'>
@@ -65,7 +65,8 @@ export class PrepCard extends Component {
 const mapState  = state => {
     return {
         jwt: state.jwt,
-        preps: state.user.preps
+        preps: state.user.preps,
+        editingId: state.editingId
     }
 }
 

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
-import { Form } from 'semantic-ui-react'
+import { Form, Container, Segment, Select, Button} from 'semantic-ui-react'
+
+
 
 export class PrepForm extends Component {
     state = {
@@ -18,14 +20,23 @@ export class PrepForm extends Component {
         water_temp: 0,
         notes: ''
     }
+    grindOptions = [
+        { key: 'extra coarse', text: 'Extra Coarse', value: 'extra coarse'},
+        { key: 'coarse', text: 'Coarse', value: 'coarse'},
+        { key: 'medium coarse', text: 'Medium Coarse', value: 'medium coarse'},
+        { key: 'medium', text: 'Medium', value: 'medium'},
+        { key: 'medium fine', text: 'Medium Fine', value: 'medium fine'},
+        { key: 'fine', text: 'Fine', value: 'fine'},
+        { key: 'extra fine', text: 'Extra Fine', value: 'extra fine'},
+    ]
     
     handleInput = (e) => {
         return this.setState({
             [e.target.name]: e.target.value
-        }, ()=>console.log(this.state))
+        }, ()=> console.log(this.state))
     }
     
-    createPreparation = (e) => {
+    submitPrepForm = (e) => {
         e.preventDefault()
         const prep = this.state
         console.log(prep, this.props.id)
@@ -43,7 +54,9 @@ export class PrepForm extends Component {
         } else {
             console.log('this is the prep being sent to edit...', prep)
             Adapter.editPreparation(prep, prep.id, jwt)
-            .then(console.log)
+            .then(() => {
+                return this.props.removeEditingId()
+            })
         }
     }
     
@@ -61,76 +74,78 @@ export class PrepForm extends Component {
         const showSteps = this.props.showSteps
         console.log('props in prep form render',this.props)
         return (
-
-                <form onSubmit={this.createPreparation}>
+            <Segment>
+                <Form onSubmit={this.submitPrepForm} >
                     <h3>Method:</h3>
-                    <label>
-                        <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
-                        Aeropress
-                    </label>
-                    <label>
-                        <input type='radio' name='device' value='chemex' onChange={e => this.handleInput(e)}/>
-                        Chemex
-                    </label>
-                    <label>
-                        <input type='radio' name='device' value='pourover' onChange={e => this.handleInput(e)}/>
-                        Pour Over
-                    </label>
+                    <Form.Group inline>
+                        <Form.Field>
+                        <label>
+                            <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
+                            Aeropress
+                        </label>
+                        </Form.Field>
+                        <Form.Field>
+                        <label>
+                            <input type='radio' name='device' value='chemex' onChange={e => this.handleInput(e)}/>
+                            Chemex
+                        </label>
+                        </Form.Field>
+                        <Form.Field>
+                        <label>
+                            <input type='radio' name='device' value='pourover' onChange={e => this.handleInput(e)}/>
+                            Pour Over
+                        </label>
+                        </Form.Field>
+                    </Form.Group>
                     
                     {/* <Form.group widths='equal'> */}
                         <h3>Coffee:</h3>
-                        <div className='field'>
+                    <Form.Field>
                         <label> 
                             <input type='text' name='coffee_brand' value={this.state.coffee_brand} onChange={e => this.handleInput(e)} placeholder='coffee brand'/>
                         </label>
-
-                        </div>
-                        <div className='field'>
+                    </Form.Field>
+                    <Form.Field>
                         <label>
                             <input type='text' name='coffee_name' value={this.state.coffee_name} onChange={e => this.handleInput(e)} placeholder='coffee name'/>
                         </label>
-
-                        </div>
-                        <div className='field'>
+                    </Form.Field>
+                    <Form.Field>
                         <label>
                             <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
                         </label>
+                    </Form.Field>
+                    <Form.Select 
+                        // control={Select}
+                        // fluid
+                        label='Grind'
+                        options={this.grindOptions}
+                        placeholder='Grind'
+                        onChange={e => this.handleInput(e)}
+                    />
 
-                        </div>
-                        <div className='field'>
-                            {/* <div className='ui selection dropdown'> */}
-
-                            <select name='coffee_grind' value={this.state.value} onChange={e => this.handleInput(e)}>
-                                <option value=''>Choose grind</option>
-                                <option value='extra coarse'>Extra Coarse</option>
-                                <option value='coarse'>Coarse</option>
-                                <option value='medium-coarse'>Medium-Coarse</option>
-                                <option value='medium'>Medium</option>
-                                <option value='medium-fine'>Medium-Fine</option>
-                                <option value='fine'>Fine</option>
-                                <option value='extra-fine'>Extra Fine</option>
-                            </select>
-                            {/* </div> */}
-
-                        </div>
-                    {/* </Form.group> */}
                     <h3>Water: </h3>
-                    <label> 
+                    <Form.Field>
+                    <label>Total Water (ml)</label>
                         <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
-                    </label>
-                    <label> 
+                    </Form.Field>
+                    <Form.Field>
+                    <label>Water Temp (F)</label>
                         <input type='number' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
-                    </label>
+                    </Form.Field>
                     <h3>Notes: </h3>
+                    <Form.Field>
                     <label> 
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
-                    </label><br/>
-                    {this.state.id
-                    ? <input type='submit' value='Update Preparation'/>
-                    : <input type='submit' value='Add Steps'/>
-                    }
+                    </label>
+                    </Form.Field>
+   
+                    <Form.Field control={Button}>
+                        {this.state.id ? 'Update Preparation' : 'Add Steps'}
+                    </Form.Field>
                   
-                </form>
+                </Form>
+            </Segment>
         );
     }
 }
@@ -148,7 +163,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        addPrepToStore: prep => dispatch(CoffeeAction.addPrepToStore(prep))
+        addPrepToStore: prep => dispatch(CoffeeAction.addPrepToStore(prep)),
+        removeEditingId: () => dispatch(CoffeeAction.removeEditingId())
     }
 }
 
