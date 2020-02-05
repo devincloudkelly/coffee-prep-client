@@ -17,6 +17,7 @@ export class ShowPreparation extends Component {
         Adapter.fetchPreparation(id, jwt)
         .then(data => {
             this.props.updateCurrentPrep(data)
+            this.props.updateCurrentStep(data.steps[0])
         })
     }
     
@@ -53,6 +54,7 @@ export class ShowPreparation extends Component {
     
     handleStepChange = (step) => {
         console.log('handling step change, here is the step that was passed up...', step)
+        this.props.updateCurrentStep(this.props.currentPrep.steps[step.id])
     }
 
     render() {
