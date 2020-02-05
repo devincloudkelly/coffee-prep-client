@@ -16,7 +16,10 @@ export class PrepViewer extends Component {
         return (
             <div>
                 My Coffee Preparations <br/>
+                <div className='ui four stackable cards'>
                 {this.renderPreps()}
+
+                </div>
                 <br/>
                 <NewPrepCard />
             </div>
