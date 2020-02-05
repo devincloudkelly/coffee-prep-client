@@ -9,15 +9,19 @@ import { StepSummary } from '../components/StepSummary';
 
 
 export class ShowPreparation extends Component {
+    state = {}
 
     // once component mounts, fetch this prep and nested steps and update currentPrep in store
-    componentWillMount() {
+    componentDidMount() {
         console.log('props in prep show page, component will mount', this.props)
         const id = this.props.match.params.id
         const jwt = this.props.jwt
         Adapter.fetchPreparation(id, jwt)
         .then(data => {
             this.props.updateCurrentPrep(data)
+            this.setState({
+                ...data
+            })
             this.props.updateCurrentStep(data.steps[0])
         })
     }
@@ -32,7 +36,7 @@ export class ShowPreparation extends Component {
 
     // create checkpoints to pass into the timer. These are used to trigger events as one step ends and another begins.
     createCheckpoints = () => {
-        console.log('creating checkpoints...')
+        console.log('creating checkpoints...these are props', this.props)
         let counter = 0
         const checkpoints = []
         this.props.currentPrep.steps.map((step, index) => {
@@ -58,13 +62,16 @@ export class ShowPreparation extends Component {
 
     render() {
         console.log('props in ShowPrep container...', this.props)
+        if (Object.keys(this.state).length === 0){
+            return <div>Loading...</div>
+        }
         const { steps } = this.props.currentPrep
         return (
             <div>
                 <PrepSpecs prep={this.props.currentPrep}/>
                 <br/>
                 <br/>
-                <BrewTimer checkpoints={this.createCheckpoints}/>
+                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
                 <br/>
                 <div className='ui four stackable cards'>
                 {this.renderSteps()}

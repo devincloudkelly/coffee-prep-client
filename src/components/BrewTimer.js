@@ -16,7 +16,7 @@ export class BrewTimer extends Component {
             <div>
                 This is the timer
                 <Timer className='timer' startImmediately={false}
-                    checkpoints={this.props.checkpoints()}>
+                    checkpoints={this.props.checkpoints}>
                          {({start, resume, pause, stop, reset, timerState}) => (
                              <div>
 
@@ -40,7 +40,8 @@ export class BrewTimer extends Component {
 
 const mapState = state => {
     return {
-        currentPrep: state.currentPrep
+        currentPrep: state.currentPrep,
+        checkpointLength: state.checkpointLength
     }
 }
 
