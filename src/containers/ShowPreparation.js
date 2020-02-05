@@ -5,6 +5,7 @@ import {BrewTimer} from '../components/BrewTimer';
 import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
+import { StepSummary } from '../components/StepSummary';
 
 
 export class ShowPreparation extends Component {
@@ -69,6 +70,7 @@ export class ShowPreparation extends Component {
                 <BrewTimer checkpoints={this.createCheckpoints}/>
                 <br/>
                 {this.renderSteps()}
+                <StepSummary currentStep={this.props.currentStep}/>
             </div>
         );
     }
@@ -77,7 +79,8 @@ export class ShowPreparation extends Component {
 const mapState = state => {
     return {
         currentPrep: state.currentPrep,
-        jwt: state.jwt
+        jwt: state.jwt,
+        currentStep: state.currentStep
     }
 }
 
