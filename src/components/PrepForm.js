@@ -47,9 +47,19 @@ export class PrepForm extends Component {
         }
     }
     
+    componentDidMount() {
+        console.log('props on mount', this.props)
+        if (this.props.editingId) {
+            this.setState({
+                ...this.props.editingPrep
+            })
+        }
+    }
+    
     
     render() {
         const showSteps = this.props.showSteps
+        console.log('props in prep form render',this.props)
         return (
 
                 <form onSubmit={this.createPreparation}>
@@ -130,7 +140,9 @@ const mapState = state => {
         user_id: state.user.id,
         jwt: state.jwt,
         showSteps: state.showSteps,
-        id: state.editingPrep.id
+        id: state.editingPrep.id,
+        editingPrep: state.editingPrep,
+        editingId: state.editingId
     }
 }
 

@@ -16,7 +16,8 @@ const initialState = {
     currentPrep: {
         steps: []
     },
-    currentStep: {}
+    currentStep: {},
+    editingId: null
 }
 
 const reducer = (state={initialState}, action) => {
@@ -52,7 +53,8 @@ const reducer = (state={initialState}, action) => {
                 currentPrep: {
                     steps: []
                 },
-                currentStep: {}
+                currentStep: {},
+                editingId: null
             }
         case 'TOGGLE_STEP_TO_PREP':
             console.log('toggling step in reducer...')
@@ -99,6 +101,16 @@ const reducer = (state={initialState}, action) => {
                 ...state, user: {
                     ...state.user, preps: action.preps
                 }
+            }
+        case 'ADD_EDITING_ID':
+            return {
+                ...state, 
+                editingId: action.id
+            }
+        case 'REMOVE_EDITING_ID':
+            return {
+                ...state,
+                editingId: null
             }
         default:
             console.log('hitting default case statement..')

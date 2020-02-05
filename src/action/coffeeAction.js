@@ -76,5 +76,18 @@ class CoffeeAction {
             preps: preps
         }
     }
+    static addEditingId = id => {
+        return {
+            type: 'ADD_EDITING_ID',
+            id: id
+        }
+    }
+
+    static removeEditingId = () => {
+        return {
+            type: 'REMOVE_EDITING_ID',
+            payload: 'removing editing id...'
+        }
+    }
 }
 export default CoffeeAction;
