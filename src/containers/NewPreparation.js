@@ -35,7 +35,10 @@ export class NewPreparation extends Component {
         return (
             <div>
                 I am the new preparation screen
+                <div>
                 <PrepForm />
+
+                </div>
                 <StepViewer />
                 {this.props.showSteps 
                 ? this.props.addNewStep || this.props.editingPrep.steps.length < 1

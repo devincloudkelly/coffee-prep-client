@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
+import { Form } from 'semantic-ui-react'
 
 export class PrepForm extends Component {
     state = {
@@ -41,6 +42,8 @@ export class PrepForm extends Component {
             
         } else {
             console.log('this is the prep being sent to edit...', prep)
+            Adapter.editPreparation(prep, prep.id, jwt)
+            .then(console.log)
         }
     }
     
@@ -48,9 +51,8 @@ export class PrepForm extends Component {
     render() {
         const showSteps = this.props.showSteps
         return (
-            <div>
+
                 <form onSubmit={this.createPreparation}>
-                {/* <form onSubmit={this.handleFormSubmit}> */}
                     <h3>Method:</h3>
                     <label>
                         <input type='radio' name='device' value='aeropress' onChange={e => this.handleInput(e)}/>
@@ -64,26 +66,44 @@ export class PrepForm extends Component {
                         <input type='radio' name='device' value='pourover' onChange={e => this.handleInput(e)}/>
                         Pour Over
                     </label>
-                    <h3>Coffee:</h3>
-                    <label> 
-                        <input type='text' name='coffee_brand' value={this.state.coffee_brand} onChange={e => this.handleInput(e)} placeholder='coffee brand'/>
-                    </label>
-                    <label>
-                        <input type='text' name='coffee_name' value={this.state.coffee_name} onChange={e => this.handleInput(e)} placeholder='coffee name'/>
-                    </label>
-                    <label>
-                        <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
-                    </label>
-                    <select name='coffee_grind' value={this.state.value} onChange={e => this.handleInput(e)}>
-                        <option value=''>Choose grind</option>
-                        <option value='extra coarse'>Extra Coarse</option>
-                        <option value='coarse'>Coarse</option>
-                        <option value='medium-coarse'>Medium-Coarse</option>
-                        <option value='medium'>Medium</option>
-                        <option value='medium-fine'>Medium-Fine</option>
-                        <option value='fine'>Fine</option>
-                        <option value='extra-fine'>Extra Fine</option>
-                    </select>
+                    
+                    {/* <Form.group widths='equal'> */}
+                        <h3>Coffee:</h3>
+                        <div className='field'>
+                        <label> 
+                            <input type='text' name='coffee_brand' value={this.state.coffee_brand} onChange={e => this.handleInput(e)} placeholder='coffee brand'/>
+                        </label>
+
+                        </div>
+                        <div className='field'>
+                        <label>
+                            <input type='text' name='coffee_name' value={this.state.coffee_name} onChange={e => this.handleInput(e)} placeholder='coffee name'/>
+                        </label>
+
+                        </div>
+                        <div className='field'>
+                        <label>
+                            <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
+                        </label>
+
+                        </div>
+                        <div className='field'>
+                            {/* <div className='ui selection dropdown'> */}
+
+                            <select name='coffee_grind' value={this.state.value} onChange={e => this.handleInput(e)}>
+                                <option value=''>Choose grind</option>
+                                <option value='extra coarse'>Extra Coarse</option>
+                                <option value='coarse'>Coarse</option>
+                                <option value='medium-coarse'>Medium-Coarse</option>
+                                <option value='medium'>Medium</option>
+                                <option value='medium-fine'>Medium-Fine</option>
+                                <option value='fine'>Fine</option>
+                                <option value='extra-fine'>Extra Fine</option>
+                            </select>
+                            {/* </div> */}
+
+                        </div>
+                    {/* </Form.group> */}
                     <h3>Water: </h3>
                     <label> 
                         <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
@@ -98,8 +118,6 @@ export class PrepForm extends Component {
                      <input type='submit' value='Add Steps'/>
                   
                 </form>
-                
-            </div>
         );
     }
 }
