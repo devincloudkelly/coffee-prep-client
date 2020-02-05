@@ -47,7 +47,7 @@ export class ShowPreparation extends Component {
     checkpointLength = () => {
         return this.createCheckpoints().length
     }
-    // step change logic is breaking here. Step is passed in correctly, but the logic to get the next step is broken
+    
     handleStepChange = (index) => {
         console.log('handling step change, here is the step that was passed up...', index)
         let nextStep = index + 1

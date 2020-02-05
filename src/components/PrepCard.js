@@ -23,6 +23,10 @@ export class PrepCard extends Component {
         // .then(console.log(this.props.preps, newPreps))
         this.props.updatePreps(newPreps)
     }
+
+    handleEdit = () => {
+        console.log('editing prep from prepcard...')
+    }
     
     render() {
         const { id, device, coffee_brand, coffee_name, notes } = this.props.prep
@@ -32,10 +36,6 @@ export class PrepCard extends Component {
                 <h3>Place {device} Device icon here</h3>
                 <h5>{coffee_brand} - {coffee_name}</h5>
                 <p>{notes}</p>
-                {(!this.props.prep.steps || this.props.prep.steps.length < 1)
-                ? <p>Steps missing. Click to add.</p>
-                : null
-            }
                 </div>
                 <div className='ui two bottom attached buttons'>
                     <button className='ui button'>Edit</button>

@@ -21,7 +21,7 @@ export class BrewTimer extends Component {
                              <div>
 
                              <h1><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
-                            <div>{timerState}</div>
+                       
                             <br/>
                             <div>
                                 <button onClick={start}>Start</button>
