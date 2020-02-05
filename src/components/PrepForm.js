@@ -115,7 +115,10 @@ export class PrepForm extends Component {
                     <label> 
                         <textarea type='textarea' name='notes' value={this.state.notes} onChange={e => this.handleInput(e)} placeholder='notes'/>
                     </label><br/>
-                     <input type='submit' value='Add Steps'/>
+                    {this.state.id
+                    ? <input type='submit' value='Update Preparation'/>
+                    : <input type='submit' value='Add Steps'/>
+                    }
                   
                 </form>
         );
