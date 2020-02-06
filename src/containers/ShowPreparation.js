@@ -6,6 +6,7 @@ import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
 import { StepSummary } from '../components/StepSummary';
+import { Container, Message} from 'semantic-ui-react'
 
 
 export class ShowPreparation extends Component {
@@ -67,17 +68,24 @@ export class ShowPreparation extends Component {
         }
         const { steps } = this.props.currentPrep
         return (
-            <div>
+            <Container>
                 <PrepSpecs prep={this.props.currentPrep}/>
                 <br/>
                 <br/>
                 <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
                 <br/>
                 <div className='ui four stackable cards'>
-                {this.renderSteps()}
+                {(this.props.currentPrep.steps.length < 1
+                ? (<Message>
+                <Message.Header>
+                    This Coffee Prep is Missing Steps
+                </Message.Header>
+                    You need to add steps to this coffee prep in order to enable this brew dashboard.
+                </Message>)
+                : this.renderSteps())}
+                {/* <StepSummary currentStep={this.props.currentStep}/> */}
                 </div>
-                <StepSummary currentStep={this.props.currentStep}/>
-            </div>
+            </Container>
         );
     }
 }
