@@ -23,7 +23,7 @@ const initialState = {
 const reducer = (state={initialState}, action) => {
     switch(action.type){
         case 'LOGGED_IN_USER':
-            console.log('updating state in reducer w/ logged in user, here is current state and what I am passing in...', state, action.user.name, action.user.email_address, action.user.preps)
+            console.log('updating state in reducer w/ logged in user, here is current state and what I am passing in...', action.user)
             return { ...state,
                 loggedIn: true,
                 jwt: action.jwt,

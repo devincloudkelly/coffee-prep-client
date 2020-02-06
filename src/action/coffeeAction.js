@@ -3,14 +3,21 @@ class CoffeeAction {
 
     
     static loggedInUser = (id, name, email, preps, jwt) => {
-        console.log('this is the logged in action')
+        console.log('this is the logged in action', preps)
+        let newPrep = []
+        preps.map(prep => {
+            let onlyPrep = prep.prep
+            onlyPrep.steps = prep.steps
+            newPrep.push(onlyPrep)
+        })
+        console.log('this is newprep', newPrep)
     return {
         type: 'LOGGED_IN_USER',
         user: {
             id: id,
             name: name,
             email_address: email,
-            preps: preps
+            preps: newPrep
         },
         jwt: jwt
     }
