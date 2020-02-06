@@ -36,7 +36,11 @@ class CoffeeAction {
         console.log('adding prep to store', prep)
         return {
             type: 'ADD_PREP_TO_STORE',
-            prep: prep
+            prep: {
+                ...prep, steps: {
+                    ...prep.steps
+                }
+            }
         }
     }
 

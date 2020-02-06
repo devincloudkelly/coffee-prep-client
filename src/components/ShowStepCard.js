@@ -6,6 +6,7 @@ export class ShowStepCard extends Component {
     render() {
         const { id, action, duration, amount, order, directions } = this.props.step
         const { currentStep } = this.props
+        console.log('current step and id', currentStep, id)
         return (
                 (currentStep.id === id 
                 ?

@@ -63,12 +63,13 @@ const reducer = (state={initialState}, action) => {
                 addNewStep: !state.addNewStep
             }
         case 'ADD_PREP_TO_STORE':
-            console.log('adding prep in reducer')
+            console.log('adding prep in reducer', action.prep)
             return {
                 ...state,
                 showSteps: true,
                 editingPrep: {
-                    ...state.editingPrep, ...action.prep
+                    ...state.editingPrep, ...action.prep,
+                    steps: [...action.prep.steps]
                 }
             }
         case 'ADD_STEP_TO_STORE':
