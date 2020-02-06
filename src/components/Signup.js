@@ -3,6 +3,7 @@ import Fetch from '../services/Adapter'
 // import {loggedInUser} from '../action/coffeeAction'
 import CoffeeAction from '../action/coffeeAction'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 
 export class Signup extends Component {
@@ -22,9 +23,14 @@ export class Signup extends Component {
     handleSignup = (e) => {
         e.preventDefault()
         Fetch.signup(this.state.name, this.state.email_address, this.state.password)
+        // .then(console.log)
         .then(data => {
-            localStorage.setItem('jwt', data.jwt)
-            this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, data.userPreps, data.jwt)})
+            const preps = [];
+            localStorage.setItem('jwt', data.jwt);
+            this.props.loggedInUser(data.user.id, data.user.name, data.user.email_address, preps, data.jwt)})
+        .then(()=> {
+            this.props.history.push('/profile')
+    })
     }
     
     render() {
@@ -57,4 +63,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default withRouter(connect(null, mapDispatchToProps)(Signup));
