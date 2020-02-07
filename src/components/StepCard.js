@@ -12,6 +12,7 @@ export class StepCard extends Component {
         Adapter.deleteStep(step.id, jwt)
         .then(data => {
             this.props.removeStepFromStore(data)
+            this.props.removeStepFromEditingPrep(data)
             //need to update steps in new prep form
             console.log('just deleted step...', data)
         })
@@ -54,7 +55,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
     return {
         removeStepFromStore: step => dispatch(CoffeeAction.removeStepFromStore(step)),
-        updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep))
+        updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
+        removeStepFromEditingPrep: step => dispatch(CoffeeAction.removeStepFromEditingPrep(step))
     }
 }
 

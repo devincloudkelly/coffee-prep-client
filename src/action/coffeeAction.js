@@ -117,5 +117,11 @@ class CoffeeAction {
             step: step
         }
     }
+    static removeStepFromEditingPrep = step => {
+        return {
+            type: 'REMOVE_STEP_FROM_EDITING_PREP',
+            step: step
+        }
+    }
 }
 export default CoffeeAction;

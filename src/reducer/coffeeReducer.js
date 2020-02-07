@@ -155,6 +155,18 @@ const reducer = (state={initialState}, action) => {
                     ]
                 }
             }
+        case 'REMOVE_STEP_FROM_EDITING_PREP':
+            console.log('removing step from editing prep in reducer...', action.step)
+            return {
+                ...state, 
+                editingPrep: {
+                    ...state.editingPrep, steps: [
+                            ...state.editingPrep.steps.filter(step => {
+                                return step.id !== action.step.id
+                            }) 
+                    ]
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state
