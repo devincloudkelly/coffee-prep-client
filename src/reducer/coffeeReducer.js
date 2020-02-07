@@ -113,6 +113,22 @@ const reducer = (state={initialState}, action) => {
                 ...state,
                 editingId: null
             }
+        case 'EDIT_PREP_IN_STORE':
+            console.log('prep being passed to edit prep in store...', action.prep)
+            return {
+                ...state,
+                user: {
+                    ...state.user, preps: [
+
+                        ...state.user.preps.map(prep => {
+                            return (prep.id === action.prep.id ? 
+                                action.prep :
+                                prep)
+                            })
+                            
+                        ]
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state

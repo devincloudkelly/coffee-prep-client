@@ -96,5 +96,12 @@ class CoffeeAction {
             payload: 'removing editing id...'
         }
     }
+
+    static editPrepInStore = prep => {
+        return {
+            type: 'EDIT_PREP_IN_STORE',
+            prep: prep
+        }
+    }
 }
 export default CoffeeAction;

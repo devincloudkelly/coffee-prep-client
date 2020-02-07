@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
 import { Form, Segment, Button} from 'semantic-ui-react'
+import { withRouter} from 'react-router-dom'
 
 
 
@@ -62,8 +63,10 @@ export class PrepForm extends Component {
             console.log('this is the prep being sent to edit...', prep)
             Adapter.editPreparation(prep, prep.id, jwt)
             .then(() => {
-                return this.props.removeEditingId()
+                this.props.editPrepInStore(prep)
+                this.props.removeEditingId()
             })
+            this.props.history.push('/profile')
         }
     }
     
@@ -168,9 +171,10 @@ const mapState = state => {
 const mapDispatch = dispatch => {
     return {
         addPrepToStore: prep => dispatch(CoffeeAction.addPrepToStore(prep)),
-        removeEditingId: () => dispatch(CoffeeAction.removeEditingId())
+        removeEditingId: () => dispatch(CoffeeAction.removeEditingId()),
+        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep))
     }
 }
 
 
-export default connect(mapState, mapDispatch)(PrepForm);
+export default withRouter(connect(mapState, mapDispatch)(PrepForm));
