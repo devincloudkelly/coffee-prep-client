@@ -7,8 +7,8 @@ export class StepViewer extends Component {
 
     renderSteps = () => {
         if (this.props.steps && this.props.steps.length > 0){
-            return this.props.steps.map(step => {
-                return <StepCard key={Math.random()} step={step} />
+            return this.props.steps.map((step, index) => {
+                return <StepCard key={Math.random()} step={step} index={index} />
             })
         }
     }
@@ -17,8 +17,8 @@ export class StepViewer extends Component {
         console.log(this.props.steps)
         return (<Segment>
 
-            <div className='ui four stackable cards'>
                 <h3>Current Steps: </h3>
+            <div className='ui four stackable cards'>
                 {this.renderSteps()}
             </div>
         </Segment>

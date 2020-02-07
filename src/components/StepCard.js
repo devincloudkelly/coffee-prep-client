@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
+import {Card, Icon, Label} from 'semantic-ui-react'
 
 export class StepCard extends Component {
     render() {
-        const { id, action, duration, amount, order, directions } = this.props.step
+        console.log(this.props)
+        const { id, action, duration, amount, directions } = this.props.step
         return (
-            <div className='ui raised card'>
-                <h4>{action}</h4>
+            <Card raised >
+                    <Card.Content >
+                <Card.Header>
+                {/* <Label attached='top right' color='red'>{this.props.index + 1}</Label> */}
+                    <h2>{action}</h2>
+                    </Card.Header>
+
+                    <Card.Meta>
+                        <Icon name='clock'/> {duration} seconds 
+                        <Icon name='tint'/> {amount}ml
+
+                    </Card.Meta>
+                    </Card.Content>
+                    <Label attached='bottom right' color='red'>{this.props.index + 1}</Label>
+
+                    <Card.Content>
+
                 <p>{directions}</p>
-                <h5>Duration: {duration}</h5>
-                <h5>Water: {amount}ml</h5>
-            </div>
+                    </Card.Content>
+            </Card>
         );
     }
 }
