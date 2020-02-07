@@ -8,6 +8,7 @@ import { Form, Segment, Button} from 'semantic-ui-react'
 
 export class StepForm extends Component {
     state = {
+        id: null,
         action: '',
         duration: null,
         amount: null,

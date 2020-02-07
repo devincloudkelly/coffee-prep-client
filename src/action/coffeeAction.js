@@ -123,5 +123,12 @@ class CoffeeAction {
             step: step
         }
     }
+
+    static addEditingStepId = id => {
+        return {
+            type: 'ADD_EDITING_STEP_ID',
+            id: id
+        }
+    }
 }
 export default CoffeeAction;

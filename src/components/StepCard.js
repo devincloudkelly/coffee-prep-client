@@ -18,6 +18,12 @@ export class StepCard extends Component {
         })
     }
 
+    handleEdit = step => {
+        const jwt = this.props.jwt
+        console.log('editing step...', step)
+        // add editing step Id here...
+    }
+
     render() {
         const { action, duration, amount, directions } = this.props.step
         const {step} = this.props
@@ -37,7 +43,7 @@ export class StepCard extends Component {
                         <p>{directions}</p>
                     </Card.Content>
                     <Button.Group>
-                        <Button>Edit</Button>
+                        <Button onClick={()=> this.handleEdit(step)}>Edit</Button>
                         <Button onClick={() => this.handleDelete(step)}>Delete</Button>
                     </Button.Group>
             </Card>
@@ -56,7 +62,8 @@ const mapDispatch = dispatch => {
     return {
         removeStepFromStore: step => dispatch(CoffeeAction.removeStepFromStore(step)),
         updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
-        removeStepFromEditingPrep: step => dispatch(CoffeeAction.removeStepFromEditingPrep(step))
+        removeStepFromEditingPrep: step => dispatch(CoffeeAction.removeStepFromEditingPrep(step)),
+        addEditingStepId: id => dispatch(CoffeeAction.addEditingStepId(id))
     }
 }
 
