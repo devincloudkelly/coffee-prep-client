@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
-import { Icon } from 'semantic-ui-react'
+import { Icon, Card, Button} from 'semantic-ui-react'
 
 
 
@@ -14,10 +14,18 @@ class NewStepCard extends Component {
 
     render() {
         return (
-            <div onClick={this.handleNewStepClick}>
-                {/* <Icon name='plus' size='huge'/>  */}
-                <button className='ui button large'>Add NewStep</button>
-            </div>
+
+            <Card attached raised onClick={this.handleNewStepClick}>
+            <Card.Content >
+                <Card.Header textAlign='center'>
+                    <h2>Add New Step</h2>
+                </Card.Header>
+                <Card.Description textAlign='center'>
+                    <Icon  name='plus circle' size='massive' color='teal'/>
+                </Card.Description>
+            </Card.Content>
+                <Button attached='bottom'>Create</Button>
+        </Card>
         );
     }
 }

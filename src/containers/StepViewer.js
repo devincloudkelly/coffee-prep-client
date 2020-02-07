@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StepCard from '../components/StepCard';
 import { Segment } from 'semantic-ui-react'
+import NewStepCard from '../components/NewStepCard';
 
 export class StepViewer extends Component {
 
@@ -17,9 +18,10 @@ export class StepViewer extends Component {
         console.log(this.props.steps)
         return (<Segment>
 
-                <h3>Current Steps: </h3>
+                <h3>Steps: </h3>
             <div className='ui four stackable cards'>
                 {this.renderSteps()}
+                <NewStepCard/>
             </div>
         </Segment>
         );

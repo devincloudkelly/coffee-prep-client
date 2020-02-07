@@ -42,7 +42,7 @@ export class NewPreparation extends Component {
                 {this.props.showSteps 
                 ? this.props.addNewStep || this.props.editingPrep.steps.length < 1
                 ? <StepForm />
-                : <NewStepCard />            
+                : null            
                 : null }
                 </Segment.Group>
                 <br />
