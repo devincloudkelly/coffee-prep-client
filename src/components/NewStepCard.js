@@ -13,20 +13,40 @@ class NewStepCard extends Component {
     }
 
     render() {
+        if (this.props.addNewStep === true) {
+            return (
+                <Card attached raised onClick={this.handleNewStepClick}>
+                <Card.Content >
+                    <Card.Header textAlign='center'>
+                        <h2>Cancel New Step</h2>
+                    </Card.Header>
+                    <Card.Description textAlign='center'>
+                        <Icon  name='cancel' size='massive' color='yellow'/>
+                    </Card.Description>
+                </Card.Content>
+                <Button attached='bottom'>Cancel</Button>
+            </Card>
+            )
+        }
         return (
-
             <Card attached raised onClick={this.handleNewStepClick}>
-            <Card.Content >
-                <Card.Header textAlign='center'>
-                    <h2>Add New Step</h2>
-                </Card.Header>
-                <Card.Description textAlign='center'>
-                    <Icon  name='plus circle' size='massive' color='teal'/>
-                </Card.Description>
-            </Card.Content>
+                <Card.Content >
+                    <Card.Header textAlign='center'>
+                        <h2>Add New Step</h2>
+                    </Card.Header>
+                    <Card.Description textAlign='center'>
+                        <Icon  name='plus circle' size='massive' color='teal'/>
+                    </Card.Description>
+                </Card.Content>
                 <Button attached='bottom'>Create</Button>
-        </Card>
+            </Card>
         );
+    }
+}
+
+const mapState = state => {
+    return {
+        addNewStep: state.addNewStep
     }
 }
 
@@ -36,4 +56,4 @@ const mapDispatch = dispatch => {
     }
 }
 
-export default connect(null, mapDispatch)(NewStepCard);
+export default connect(mapState, mapDispatch)(NewStepCard);
