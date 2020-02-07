@@ -147,5 +147,19 @@ class Adapter {
         .then(resp => resp.json())
         .then(data => {return data})
     }
+
+    static deleteStep = (id, jwt) => {
+        console.log('deleting step in adapter... here is what I am passing in...', id, jwt)
+        return fetch(STEP + '/' + id, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
 }
 export default Adapter

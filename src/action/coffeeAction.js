@@ -110,5 +110,12 @@ class CoffeeAction {
             prep: prep
         }
     }
+
+    static removeStepFromStore = step => {
+        return {
+            type: 'REMOVE_STEP_FROM_STORE',
+            step: step
+        }
+    }
 }
 export default CoffeeAction;

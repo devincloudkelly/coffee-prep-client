@@ -139,6 +139,22 @@ const reducer = (state={initialState}, action) => {
                     ]
                 }
             }
+        case 'REMOVE_STEP_FROM_STORE':
+            console.log('removing step in reducer...', action.step)
+            return {
+                ...state,
+                user: {
+                    ...state.user, preps: [
+                        ...state.user.preps.map(prep => {
+                            return (prep.id === action.step.preparation_id) ?
+                            prep.steps.filter(step => {
+                                return step.id !== action.step.id
+                            }) :
+                            prep
+                        })
+                    ]
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state

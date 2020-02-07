@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
-import {Card, Icon, Label} from 'semantic-ui-react'
+import {Card, Icon, Label, Button} from 'semantic-ui-react'
+import { connect } from 'react-redux';
+import Adapter from '../services/Adapter';
+import CoffeeAction from '../action/coffeeAction';
 
 export class StepCard extends Component {
+
+    handleDelete = (step) => {
+        const jwt = this.props.jwt
+        console.log('deleting step...', step)
+        Adapter.deleteStep(step.id, jwt)
+        .then(data => {
+            this.props.removeStepFromStore(data)
+            //need to update steps in new prep form
+            console.log('just deleted step...', data)
+        })
+    }
+
     render() {
         const { action, duration, amount, directions } = this.props.step
+        const {step} = this.props
         return (
             <Card raised >
                     <Card.Content >
@@ -15,13 +31,31 @@ export class StepCard extends Component {
                         <Icon name='tint'/> {amount}ml
                     </Card.Meta>
                     </Card.Content>
-                    <Label attached='bottom right' color='red'>{this.props.index + 1}</Label>
+                    <Label attached='top right' color='blue'>{this.props.index + 1}</Label>
                     <Card.Content>
                         <p>{directions}</p>
                     </Card.Content>
+                    <Button.Group>
+                        <Button>Edit</Button>
+                        <Button onClick={() => this.handleDelete(step)}>Delete</Button>
+                    </Button.Group>
             </Card>
         );
     }
 }
 
-export default StepCard;
+const mapState = state => {
+    return {
+        jwt: state.jwt,
+        editingPrep: state.editingPrep
+    }
+}
+
+const mapDispatch = dispatch => {
+    return {
+        removeStepFromStore: step => dispatch(CoffeeAction.removeStepFromStore(step)),
+        updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep))
+    }
+}
+
+export default connect(mapState, mapDispatch)(StepCard);

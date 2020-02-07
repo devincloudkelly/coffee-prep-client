@@ -50,7 +50,7 @@ export class PrepCard extends Component {
         return (
             <div className='ui raised card attached segment'>
                 <div onClick={() => this.handleClick(id)} className='ui attached segment'>
-                <h3>Place {device} Device icon here</h3>
+                <h3>{device}</h3>
                 <h5>{coffee_brand} - {coffee_name}</h5>
                 <p>{notes}</p>
                 </div>
