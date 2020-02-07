@@ -39,10 +39,10 @@ class CoffeeAction {
         }
     }
 
-    static addPrepToStore = (prep) => {
-        console.log('adding prep to store', prep)
+    static updateEditingPrep = (prep) => {
+        console.log('updating editingPrep in action...', prep)
         return {
-            type: 'ADD_PREP_TO_STORE',
+            type: 'UPDATE_EDITING_PREP',
             prep: prep
         }
     }

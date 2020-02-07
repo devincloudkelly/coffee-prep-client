@@ -30,8 +30,8 @@ export class PrepCard extends Component {
 
     handleEdit = (prep) => {
         console.log('editing prep from prepcard...', prep)
-        // this.props.addPrepToStore(prep)
-        this.props.addPrepToStore(prep)
+        // this.props.updateEditingPrep(prep)
+        this.props.updateEditingPrep(prep)
         this.props.addEditingId(prep.id)
         this.setState({
             isEditing: true
@@ -76,7 +76,7 @@ const mapDispatch = dispatch => {
     return {
         updateCurrentPrep: prep => dispatch(CoffeeAction.updateCurrentPrep(prep)),
         updatePreps: preps => dispatch(CoffeeAction.updatePreps(preps)),
-        addPrepToStore: prep => dispatch(CoffeeAction.addPrepToStore(prep)),
+        updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
         addEditingId: id => dispatch(CoffeeAction.addEditingId(id))
     }
 }
