@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
-import { Form, Container, Segment, Select, Button} from 'semantic-ui-react'
+import { Form, Segment, Button} from 'semantic-ui-react'
 
 
 
@@ -48,7 +48,6 @@ export class StepForm extends Component {
     }
 
     render() {
-        const { value } = this.state
         return (
             <Segment>
                 <Form onSubmit={this.handleSubmit}>

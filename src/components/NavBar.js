@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import CoffeeAction from '../action/coffeeAction'
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 export class NavBar extends Component {
     state = {
@@ -23,6 +23,9 @@ export class NavBar extends Component {
 
 
     render() {
+        if (!this.props.loggedIn){
+            return <div></div>
+        }
         const { activeItem } = this.state
         return (
             <Menu secondary>
@@ -52,10 +55,16 @@ export class NavBar extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapState = state => {
+    return {
+        loggedIn: state.loggedIn
+    }
+}
+
+const mapDispatch = dispatch => {
     return {
         logOut: () => dispatch(CoffeeAction.logOut())
     }
 }
 
-export default connect(null, mapDispatchToProps)(NavBar);
+export default connect(null, mapDispatch)(NavBar);

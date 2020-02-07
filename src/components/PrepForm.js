@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
-import { Form, Container, Segment, Select, Button} from 'semantic-ui-react'
+import { Form, Segment, Button} from 'semantic-ui-react'
 
 
 
@@ -34,6 +34,13 @@ export class PrepForm extends Component {
         return this.setState({
             [e.target.name]: e.target.value
         }, ()=> console.log(this.state))
+    }
+
+    handleSelectInput = (e, { value }) => {
+        console.log(e.target.name, e.target.value, value)
+        return this.setState({
+            coffee_grind: value
+        }, ()=>console.log(this.state))
     }
     
     submitPrepForm = (e) => {
@@ -71,8 +78,6 @@ export class PrepForm extends Component {
     
     
     render() {
-        const showSteps = this.props.showSteps
-        console.log('props in prep form render',this.props)
         return (
             <Segment>
                 <Form onSubmit={this.submitPrepForm} >
@@ -117,7 +122,7 @@ export class PrepForm extends Component {
                             label='Grind'
                             options={this.grindOptions}
                             placeholder='Grind'
-                            onChange={e => this.handleInput(e)}
+                            onChange={this.handleSelectInput}
                             />
                     </Form.Group>
 
