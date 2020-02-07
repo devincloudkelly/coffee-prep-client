@@ -129,6 +129,16 @@ const reducer = (state={initialState}, action) => {
                         ]
                 }
             }
+        case 'PUSH_PREP_TO_STORE':
+            console.log('pushing prep to store..', action.prep)
+            return {
+                ...state,
+                user: {
+                    ...state.user, preps: [
+                        ...state.user.preps, action.prep
+                    ]
+                }
+            }
         default:
             console.log('hitting default case statement..')
             return state

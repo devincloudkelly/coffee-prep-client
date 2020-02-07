@@ -54,6 +54,7 @@ export class PrepForm extends Component {
             Adapter.addPreparation(prep, jwt)
             .then(data => {
                 this.props.updateEditingPrep(data)
+                this.props.pushPrepToStore(data)
                 this.setState({
                     id: data.id
                 })
@@ -172,7 +173,8 @@ const mapDispatch = dispatch => {
     return {
         updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
         removeEditingId: () => dispatch(CoffeeAction.removeEditingId()),
-        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep))
+        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep)),
+        pushPrepToStore: prep => dispatch(CoffeeAction.pushPrepToStore(prep))
     }
 }
 

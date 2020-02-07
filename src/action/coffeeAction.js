@@ -103,5 +103,12 @@ class CoffeeAction {
             prep: prep
         }
     }
+
+    static pushPrepToStore = prep => {
+        return {
+            type: 'PUSH_PREP_TO_STORE',
+            prep: prep
+        }
+    }
 }
 export default CoffeeAction;

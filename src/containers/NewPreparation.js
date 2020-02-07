@@ -47,7 +47,10 @@ export class NewPreparation extends Component {
                 </Segment.Group>
                 <br />
                 <br />
-                <button className='ui button huge' onClick={this.handleNewGuideClick}>Create New Coffee Guide</button>
+                {this.props.editingPrep.steps < 1
+                ? null
+                : <button className='ui button huge' onClick={this.handleNewGuideClick}>Create New Coffee Guide</button> }
+                
             </Container>
         );
     }

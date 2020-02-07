@@ -12,6 +12,7 @@ export class StepViewer extends Component {
                 return <StepCard key={Math.random()} step={step} index={index} />
             })
         }
+        return <p>No steps yet. Add your first step below.</p>
     }
 
     render() {
@@ -21,7 +22,10 @@ export class StepViewer extends Component {
                 <h3>Steps: </h3>
             <div className='ui four stackable cards'>
                 {this.renderSteps()}
-                <NewStepCard/>
+                {this.props.steps.length < 1
+                ? null
+            : <NewStepCard/>}
+                
             </div>
         </Segment>
         );
