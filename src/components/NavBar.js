@@ -26,9 +26,9 @@ export class NavBar extends Component {
         if (!this.props.loggedIn){
             return <div></div>
         }
-        const { activeItem } = this.state
-        return (
-            <Menu secondary>
+            const { activeItem } = this.state
+            return (
+                <Menu secondary>
                 <Link to='/profile'>
                 <Menu.Item 
                     name='profile'
@@ -52,6 +52,7 @@ export class NavBar extends Component {
                 </Menu.Menu>
             </Menu>
         );
+    
     }
 }
 
@@ -67,4 +68,4 @@ const mapDispatch = dispatch => {
     }
 }
 
-export default connect(null, mapDispatch)(NavBar);
+export default connect(mapState, mapDispatch)(NavBar);
