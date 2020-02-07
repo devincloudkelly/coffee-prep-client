@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import CoffeeAction from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
 import { withRouter } from 'react-router-dom'
+import { Form } from 'semantic-ui-react'
 
 
 export class Login extends Component {
@@ -42,7 +43,7 @@ export class Login extends Component {
             return (
                 <div>
                 This is the login component
-                <form onSubmit={e=> this.handleLogin(e)}>
+                <Form onSubmit={e=> this.handleLogin(e)}>
                     <label>
                         <input name='email_address'  placeholder='email address' onChange={e => this.handleInput(e)}/>
                     </label>
@@ -50,7 +51,7 @@ export class Login extends Component {
                         <input type='password' name='password' placeholder='password' onChange={e => this.handleInput(e)}/>
                     </label>
                     <input type='submit' value='Log In'></input>
-                </form>
+                </Form>
             </div>
             );
          

@@ -4,6 +4,7 @@ import Fetch from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { Form } from 'semantic-ui-react'
 
 
 export class Signup extends Component {
@@ -37,7 +38,7 @@ export class Signup extends Component {
         return (
             <div>
                 This is the Signup component
-            <form onSubmit={e=> this.handleSignup(e)}>
+            <Form onSubmit={e=> this.handleSignup(e)}>
                 <label>
                     Name
                     <input name='name'  placeholder='enter your name' onChange={this.handleInput}/>
@@ -51,7 +52,7 @@ export class Signup extends Component {
                     <input type='password' name='password' placeholder='create a password' onChange={this.handleInput}/>
                 </label>
                 <input type='submit' value='Sign Up'></input>
-            </form>
+            </Form>
             </div>
         );
     }

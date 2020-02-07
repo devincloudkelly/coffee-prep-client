@@ -28,7 +28,8 @@ class HomeScreen extends Component {
             <div style={{
                 backgroundImage: `url(${background})`,
                 backgroundPosition: 'center',
-                backgroundSize: 'cover'
+                backgroundSize: 'cover',
+                height: '100vh'
             }}>
 
             <Grid>
