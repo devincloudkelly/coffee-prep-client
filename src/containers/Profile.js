@@ -19,7 +19,7 @@ console.log(props)
     
 }
 
-const mapStateToProps = state => {
+const mapState = state => {
     const {user} = state
     return {
         name: user.name,
@@ -28,4 +28,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapState)(Profile);

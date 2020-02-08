@@ -47,10 +47,10 @@ class CoffeeAction {
         }
     }
 
-    static addStepToStore = (step) => {
-        console.log('adding step to store..', step)
+    static addStepToEditingPrep = (step) => {
+        console.log('adding step to editingPrep..', step)
         return {
-            type: 'ADD_STEP_TO_STORE',
+            type: 'ADD_STEP_TO_EDITING_PREP',
             step: step
         }
     }
@@ -98,6 +98,7 @@ class CoffeeAction {
     }
 
     static editPrepInStore = prep => {
+        console.log('editing prep in store action...', prep)
         return {
             type: 'EDIT_PREP_IN_STORE',
             prep: prep
@@ -128,6 +129,13 @@ class CoffeeAction {
         return {
             type: 'ADD_EDITING_STEP_ID',
             id: id
+        }
+    }
+
+    static addStepToPrep = step => {
+        return {
+            type: 'ADD_STEP_T0_PREP',
+            step: step
         }
     }
 }

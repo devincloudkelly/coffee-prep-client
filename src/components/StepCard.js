@@ -11,11 +11,17 @@ export class StepCard extends Component {
         console.log('deleting step...', step)
         Adapter.deleteStep(step.id, jwt)
         .then(data => {
-            this.props.removeStepFromStore(data)
+            console.log('steps in state...', this.props.steps, this.props.editingPrep)
+            // this.props.removeStepFromStore(data)
             this.props.removeStepFromEditingPrep(data)
+            console.log('steps in state...', this.props.steps, this.props.editingPrep)
             //need to update steps in new prep form
             console.log('just deleted step...', data)
-        })
+        }, ()=> this.props.editPrepInStore(this.props.editingPrep))
+        // .then(()=> {
+            
+        // })
+
     }
 
     handleEdit = step => {
@@ -54,7 +60,8 @@ export class StepCard extends Component {
 const mapState = state => {
     return {
         jwt: state.jwt,
-        editingPrep: state.editingPrep
+        editingPrep: state.editingPrep,
+        steps: state.editingPrep.steps
     }
 }
 
@@ -63,7 +70,8 @@ const mapDispatch = dispatch => {
         removeStepFromStore: step => dispatch(CoffeeAction.removeStepFromStore(step)),
         updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
         removeStepFromEditingPrep: step => dispatch(CoffeeAction.removeStepFromEditingPrep(step)),
-        addEditingStepId: id => dispatch(CoffeeAction.addEditingStepId(id))
+        addEditingStepId: id => dispatch(CoffeeAction.addEditingStepId(id)),
+        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep))
     }
 }
 

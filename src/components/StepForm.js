@@ -44,8 +44,13 @@ export class StepForm extends Component {
         const jwt = this.props.jwt
         console.log('submitting step, this is step...', step)
         Adapter.addStep(step, jwt)
-        .then(data => this.props.addStepToStore(data))
-        .then(this.props.resetAddNewStep())
+        .then(data => {
+            this.props.addStepToEditingPrep(data)
+            // this.props.addStepToPrep(data)
+        })
+        .then(()=> {
+            this.props.editPrepInStore(this.props.editingPrep)
+            this.props.resetAddNewStep()})
     }
 
     render() {
@@ -101,14 +106,17 @@ export class StepForm extends Component {
 const mapState = state => {
     return {
         jwt: state.jwt,
-        preparation_id: state.editingPrep.id
+        preparation_id: state.editingPrep.id,
+        editingPrep: state.editingPrep
     }
 }
 
 const mapDispatch = dispatch => {
     return {
-        addStepToStore: (step) => dispatch(CoffeeAction.addStepToStore(step)),
-        resetAddNewStep: () => dispatch(CoffeeAction.resetAddNewStep())
+        addStepToEditingPrep: (step) => dispatch(CoffeeAction.addStepToEditingPrep(step)),
+        resetAddNewStep: () => dispatch(CoffeeAction.resetAddNewStep()),
+        addStepToPrep: step => dispatch(CoffeeAction.addStepToPrep(step)),
+        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep))
     }
 }
 

@@ -74,8 +74,8 @@ const reducer = (state={initialState}, action) => {
                     steps: [...action.prep.steps]
                 }
             }
-        case 'ADD_STEP_TO_STORE':
-            console.log('adding step to store in reducer...')
+        case 'ADD_STEP_TO_EDITING_PREP':
+            console.log('adding step to editingPrep in reducer...', action.step)
             return {
                 ...state,
                 editingPrep: {
@@ -174,6 +174,20 @@ const reducer = (state={initialState}, action) => {
             return {
                 ...state,
                 editingStepId: action.id
+            }
+        case 'ADD_STEP_TO_PREP':
+            console.log('adding step to userPrep...', action.step)
+            return {
+                ...state,
+                user: {
+                    ...state.user, preps: [
+                        ...state.user.preps.map(prep => {
+                            return (prep.id === action.step.preparation_id) ?
+                            prep.steps.push(action.step) :
+                            prep.steps
+                        })
+                    ]
+                }
             }
         default:
             console.log('hitting default case statement..')

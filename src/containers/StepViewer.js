@@ -7,6 +7,7 @@ import NewStepCard from '../components/NewStepCard';
 export class StepViewer extends Component {
 
     renderSteps = () => {
+        console.log('steps to be rendered...', this.props.steps)
         if (this.props.steps && this.props.steps.length > 0){
             return this.props.steps.map((step, index) => {
                 return <StepCard key={Math.random()} step={step} index={index} />
@@ -34,7 +35,8 @@ export class StepViewer extends Component {
 
 const mapState = state => {
     return {
-        steps: state.editingPrep.steps
+        steps: state.editingPrep.steps,
+        stepLength: state.editingPrep.steps.length
     }
 }
 
