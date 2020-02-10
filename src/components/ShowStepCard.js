@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon } from 'semantic-ui-react'
+import { Icon, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 export class ShowStepCard extends Component {
@@ -10,17 +10,17 @@ export class ShowStepCard extends Component {
         return (
                 (currentStep.id === id 
                 ?
-                <div className='ui raised card' style={currentStyle}>
+                <Card  color='grey' raised style={currentStyle}>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>
-                </div>
+                </Card>
                 : 
-                <div className='ui raised card'>
+                <Card  raised color='grey'>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>
-                </div>
+                </Card>
                 )
         );
     }
