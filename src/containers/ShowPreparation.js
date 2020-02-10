@@ -84,14 +84,14 @@ export class ShowPreparation extends Component {
                     <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
                     <Segment inverted>
                     <Divider horizontal inverted color='grey'>Steps</Divider>
-                    {/* <div className='ui four stackable cards'> */}
+                    <br/>
                         <Message inverted>
                     <Message.Header inverted>
                         This Coffee Prep is Missing Steps
                     </Message.Header>
                         You need to add steps to this coffee prep in order to enable this brew dashboard.
                     </Message>
-                    {/* </div> */}
+                    <br/>
                         </Segment>
                 </Segment.Group>
         </Container>)

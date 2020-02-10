@@ -70,7 +70,7 @@ export class PrepCard extends Component {
                     <Card.Header>{coffee_brand} - {coffee_name}</Card.Header>
                     <Card.Meta>{coffee_amount}g, {coffee_grind} ground</Card.Meta>
                 </Card.Content>
-                <Card.Content attached >
+                <Card.Content attached onClick={() => this.handleClick(id)}>
                     <Card.Description>
                 <h4>{this.renderDevice(device)}</h4>
 
