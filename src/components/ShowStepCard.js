@@ -33,10 +33,9 @@ export class ShowStepCard extends Component {
                     <Card.Content>
                     <Card.Header>{this.renderStepAction(action)}</Card.Header>
                     <Card.Description>
-                        <Icon name="clock outline"/>{duration}s
+                        <Icon name="clock outline"/>{duration}s <br/>
                         <Icon name='tint'/>{amount}ml
                     </Card.Description>
-                    <br/>
                     </Card.Content>
                 </Card>
                 : 
@@ -44,10 +43,9 @@ export class ShowStepCard extends Component {
                     <Card.Content>
                     <Card.Header>{this.renderStepAction(action)}</Card.Header>
                     <Card.Description>
-                        <Icon name="clock outline"/>{duration}s
+                        <Icon name="clock outline"/>{duration}s <br/>
                         <Icon name='tint'/>{amount}ml
                     </Card.Description>
-                    <br/>
                     </Card.Content>
                 </Card>
                 )
