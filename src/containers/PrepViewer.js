@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PrepCard from '../components/PrepCard';
 import {connect} from 'react-redux'
 import NewPrepCard from '../components/NewPrepCard';
-import {Container, Button, Message} from 'semantic-ui-react'
+import {Container, Button, Message, Divider, Icon} from 'semantic-ui-react'
 
 export class PrepViewer extends Component {
 
@@ -20,6 +20,7 @@ export class PrepViewer extends Component {
                 <i className="coffee icon"></i>
                 My Coffee Preparations
                 </h4>
+                <br/>
                 <Container>
                     <Message>
 
@@ -35,18 +36,18 @@ export class PrepViewer extends Component {
             </div>
         }
         return (
-            <div>
-                <h4 className='ui horizontal divider header'>
-                <i className="coffee icon"></i>
-                My Coffee Preparations
-                </h4>
+            <Container >
+                <Divider horizontal>
+                <Icon className="coffee icon"/> My Coffee Preparations
+                </Divider>
+                <br/>
                 <div className='ui four stackable cards'>
                 {this.renderPreps()}
 
                 <NewPrepCard />
                 </div>
                 <br/>
-            </div>
+            </Container>
         );
     }
 }

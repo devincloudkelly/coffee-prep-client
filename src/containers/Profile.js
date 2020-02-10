@@ -1,20 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import PrepViewer from './PrepViewer';
-import { Container } from 'semantic-ui-react';
+import { Container, Label } from 'semantic-ui-react';
 
 
 const Profile = (props) => {
 
 console.log(props)
         return (
-            <Container >
-                <div className='ui yellow label'>
+            <Container inverted>
+                <Label color='teal' image>
                 Welcome back 
-                <div className='detail'>{props.name}</div>
-                </div>
+                <Label.Detail>{props.name}</Label.Detail>
+                </Label>
                 <PrepViewer />
-                
             </Container>
         );
     

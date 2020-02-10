@@ -3,6 +3,7 @@ import { withRouter, Redirect, Link} from 'react-router-dom'
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter';
+import {Button, Card} from 'semantic-ui-react'
 
 
 export class PrepCard extends Component {
@@ -39,26 +40,48 @@ export class PrepCard extends Component {
         this.props.history.push('/preparations/new')
 
     }
+
+    renderDevice = (device) => {
+        switch (device) {
+            case 'aeropress':
+                return 'Aeropress'
+                break;
+            case 'chemex':
+                return 'Chemex'
+                break;
+            case 'pourover':
+                return 'Pour over'
+                break;
+            default:
+                break;
+        }
+    }
     
     render() {
         console.log('prep in prep card', this.props.prep)
-        const { id, device, coffee_brand, coffee_name, notes } = this.props.prep
+        const { id, device, coffee_brand, coffee_name, notes, coffee_amount, coffee_grind } = this.props.prep
         const prep = this.props.prep
         // if (this.state.isEditing === true ){
         //     return <Redirect to='/preparations/new'/>
         // }
         return (
-            <div className='ui raised card attached segment'>
-                <div onClick={() => this.handleClick(id)} className='ui attached segment'>
-                <h3>{device}</h3>
-                <h5>{coffee_brand} - {coffee_name}</h5>
-                <p>{notes}</p>
-                </div>
-                <div className='ui two bottom attached buttons'>
-                    <button className='ui button' onClick={() => this.handleEdit(prep)}>Edit</button>
-                    <button className='ui button' onClick={() => this.handleDelete(id)}>Delete</button>
-                </div>
-            </div>
+            <Card className='ui raised card attached segment' onClick={() => this.handleClick(id)}>
+                <Card.Content>
+                    <Card.Header>{coffee_brand} - {coffee_name}</Card.Header>
+                    <Card.Meta>{coffee_amount}g, {coffee_grind} ground</Card.Meta>
+                </Card.Content>
+                <Card.Content attached >
+                    <Card.Description>
+                <h4>{this.renderDevice(device)}</h4>
+
+                    </Card.Description>
+                <Card.Description>{notes}</Card.Description>               
+                </Card.Content>
+                <Button.Group size='tiny' attached-bottom>
+                    <Button className='ui button' onClick={() => this.handleEdit(prep)}>Edit</Button>
+                    <Button className='ui button' onClick={() => this.handleDelete(id)}>Delete</Button>
+                </Button.Group >
+            </Card>
         );
     }
 }
