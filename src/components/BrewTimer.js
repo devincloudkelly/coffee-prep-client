@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Timer from 'react-compound-timer'
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
+import {Segment, Button, Statistic} from 'semantic-ui-react'
 
 export class BrewTimer extends Component {
 
@@ -13,27 +14,28 @@ export class BrewTimer extends Component {
 
     render() {
         return (
-            <div>
-                This is the timer
-                <Timer className='timer' startImmediately={false}
-                    checkpoints={this.props.checkpoints}>
-                         {({start, resume, pause, stop, reset, timerState}) => (
+            <Segment inverted>
+                <Timer 
+                    className='timer' 
+                    startImmediately={false} 
+                    formatValue={(value) => `${(value < 10 ? `0${value}` : value)}`}
+                    checkpoints={this.props.checkpoints}
+                    >
+                         {({start, pause, reset}) => (
                              <div>
 
-                             <h1><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
+                             <h1 className='brewTimer'><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
                        
                             <br/>
-                            <div>
-                                <button onClick={start}>Start</button>
-                                <button onClick={pause}>Pause</button>
-                                <button onClick={resume}>Resume</button>
-                                <button onClick={stop}>Stop</button>
-                                <button onClick={reset}>Reset</button>
-                            </div>
+                            <Button.Group>
+                                <Button onClick={start}>Start</Button>
+                                <Button onClick={pause}>Pause</Button>
+                                <Button onClick={reset}>Reset</Button>
+                            </Button.Group>
                              </div>
                          )}
                 </Timer>
-            </div>
+            </Segment>
         );
     }
 }

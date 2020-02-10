@@ -9,8 +9,8 @@ export class PrepSpecs extends Component {
         return (
             <Segment.Group>
             <Segment inverted >
-                <p>Prepare your coffee and brew station according to the specs below.</p>
-                <Statistic.Group inverted color='grey' widths='four' size='small'>
+                <p>Prepare your coffee and brew station according to the specs below. Once ready, press the start button below the timer</p>
+                <Statistic.Group inverted color='grey' widths='three' size='tiny'>
                     <Statistic>
                         <Statistic.Value>{device}</Statistic.Value>
                         <Statistic.Label>method</Statistic.Label>
@@ -38,16 +38,8 @@ export class PrepSpecs extends Component {
                 </Statistic.Group>
             </Segment>
             <Segment inverted >
-                <Statistic inverted horizontal >
-                    <Statistic.Label>Notes: </Statistic.Label> 
-                    <Statistic.Value text size='small'> {notes}</Statistic.Value>
-                </Statistic>
-
+                <h3>{notes}</h3>
             </Segment>
-            
-                <Segment inverted >
-        <p>Once your water is up to temp, grind your coffee and add it to your {device}. Once ready, press the start button below to begin brewing.</p>
-                </Segment>
                 </Segment.Group>
         );
     }

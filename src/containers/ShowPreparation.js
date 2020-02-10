@@ -99,8 +99,6 @@ export class ShowPreparation extends Component {
             {console.log('these are the steps and state in the final if statement..', steps, this.state.steps)}
             {console.log('prep is in show state and steps length is greater than 1')}
                 <PrepSpecs prep={this.props.currentPrep}/>
-                <br/>
-                <br/>
                 <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
                 <br/>
                 <div className='ui four stackable cards'>

@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.brewTimer {
+  font-size: 6.3em;
+}
