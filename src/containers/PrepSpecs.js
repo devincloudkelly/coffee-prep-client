@@ -34,7 +34,7 @@ export class PrepSpecs extends Component {
                         <Statistic.Label>Total Water</Statistic.Label>
                     </Statistic>
                     <Statistic>
-                        <Statistic.Value>{total_time}s</Statistic.Value>
+                        <Statistic.Value>{total_time}𝗌</Statistic.Value>
                         <Statistic.Label>Total Time</Statistic.Label>
                     </Statistic>
                 </Statistic.Group>

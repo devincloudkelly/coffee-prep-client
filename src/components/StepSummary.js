@@ -6,7 +6,7 @@ export class StepSummary extends Component {
     render() {
         return (
             <Segment inverted>
-                <Divider horizontal inverted>Directions</Divider>
+                <Divider horizontal inverted color='grey'>Directions</Divider>
                 <h3>{this.props.currentStep.directions}</h3>
             </Segment>
         );

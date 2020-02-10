@@ -29,10 +29,10 @@ export class BrewTimer extends Component {
                              <h1 className='brewTimer'><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
                        
                             <br/>
-                            <Button.Group>
-                                <Button onClick={start}>Start</Button>
-                                <Button onClick={pause}>Pause</Button>
-                                <Button onClick={reset}>Reset</Button>
+                            <Button.Group >
+                                <Button onClick={start} >Start</Button>
+                                <Button onClick={pause} >Pause</Button>
+                                <Button onClick={reset} >Reset</Button>
                             </Button.Group>
                              </div>
                          )}
