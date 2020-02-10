@@ -11,7 +11,7 @@ export class NewPrepCard extends Component {
     render() {
         return (
             <>
-            <Card attached onClick={this.handleClick}>
+            <Card raised attached onClick={this.handleClick}>
                 <Card.Content>
 
                 <Card.Header textAlign='center'>New Coffee Prep</Card.Header>
@@ -19,7 +19,7 @@ export class NewPrepCard extends Component {
                 <Icon name='plus circle' size='massive' color='teal'/>
                 </Card.Description>
                 </Card.Content>
-            <Button attached='bottom'>Create</Button>
+            <Button size='tiny' attached='bottom'>Create</Button>
             </Card >
             </>
         );

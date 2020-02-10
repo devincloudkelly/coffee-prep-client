@@ -57,7 +57,7 @@ export class ShowPreparation extends Component {
     checkpointLength = () => {
         return this.createCheckpoints().length
     }
-    
+    // increase the current step as each step duration expires and progresses to next step.
     handleStepChange = (index) => {
         console.log('handling step change, here is the step that was passed up...', index)
         let nextStep = index + 1
@@ -77,21 +77,24 @@ export class ShowPreparation extends Component {
         }
         if (this.state.steps.length < 1){
             console.log('prep is in show state, but steps length is less than one...')
-            return <Container>
-            <PrepSpecs prep={this.props.currentPrep}/>
-            <br/>
-            <br/>
-            <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
-            <br/>
-            <div className='ui four stackable cards'>
-            <Message>
-            <Message.Header>
-                This Coffee Prep is Missing Steps
-            </Message.Header>
-                You need to add steps to this coffee prep in order to enable this brew dashboard.
-            </Message>
-            </div>
-        </Container>
+            return (
+            <Container>
+                <Segment.Group>
+                    <PrepSpecs prep={this.props.currentPrep}/>
+                    <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
+                    <Segment inverted>
+                    <Divider horizontal inverted color='grey'>Steps</Divider>
+                    {/* <div className='ui four stackable cards'> */}
+                        <Message inverted>
+                    <Message.Header inverted>
+                        This Coffee Prep is Missing Steps
+                    </Message.Header>
+                        You need to add steps to this coffee prep in order to enable this brew dashboard.
+                    </Message>
+                    {/* </div> */}
+                        </Segment>
+                </Segment.Group>
+        </Container>)
         }
         const { steps } = this.props.currentPrep
         return (

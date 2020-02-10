@@ -65,8 +65,8 @@ export class PrepCard extends Component {
         //     return <Redirect to='/preparations/new'/>
         // }
         return (
-            <Card className='ui raised card attached segment' onClick={() => this.handleClick(id)}>
-                <Card.Content>
+            <Card raised attached onClick>
+                <Card.Content onClick={() => this.handleClick(id)}>
                     <Card.Header>{coffee_brand} - {coffee_name}</Card.Header>
                     <Card.Meta>{coffee_amount}g, {coffee_grind} ground</Card.Meta>
                 </Card.Content>
