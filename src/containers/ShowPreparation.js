@@ -6,7 +6,7 @@ import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
 import { StepSummary } from '../components/StepSummary';
-import { Container, Message, Dimmer, Loader} from 'semantic-ui-react'
+import { Container, Message, Dimmer, Loader, Segment} from 'semantic-ui-react'
 
 
 export class ShowPreparation extends Component {
@@ -96,15 +96,17 @@ export class ShowPreparation extends Component {
         const { steps } = this.props.currentPrep
         return (
             <Container>
+                <Segment.Group>
+
             {console.log('these are the steps and state in the final if statement..', steps, this.state.steps)}
             {console.log('prep is in show state and steps length is greater than 1')}
                 <PrepSpecs prep={this.props.currentPrep}/>
                 <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
-                <br/>
                 <div className='ui four stackable cards'>
                 {this.renderSteps()}
                 </div>
                 <StepSummary currentStep={this.props.currentStep}/>
+                </Segment.Group>
             </Container>
         );
     }

@@ -15,6 +15,8 @@ export class BrewTimer extends Component {
     render() {
         return (
             <Segment inverted>
+                <div style={{textAlign: 'center'}}>
+
                 <Timer 
                     className='timer' 
                     startImmediately={false} 
@@ -35,6 +37,7 @@ export class BrewTimer extends Component {
                              </div>
                          )}
                 </Timer>
+                         </div>
             </Segment>
         );
     }
