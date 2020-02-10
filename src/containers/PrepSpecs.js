@@ -40,6 +40,7 @@ export class PrepSpecs extends Component {
                 </Statistic.Group>
             </Segment>
             <Segment inverted style={{textAlign: 'center'}}>
+                <Divider horizontal inverted color='grey'>Notes</Divider>
                 <h3>{notes}</h3>
                 <br/>
                 <Divider/>

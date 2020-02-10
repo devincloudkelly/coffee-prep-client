@@ -3,6 +3,25 @@ import { Icon, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 export class ShowStepCard extends Component {
+
+    renderStepAction = (action) => {
+        switch (action) {
+            case 'bloom':
+                return 'Bloom'
+                break;
+            case 'pour':
+                return 'Pour'
+            case 'stir':
+                return 'Stir'
+            case 'wait':
+                return 'Wait'
+            case 'press':
+                return 'Press'
+            default:
+                break;
+        }
+    }
+
     render() {
         const { id, action, duration, amount, order, directions } = this.props.step
         const { currentStep } = this.props
@@ -10,16 +29,26 @@ export class ShowStepCard extends Component {
         return (
                 (currentStep.id === id 
                 ?
-                <Card color='grey' raised style={currentStyle}>
-                    <h1>{action}</h1>
-                    <h3><i class="clock outline icon"></i>{duration}s</h3>
+                <Card fluid color='grey' style={currentStyle}>
+                    <Card.Content>
+                    <Card.Header>{this.renderStepAction(action)}</Card.Header>
+                    <Card.Description>
+                        <Icon name="clock outline"/>{duration}s
+                        <Icon name='tint'/>{amount}ml
+                    </Card.Description>
                     <br/>
+                    </Card.Content>
                 </Card>
                 : 
-                <Card  raised color='grey' style={normalStyle}>
-                    <h1>{action}</h1>
-                    <h3><i class="clock outline icon"></i>{duration}s</h3>
+                <Card color='grey' style={normalStyle}>
+                    <Card.Content>
+                    <Card.Header>{this.renderStepAction(action)}</Card.Header>
+                    <Card.Description>
+                        <Icon name="clock outline"/>{duration}s
+                        <Icon name='tint'/>{amount}ml
+                    </Card.Description>
                     <br/>
+                    </Card.Content>
                 </Card>
                 )
         );
@@ -34,14 +63,12 @@ const mapState = state => {
 
 const currentStyle = {
     backgroundColor: 'Orange',
-    color: 'Black',
-    border: 'none'
+    color: 'Black'
 }
 
 const normalStyle = {
     backgroundColor: 'Grey',
-    color: 'Black',
-    borderColor: 'Grey'
+    color: 'Black'
 }
 
 export default connect(mapState)(ShowStepCard);
