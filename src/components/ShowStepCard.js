@@ -10,13 +10,13 @@ export class ShowStepCard extends Component {
         return (
                 (currentStep.id === id 
                 ?
-                <Card  color='grey' raised style={currentStyle}>
+                <Card color='grey' raised style={currentStyle}>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>
                 </Card>
                 : 
-                <Card  raised color='grey'>
+                <Card  raised color='grey' style={normalStyle}>
                     <h1>{action}</h1>
                     <h3><i class="clock outline icon"></i>{duration}s</h3>
                     <br/>
@@ -33,7 +33,15 @@ const mapState = state => {
 }
 
 const currentStyle = {
-    backgroundColor: 'Orange'
+    backgroundColor: 'Orange',
+    color: 'Black',
+    border: 'none'
+}
+
+const normalStyle = {
+    backgroundColor: 'Grey',
+    color: 'Black',
+    borderColor: 'Grey'
 }
 
 export default connect(mapState)(ShowStepCard);
