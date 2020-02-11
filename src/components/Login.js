@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import CoffeeAction from '../action/coffeeAction'
 import Fetch from '../services/Adapter'
 import { withRouter } from 'react-router-dom'
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
 
 export class Login extends Component {
@@ -39,20 +39,38 @@ export class Login extends Component {
         // }))
        
     }
+
+    toggleSignIn = () => {
+        this.props.toggleSignIn()
+    }
+
     render() {
             return (
-                <div>
-                This is the login component
-                <Form onSubmit={e=> this.handleLogin(e)}>
+                <>
+                <Form inverted onSubmit={e=> this.handleLogin(e)}>
+                <h3>Log In</h3>
+                    <Form.Field>
+
                     <label>
+                        Email Address
                         <input name='email_address'  placeholder='email address' onChange={e => this.handleInput(e)}/>
                     </label>
+                    </Form.Field>
+                    <Form.Field>
+
                     <label>
+                        Password
                         <input type='password' name='password' placeholder='password' onChange={e => this.handleInput(e)}/>
                     </label>
-                    <input type='submit' value='Log In'></input>
+                    </Form.Field>
+                    <Form.Field control={Button}>
+                    Log In
+                    {/* <Button type='submit' value='Log In'></Button> */}
+                    </Form.Field>
                 </Form>
-            </div>
+                <br/>
+                <p>Don't have an account yet? <a href='' onClick={this.toggleSignIn}>Sign up here</a></p>
+            </>
             );
          
     }

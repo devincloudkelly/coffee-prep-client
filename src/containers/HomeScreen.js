@@ -14,7 +14,13 @@ const style = {
 
 class HomeScreen extends Component {
     state={
-        loginToggled: true
+        logIn: false
+    }
+
+    toggleSignIn = () => {
+        this.setState(prevState => ({
+            logIn: !prevState.logIn
+        }))
     }
     
     render() {
@@ -32,19 +38,20 @@ class HomeScreen extends Component {
                 height: '100vh'
             }}>
 
-            <Grid>
+            <Grid stackable columns={2}>
                 {/* <Image src='https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'/> */}
-                <Grid.Column width={10}>
+                <Grid.Column textAlign='center' width={11}>
                     <Segment inverted>
-                <h1>BREW BETTER COFFEE</h1>
+                <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
 
                     </Segment>
                 </Grid.Column>
-                <Grid.Column width={6}>
-                <Segment>
-
-                <Login/>
-                <Signup />
+                <Grid.Column  width={5}>
+                <Segment inverted>
+                {this.state.logIn
+                ? <Login toggleSignIn={this.toggleSignIn}/>
+                : <Signup toggleSignIn={this.toggleSignIn}/>
+                }
                 </Segment>
                 </Grid.Column>
      

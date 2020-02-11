@@ -4,7 +4,7 @@ import Fetch from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Form } from 'semantic-ui-react'
+import { Form, Button } from 'semantic-ui-react'
 
 
 export class Signup extends Component {
@@ -33,27 +33,44 @@ export class Signup extends Component {
             this.props.history.push('/profile')
     })
     }
+
+    toggleSignIn = () => {
+        this.props.toggleSignIn()
+    }
     
     render() {
         return (
-            <div>
-                This is the Signup component
-            <Form onSubmit={e=> this.handleSignup(e)}>
+            <>
+            <Form inverted onSubmit={e=> this.handleSignup(e)}>
+               <h3>Sign Up</h3>
+                <Form.Field>
                 <label>
                     Name
                     <input name='name'  placeholder='enter your name' onChange={this.handleInput}/>
                 </label>
+                </Form.Field>
+                <Form.Field>
+
                 <label>
                     Email
                     <input name='email_address'  placeholder='enter your email address' onChange={this.handleInput}/>
                 </label>
+                </Form.Field>
+                <Form.Field>
+
                 <label>
                     Password
                     <input type='password' name='password' placeholder='create a password' onChange={this.handleInput}/>
                 </label>
-                <input type='submit' value='Sign Up'></input>
+                </Form.Field>
+                <Form.Field control={Button}>
+                    Sign Up
+                </Form.Field>
+                {/* <input type='submit' value='Sign Up'></input> */}
             </Form>
-            </div>
+            <br/>
+            <p>Already have an account? <a href='#' onClick={this.toggleSignIn}>Sign in here</a></p>
+            </>
         );
     }
 }
