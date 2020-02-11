@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import { Segment, Form, Button} from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
-import { Form, Segment, Button} from 'semantic-ui-react'
 
-
-
-export class StepForm extends Component {
+export class EditStepForm extends Component {
     state = {
+        editingStepId: this.props.editingStepId,
         id: null,
         action: '',
         duration: null,
@@ -15,7 +14,7 @@ export class StepForm extends Component {
         order: null,
         directions: ''
     }
-    
+
     stepOptions = [
         { key: 'bloom', text: 'Bloom', value: 'bloom'},
         { key: 'pour', text: 'Pour', value: 'pour'},
@@ -25,11 +24,11 @@ export class StepForm extends Component {
     ]
 
     handleInput = (e) => {
-        console.log(e.target.name, e.target.value)
         return this.setState({
             [e.target.name]: e.target.value
-        }, ()=>console.log(this.state))
+        }, ()=> console.log(this.state))
     }
+
     handleSelectInput = (e, { value }) => {
         console.log(e.target.name, e.target.value, value)
         return this.setState({
@@ -37,31 +36,32 @@ export class StepForm extends Component {
         }, ()=>console.log(this.state))
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         e.preventDefault()
         const step = this.state
+        console.log('submitting edited step...', step)
         step.preparation_id = this.props.preparation_id
         const jwt = this.props.jwt
         console.log('submitting step, this is step...', step)
-        if (!this.props.addEditingStepId){
-        Adapter.addStep(step, jwt)
+        Adapter.updateStep(step, jwt)
         .then(data => {
-            this.props.addStepToEditingPrep(data)
-            // this.props.addStepToPrep(data)
+            this.props.updateStepInEditingPrep(data)
+            this.props.removeEditingStepId()
         })
-        .then(()=> {
-            this.props.editPrepInStore(this.props.editingPrep)
-            this.props.resetAddNewStep()})
-        }
     }
 
-
+    componentDidMount() {
+        this.setState({
+            editingStepId: this.props.editingStepId,
+            ...this.props.editingStep
+        })
+    }
+    
     render() {
+        console.log('state of editstep form on render...', this.state)
         return (
             <Segment>
                 <Form onSubmit={this.handleSubmit}>
-
-
                         <h3>Step Specs: </h3>
                     <Form.Group widths='equal'>
                     <Form.Select 
@@ -69,19 +69,7 @@ export class StepForm extends Component {
                         options={this.stepOptions}
                         placeholder='Action'
                         onChange={this.handleSelectInput}
-                    // <label>
-                    //     <h3>Action</h3>
-                    // </label>
-                        // <select name='action' value={this.state.action} >
-                        //     <option value=''>Choose Action</option>
-                        //     <option value='bloom'>Bloom</option>
-                        //     <option value='pour'>Pour</option>
-                        //     <option value='stir'>Stir</option>
-                        //     <option value='wait'>Wait</option>
-                        //     <option value='press'>Press</option>
-                        // </select>
                         />
-                
                         <Form.Field>
                             <label>Duration (seconds)
                             </label>
@@ -99,7 +87,7 @@ export class StepForm extends Component {
                         <textarea type='text' name='directions' value={this.state.directions} onChange={this.handleInput} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>
                         </label>
                     </Form.Field>
-                    <Form.Field control={Button}>Add Step</Form.Field>                    
+                    <Form.Field control={Button}>Edit Step</Form.Field>                    
                 </Form>
             </Segment>
         );
@@ -108,21 +96,17 @@ export class StepForm extends Component {
 
 const mapState = state => {
     return {
+        editingStep: state.editingStep,
         jwt: state.jwt,
-        preparation_id: state.editingPrep.id,
-        editingPrep: state.editingPrep,
         editingStepId: state.editingStepId
     }
 }
 
 const mapDispatch = dispatch => {
     return {
-        addStepToEditingPrep: (step) => dispatch(CoffeeAction.addStepToEditingPrep(step)),
-        resetAddNewStep: () => dispatch(CoffeeAction.resetAddNewStep()),
-        addStepToPrep: step => dispatch(CoffeeAction.addStepToPrep(step)),
-        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep)),
+        updateStepInEditingPrep: step => dispatch(CoffeeAction.updateStepInEditingPrep(step)),
         removeEditingStepId: () => dispatch(CoffeeAction.removeEditingStepId())
     }
 }
 
-export default connect(mapState, mapDispatch)(StepForm);
+export default connect(mapState, mapDispatch)(EditStepForm);

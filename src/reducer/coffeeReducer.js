@@ -18,7 +18,10 @@ const initialState = {
     },
     currentStep: {},
     editingId: null,
-    editingStepId: null
+    editingStepId: null, 
+    editingStep: {
+
+    }
 }
 
 const reducer = (state={initialState}, action) => {
@@ -56,7 +59,8 @@ const reducer = (state={initialState}, action) => {
                 },
                 currentStep: {},
                 editingId: null,
-                editingStepId: null
+                editingStepId: null,
+                editingStep: {}
             }
         case 'TOGGLE_STEP_TO_PREP':
             console.log('toggling step in reducer...')
@@ -189,6 +193,28 @@ const reducer = (state={initialState}, action) => {
                     ]
                 }
             }
+        case 'REMOVE_EDITING_STEP_ID':
+            return {
+                ...state,
+                editingStepId: null
+            }
+        case 'ADD_EDITING_STEP':
+            return {
+                ...state,
+                editingStep: action.step
+            }
+        case 'UPDATE_STEP_IN_EDITING_PREP':
+            return {
+                ...state,
+                editingPrep: {
+                ...state.editingPrep, steps: [
+                        ...state.editingPrep.steps.map(step => {
+                            return (step.id === action.step.id) ?
+                            action.step : step
+                        }) 
+                    ]
+                }
+            } 
         default:
             console.log('hitting default case statement..')
             return state

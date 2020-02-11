@@ -9,24 +9,25 @@ export class StepCard extends Component {
     handleDelete = (step) => {
         const jwt = this.props.jwt
         console.log('deleting step...', step)
-        Adapter.deleteStep(step.id, jwt)
-        .then(data => {
-            console.log('steps in state...', this.props.steps, this.props.editingPrep)
-            // this.props.removeStepFromStore(data)
+        
+
+            Adapter.deleteStep(step.id, jwt)
+            .then(data => {
+                console.log('steps in state...', this.props.steps, this.props.editingPrep)
+                // this.props.removeStepFromStore(data)
             this.props.removeStepFromEditingPrep(data)
             console.log('steps in state...', this.props.steps, this.props.editingPrep)
             //need to update steps in new prep form
             console.log('just deleted step...', data)
         }, ()=> this.props.editPrepInStore(this.props.editingPrep))
-        // .then(()=> {
-            
-        // })
 
     }
 
     handleEdit = step => {
         const jwt = this.props.jwt
         console.log('editing step...', step)
+        this.props.addEditingStepId(step.id)
+        this.props.addEditingStep(step)
         // add editing step Id here...
     }
 
@@ -71,7 +72,8 @@ const mapDispatch = dispatch => {
         updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
         removeStepFromEditingPrep: step => dispatch(CoffeeAction.removeStepFromEditingPrep(step)),
         addEditingStepId: id => dispatch(CoffeeAction.addEditingStepId(id)),
-        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep))
+        editPrepInStore: prep => dispatch(CoffeeAction.editPrepInStore(prep)),
+        addEditingStep: step => dispatch(CoffeeAction.addEditingStep(step))
     }
 }
 

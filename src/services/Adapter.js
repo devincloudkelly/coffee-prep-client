@@ -161,5 +161,19 @@ class Adapter {
         .then(resp => resp.json())
         .then(data => {return data})
     }
+
+    static updateStep = (step, jwt) => {
+        return fetch(STEP + '/' + step.id, {
+            method: 'PATCH',
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(step)
+        })
+        .then(resp => resp.json())
+        .then(data => {return data})
+    }
 }
 export default Adapter

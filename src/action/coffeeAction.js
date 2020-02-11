@@ -138,5 +138,24 @@ class CoffeeAction {
             step: step
         }
     }
+
+    static removeEditingStepId = () => {
+        return {
+            type: 'REMOVE_EDITING_STEP_ID',
+            payload: 'removing editing step id'
+        }
+    }
+    static addEditingStep = step => {
+        return {
+            type: 'ADD_EDITING_STEP',
+            step: step
+        }
+    }
+    static updateStepInEditingPrep = step => {
+        return {
+            type: 'UPDATE_STEP_IN_EDITING_PREP',
+            step: step
+        }
+    }
 }
 export default CoffeeAction;

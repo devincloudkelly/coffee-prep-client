@@ -8,7 +8,6 @@ export class ShowStepCard extends Component {
         switch (action) {
             case 'bloom':
                 return 'Bloom'
-                break;
             case 'pour':
                 return 'Pour'
             case 'stir':
@@ -23,7 +22,7 @@ export class ShowStepCard extends Component {
     }
 
     render() {
-        const { id, action, duration, amount, order, directions } = this.props.step
+        const { id, action, duration, amount } = this.props.step
         const { currentStep } = this.props
         console.log('current step and id', currentStep, id)
         return (

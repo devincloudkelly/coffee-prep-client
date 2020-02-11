@@ -8,6 +8,7 @@ import StepViewer from './StepViewer';
 import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import {Container, Segment} from 'semantic-ui-react'
+import EditStepForm from '../components/EditStepForm';
 
 export class NewPreparation extends Component {
 
@@ -33,13 +34,32 @@ export class NewPreparation extends Component {
     }
 
     render() {
+        if (this.props.editingStepId){
+            return (
+                <Container>
+                <PrepForm />
+                <Segment.Group>
+                <StepViewer />
+                <EditStepForm />
+                </Segment.Group>
+                <br />
+                <br />
+                {this.props.editingPrep.steps < 1
+                ? null
+                : <button className='ui button huge' onClick={this.handleNewGuideClick}>Save This Preparation</button> }
+                
+            </Container>
+            )
+        }
         return (
             <Container>
                 <PrepForm />
                 <Segment.Group>
                 <StepViewer />
 
-                {this.props.showSteps 
+                {this.props.editingStepId !== null
+                ? <EditStepForm />
+                : this.props.showSteps 
                 ? this.props.addNewStep || this.props.editingPrep.steps.length < 1
                 ? <StepForm />
                 : null            
@@ -49,7 +69,7 @@ export class NewPreparation extends Component {
                 <br />
                 {this.props.editingPrep.steps < 1
                 ? null
-                : <button className='ui button huge' onClick={this.handleNewGuideClick}>Create New Coffee Guide</button> }
+                : <button className='ui button huge' onClick={this.handleNewGuideClick}>Save This Preparation</button> }
                 
             </Container>
         );
@@ -61,7 +81,8 @@ const mapState = state => {
         addNewStep: state.addNewStep,
         showSteps: state.showSteps,
         editingPrep: state.editingPrep,
-        jwt: state.jwt
+        jwt: state.jwt,
+        editingStepId: state.editingStepId
     }
 }
 
