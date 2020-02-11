@@ -26,6 +26,8 @@ function App() {
           {/* Do not use routes as below, they do not work with Redux because they are 'blocked updates'. The component below is not a 'route component' */}
           {/* <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} /> */}
           <PrivateRoute path='/profile' component={Profile} />
+          {/* The route below is a fallback for entering an incorrect pathname. If you're logged in it will push you back to your profile, or else it will kick you to login */}
+          <PrivateRoute component={Profile}/>
         </Switch>
       </Router>
 
