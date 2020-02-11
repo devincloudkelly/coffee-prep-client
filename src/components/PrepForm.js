@@ -126,6 +126,7 @@ export class PrepForm extends Component {
                             label='Grind'
                             options={this.grindOptions}
                             placeholder='Grind'
+                            value={this.state.coffee_grind}
                             onChange={this.handleSelectInput}
                             />
                     <Form.Field>
