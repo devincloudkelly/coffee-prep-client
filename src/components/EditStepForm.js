@@ -96,7 +96,8 @@ export class EditStepForm extends Component {
                         <textarea type='text' name='directions' value={this.state.directions} onChange={this.handleInput} placeholder='Add directions for this step ex. Pour coffee over grounds and stir.'/>
                         </label>
                     </Form.Field>
-                    <Form.Field control={Button}>Edit Step</Form.Field>                    
+                    <Form.Field control={Button}>Edit Step</Form.Field>
+                                
                 </Form>
             </Segment>
         );
