@@ -8,6 +8,7 @@ import NewPreparation from './containers/NewPreparation';
 import ShowPreparation from './containers/ShowPreparation';
 import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute'
+import Browse from './containers/Browse';
 
 
 // home screen and ShowPreparation is public
@@ -27,6 +28,7 @@ function App() {
           {/* <PrivateRoute path='/profile' render={(props) => <Profile {...props}/>} /> */}
           <PrivateRoute path='/profile' component={Profile} />
           {/* The route below is a fallback for entering an incorrect pathname. If you're logged in it will push you back to your profile, or else it will kick you to login */}
+          <Route path='/browse' component={Browse} />
           <PrivateRoute component={Profile}/>
         </Switch>
       </Router>

@@ -21,7 +21,8 @@ const initialState = {
     editingStepId: null, 
     editingStep: {
 
-    }
+    },
+    browser: []
 }
 
 const reducer = (state={initialState}, action) => {
@@ -60,7 +61,8 @@ const reducer = (state={initialState}, action) => {
                 currentStep: {},
                 editingId: null,
                 editingStepId: null,
-                editingStep: {}
+                editingStep: {},
+                browser: []
             }
         case 'TOGGLE_STEP_TO_PREP':
             console.log('toggling step in reducer...')
@@ -215,6 +217,12 @@ const reducer = (state={initialState}, action) => {
                     ]
                 }
             } 
+        case 'ADD_PREPS_TO_BROWSER':
+            console.log('adding preps to browser in reducer...', action.preps)
+            return {
+                ...state,
+                browser: [...action.preps]
+            }
         default:
             console.log('hitting default case statement..')
             return state

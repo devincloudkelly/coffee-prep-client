@@ -157,5 +157,11 @@ class CoffeeAction {
             step: step
         }
     }
+    static addPrepsToBrowser = preps => {
+        return {
+            type: 'ADD_PREPS_TO_BROWSER',
+            preps: preps
+        }
+    }
 }
 export default CoffeeAction;

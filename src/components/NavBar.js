@@ -42,6 +42,12 @@ export class NavBar extends Component {
                     active={activeItem === 'new prep'}
                     />
                 </Link>
+                <Link to='/browse'>
+                    <Menu.Item 
+                    name='browse'
+                    active={activeItem === 'browse'}
+                    />
+                </Link>
                 <Menu.Menu position='right'>
                 <Link to='/'><Menu.Item
                     name='logout'
