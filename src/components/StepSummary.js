@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {Segment, Divider} from 'semantic-ui-react'
 
 export class StepSummary extends Component {
@@ -12,11 +11,5 @@ export class StepSummary extends Component {
         );
     }
 }
-
-// const mapState = state => {
-//     return {
-//         currentStep: state.currentStep
-//     }
-// }
 
 export default StepSummary;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import {Icon, Card, Button} from 'semantic-ui-react'
 
 export class NewPrepCard extends Component {

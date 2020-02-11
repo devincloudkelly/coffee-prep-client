@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Card, Progress } from 'semantic-ui-react'
+import { Icon, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 export class ShowStepCard extends Component {

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {withRouter, Redirect} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import PrepForm from '../components/PrepForm';
 import StepForm from '../components/StepForm';
-import NewStepCard from '../components/NewStepCard';
 import StepViewer from './StepViewer';
 import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
@@ -15,7 +14,7 @@ export class NewPreparation extends Component {
     computeTotalTime = () => {
         let totalTime = 0
         this.props.editingPrep.steps.map(step => {
-            totalTime += step.duration
+             totalTime += step.duration
         })
         return totalTime
     }

@@ -3,14 +3,9 @@ import Login from '../components/Login'
 import Signup from '../components/Signup';
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Grid, Container, Segment, Image} from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
 
 const background = 'https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-const style = {
-    backgroundImage: `url(${background})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover'
-}
 
 class HomeScreen extends Component {
     state={

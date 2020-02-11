@@ -41,7 +41,6 @@ export class StepCard extends Component {
     }
 
     handleEdit = step => {
-        const jwt = this.props.jwt
         console.log('editing step...', step)
         this.props.addEditingStepId(step.id)
         this.props.addEditingStep(step)

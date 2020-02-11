@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Timer from 'react-compound-timer'
-import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
-import {Segment, Button, Statistic} from 'semantic-ui-react'
+import { Segment, Button } from 'semantic-ui-react'
 
 export class BrewTimer extends Component {
 

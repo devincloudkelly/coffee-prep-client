@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect, Link} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import CoffeeAction from '../action/coffeeAction';
 import { connect } from 'react-redux';
 import Adapter from '../services/Adapter';
@@ -45,13 +45,10 @@ export class PrepCard extends Component {
         switch (device) {
             case 'aeropress':
                 return 'Aeropress'
-                break;
             case 'chemex':
                 return 'Chemex'
-                break;
             case 'pourover':
                 return 'Pour over'
-                break;
             default:
                 break;
         }
