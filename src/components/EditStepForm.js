@@ -67,7 +67,6 @@ export class EditStepForm extends Component {
     
     
     render() {
-        console.log('state of editstep form on render...', this.state)
         return (
             <Segment>
                 <Form onSubmit={this.handleSubmit}>

@@ -6,7 +6,6 @@ import { Container, Label } from 'semantic-ui-react';
 
 const Profile = (props) => {
 
-console.log(props)
         return (
             <Container inverted>
                 <Label color='teal' image>
