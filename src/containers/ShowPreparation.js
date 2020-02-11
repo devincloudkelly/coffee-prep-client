@@ -6,7 +6,7 @@ import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
 import { StepSummary } from '../components/StepSummary';
-import { Container, Message, Dimmer, Loader, Segment, Divider} from 'semantic-ui-react'
+import { Container, Message, Dimmer, Loader, Segment, Divider, Button, Grid} from 'semantic-ui-react'
 
 
 export class ShowPreparation extends Component {
@@ -75,6 +75,15 @@ export class ShowPreparation extends Component {
         this.props.updateCurrentStep(currentPrep.steps[0])
     }
 
+    handleAddSteps = () => {
+        const prep = this.props.currentPrep
+        console.log('editing prep from showpage...', prep)
+        // this.props.updateEditingPrep(prep)
+        this.props.updateEditingPrep(prep)
+        this.props.addEditingId(prep.id)
+        this.props.history.push('/preparations/new')
+    }
+
     // conditional rendering. Shows loading spinner if loading, shows note if there are no steps, and loads properly otherwise.
     render() {
         console.log('props in ShowPrep container...', this.props)
@@ -95,12 +104,26 @@ export class ShowPreparation extends Component {
                     <Segment inverted>
                     <Divider horizontal inverted color='grey'>Steps</Divider>
                     <br/>
-                        <Message inverted>
-                    <Message.Header inverted>
-                        This Coffee Prep is Missing Steps
-                    </Message.Header>
-                        You need to add steps to this coffee prep in order to enable this brew dashboard.
-                    </Message>
+                        <Message attached inverted>
+                            <Grid stackable columns={2}>
+                                <Grid.Column width={12}>
+
+                            <Message.Content >
+                            <Message.Header inverted>
+                                This Coffee Prep is Missing Steps
+                            </Message.Header>
+                                You need to add steps to this coffee prep in order to enable this brew dashboard.
+                            </Message.Content>
+                                </Grid.Column>
+                                <Grid.Column textAlign='center' width={4}>
+
+                            <Message.Content>
+                            <Button onClick={this.handleAddSteps}>Add Steps</Button>
+
+                            </Message.Content>
+                                </Grid.Column>
+                            </Grid>
+                        </Message>
                     <br/>
                         </Segment>
                 </Segment.Group>
@@ -142,7 +165,9 @@ const mapState = state => {
 const mapDispatch = dispatch => {
     return {
         updateCurrentPrep: prep => dispatch(CoffeeAction.updateCurrentPrep(prep)),
-        updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
+        updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step)),
+        updateEditingPrep: prep => dispatch(CoffeeAction.updateEditingPrep(prep)),
+        addEditingId: id => dispatch(CoffeeAction.addEditingId(id))
     }
 }
 
