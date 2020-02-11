@@ -40,8 +40,8 @@ class HomeScreen extends Component {
 
             <Grid stackable columns={2}>
                 {/* <Image src='https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'/> */}
-                <Grid.Column textAlign='center' width={11}>
-                    <Segment inverted>
+                <Grid.Column className='home-screen-title-column' textAlign='center' width={11}>
+                    <Segment className='home-title-segment' inverted>
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
 
                     </Segment>

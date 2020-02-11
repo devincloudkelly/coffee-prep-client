@@ -38,9 +38,11 @@
 }
 
 .brewTimer {
-  font-size: 6.3em;
+  font-size: 6.3rem;
 }
 
 .home-screen-title{
   font-size: 6vw;
+  /* background: rgba(90, 90, 90, 0); */
+  /* opacity: 1; */
 }
