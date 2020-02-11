@@ -10,7 +10,9 @@ import { Container, Message, Dimmer, Loader, Segment, Divider, Button, Grid} fro
 
 
 export class ShowPreparation extends Component {
-    state = {}
+    state = {
+        isStarted: false
+    }
 
     // once component mounts, fetch this prep and nested steps and update currentPrep in store
     componentDidMount() {
@@ -67,9 +69,13 @@ export class ShowPreparation extends Component {
     }
 
     // this callback function is called when the reset button on the timer is pressed. Resets the timer, steps and step directions
-    rerenderPage = ()=> {
+    handleReset = ()=> {
         console.log('forcing update from show prep page...')
         const currentPrep = this.props.currentPrep
+        this.setState({
+            ...this.state,
+            isStarted: false
+        })
         this.forceUpdate()
         // also need to reset the steps to the first step, aka currentPrep.steps[0]
         this.props.updateCurrentStep(currentPrep.steps[0])
@@ -84,6 +90,21 @@ export class ShowPreparation extends Component {
         this.props.history.push('/preparations/new')
     }
 
+    handleStartPrep = () => {
+        console.log('starting brew...')
+        this.setState({
+            ...this.state,
+            isStarted: true
+        })
+    }
+
+    handlePause = ()=> {
+        console.log('pausing brew...')
+        this.setState({
+            ...this.state,
+            isStarted: false
+        })
+    }
     // conditional rendering. Shows loading spinner if loading, shows note if there are no steps, and loads properly otherwise.
     render() {
         console.log('props in ShowPrep container...', this.props)
@@ -94,7 +115,7 @@ export class ShowPreparation extends Component {
             </Dimmer>
           </Container>
         }
-        if (this.state.steps.length < 1){
+        if (!this.state.steps || this.state.steps.length < 1){
             console.log('prep is in show state, but steps length is less than one...')
             return (
             <Container>
@@ -136,8 +157,13 @@ export class ShowPreparation extends Component {
 
             {console.log('these are the steps and state in the final if statement..', steps, this.state.steps)}
             {console.log('prep is in show state and steps length is greater than 1')}
-                <PrepSpecs prep={this.props.currentPrep}/>
-                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()} reset={this.rerenderPage}/>
+                {this.state.isStarted
+                ? <Segment inverted>
+                    <Divider horizontal inverted>Specs hidden during brew. Press Pause to View.</Divider>
+                </Segment>
+                : <PrepSpecs prep={this.props.currentPrep}/>
+                }
+                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()} reset={this.handleReset} start={this.handleStartPrep} pause={this.handlePause}/>
                 <StepSummary currentStep={this.props.currentStep}/>
                 
                 <Segment inverted>

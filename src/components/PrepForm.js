@@ -18,7 +18,7 @@ export class PrepForm extends Component {
         coffee_grind: '',
         total_time: 0,
         total_water: 0,
-        water_temp: 0,
+        water_temp: 200,
         notes: ''
     }
     grindOptions = [
@@ -117,7 +117,7 @@ export class PrepForm extends Component {
                     </Form.Field>
                     <Form.Group widths='equal'>
                         <Form.Field>
-                            <label>Amount (g)</label>
+                            <label>Coffee Amount (g)</label>
                                 <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
                         </Form.Field>
                         <Form.Select 
@@ -128,20 +128,20 @@ export class PrepForm extends Component {
                             placeholder='Grind'
                             onChange={this.handleSelectInput}
                             />
-                    </Form.Group>
-
-                    <h3>Water: </h3>
-                    <Form.Group widths='equal'>
-
-                    <Form.Field>
-                        <label>Total Water (ml)</label>
-                        <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
-                    </Form.Field>
                     <Form.Field>
                         <label>Water Temp (F)</label>
                         <input type='number' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
                     </Form.Field>
                     </Form.Group>
+
+                    {/* <h3>Water: </h3> */}
+                    {/* <Form.Group widths='equal'> */}
+
+                    {/* <Form.Field>
+                        <label>Total Water (ml)</label>
+                        <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
+                    </Form.Field> */}
+                    {/* </Form.Group> */}
                     <h3>Notes: </h3>
                     <Form.Field>
                         <label></label>

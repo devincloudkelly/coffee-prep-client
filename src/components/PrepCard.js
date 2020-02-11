@@ -58,7 +58,7 @@ export class PrepCard extends Component {
     }
     
     render() {
-        console.log('prep in prep card', this.props.prep)
+        // console.log('prep in prep card', this.props.prep)
         const { id, device, coffee_brand, coffee_name, notes, coffee_amount, coffee_grind } = this.props.prep
         const prep = this.props.prep
         // if (this.state.isEditing === true ){

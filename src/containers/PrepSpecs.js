@@ -3,16 +3,16 @@ import { withRouter } from 'react-router-dom'
 import { Statistic, Segment, Divider } from 'semantic-ui-react'
 
 export class PrepSpecs extends Component {
+
     render() {
         console.log('current Prep in prepSpecs...', this.props)
         const { device, coffee_brand, coffee_name, coffee_amount, coffee_grind, total_water, total_time, water_temp, notes} = this.props.prep
         return (
-            // <Segment.Group>
             <>
             <Segment inverted >
                 <p style={{textAlign: 'center'}}>Prepare your coffee and brew station according to the specs below. Once ready, start the timer</p>
                 <br/>
-                <Statistic.Group inverted stackable color='grey' widths='three' size='tiny'>
+                <Statistic.Group inverted color='grey' widths={2} size='tiny'>
                     <Statistic>
                         <Statistic.Value>{device}</Statistic.Value>
                         <Statistic.Label>method</Statistic.Label>
@@ -45,7 +45,6 @@ export class PrepSpecs extends Component {
                 <br/>
                 <Divider/>
             </Segment>
-            {/* </Segment.Group> */}
             </>
         );
     }

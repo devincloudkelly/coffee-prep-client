@@ -17,6 +17,15 @@ export class BrewTimer extends Component {
         this.props.reset()
     }
 
+    handleStart = () => {
+        console.log('handling start...')
+        this.props.start()
+    }
+    handlePause = () => {
+        console.log('handling pause...')
+        this.props.pause()
+    }
+
     render() {
         return (
             <Segment inverted>
@@ -28,11 +37,13 @@ export class BrewTimer extends Component {
                     formatValue={(value) => `${(value < 10 ? `0${value}` : value)}`}
                     checkpoints={this.props.checkpoints}
                     onReset={this.handleReset}
+                    onStart={this.handleStart}
+                    onPause={this.handlePause}
                     >
                          {({start, pause, reset}) => (
                              <div>
 
-                             <h1 className='brewTimer'><Timer.Minutes/> : <Timer.Seconds/> : <Timer.Milliseconds/></h1>
+                             <h1 className='brewTimer'><Timer.Minutes/> : <Timer.Seconds/></h1>
                        
                             <br/>
                             <Button.Group >
