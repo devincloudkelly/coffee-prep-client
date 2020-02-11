@@ -20,7 +20,9 @@ export class NavBar extends Component {
         console.log('handling profile click')
     }
 
-
+    // handleBrowse() {
+    //     console.log('fetching preps from navbar link...')
+    // }
 
     render() {
         if (!this.props.loggedIn){
@@ -46,6 +48,7 @@ export class NavBar extends Component {
                     <Menu.Item 
                     name='browse'
                     active={activeItem === 'browse'}
+                    // onClick={this.handleBrowse}
                     />
                 </Link>
                 <Menu.Menu position='right'>

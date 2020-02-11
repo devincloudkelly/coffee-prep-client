@@ -177,7 +177,7 @@ class Adapter {
     }
 
     static fetchAllPreps = jwt => {
-        console.log('editing prep in adapter... here is what I am passing in...', jwt)
+        console.log('fetching all preps in Adapter... here is what I am passing in...', jwt)
         return fetch(PREPARATION, {
             method: 'GET',
             headers: {
