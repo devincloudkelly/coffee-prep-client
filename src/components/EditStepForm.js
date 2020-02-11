@@ -76,6 +76,7 @@ export class EditStepForm extends Component {
                     <Form.Select 
                         label='Action'
                         options={this.stepOptions}
+                        value={this.state.action}
                         placeholder='Action'
                         onChange={this.handleSelectInput}
                         />
