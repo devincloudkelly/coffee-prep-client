@@ -56,6 +56,15 @@ export class EditStepForm extends Component {
             ...this.props.editingStep
         })
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.id !== this.props.editingStep.id){
+            this.setState({
+                ...this.props.editingStep 
+            })
+        }
+    }
+    
     
     render() {
         console.log('state of editstep form on render...', this.state)
