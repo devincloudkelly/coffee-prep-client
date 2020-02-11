@@ -37,7 +37,7 @@ export class ShowStepCard extends Component {
                         <Icon name='tint'/>{amount}ml
                     </Card.Description>
                     </Card.Content>
-                    <Progress percent={45} color='green' size='medium'/>
+                    {/* <Progress percent={45} color='green' size='medium'/> */}
                 </Card>
                 : 
                 <Card color='grey' style={normalStyle}>

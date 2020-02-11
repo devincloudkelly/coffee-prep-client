@@ -112,8 +112,10 @@ export class ShowPreparation extends Component {
                     <div className='ui four stackable cards'>
                 {this.renderSteps()}
                 </div>
+                <br/>
                     </Segment>
                 </Segment.Group>
+
             </Container>
         );
     }
