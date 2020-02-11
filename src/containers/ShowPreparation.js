@@ -66,6 +66,7 @@ export class ShowPreparation extends Component {
         }
     }
 
+    // this callback function is called when the reset button on the timer is pressed. Resets the timer, steps and step directions
     rerenderPage = ()=> {
         console.log('forcing update from show prep page...')
         const currentPrep = this.props.currentPrep
@@ -74,6 +75,7 @@ export class ShowPreparation extends Component {
         this.props.updateCurrentStep(currentPrep.steps[0])
     }
 
+    // conditional rendering. Shows loading spinner if loading, shows note if there are no steps, and loads properly otherwise.
     render() {
         console.log('props in ShowPrep container...', this.props)
         if (Object.keys(this.state).length === 0){
