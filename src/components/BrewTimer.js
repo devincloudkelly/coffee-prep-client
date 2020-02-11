@@ -12,6 +12,11 @@ export class BrewTimer extends Component {
         // this.updateCurrentStep(step)
     }
 
+    handleReset = () => {
+        console.log('handling resest...')
+        this.props.reset()
+    }
+
     render() {
         return (
             <Segment inverted>
@@ -22,6 +27,7 @@ export class BrewTimer extends Component {
                     startImmediately={false} 
                     formatValue={(value) => `${(value < 10 ? `0${value}` : value)}`}
                     checkpoints={this.props.checkpoints}
+                    onReset={this.handleReset}
                     >
                          {({start, pause, reset}) => (
                              <div>

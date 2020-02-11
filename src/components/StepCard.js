@@ -6,6 +6,23 @@ import CoffeeAction from '../action/coffeeAction';
 
 export class StepCard extends Component {
 
+    renderStepAction = (action) => {
+        switch (action) {
+            case 'bloom':
+                return 'Bloom'
+            case 'pour':
+                return 'Pour'
+            case 'stir':
+                return 'Stir'
+            case 'wait':
+                return 'Wait'
+            case 'press':
+                return 'Press'
+            default:
+                break;
+        }
+    }
+
     handleDelete = (step) => {
         const jwt = this.props.jwt
         console.log('deleting step...', step)
@@ -38,7 +55,7 @@ export class StepCard extends Component {
             <Card raised >
                     <Card.Content >
                 <Card.Header>
-                    <h2>{action}</h2>
+                    <h2>{this.renderStepAction(action)}</h2>
                     </Card.Header>
                     <Card.Meta>
                         <Icon name='clock'/> {duration} seconds 

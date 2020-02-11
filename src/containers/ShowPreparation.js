@@ -66,6 +66,14 @@ export class ShowPreparation extends Component {
         }
     }
 
+    rerenderPage = ()=> {
+        console.log('forcing update from show prep page...')
+        const currentPrep = this.props.currentPrep
+        this.forceUpdate()
+        // also need to reset the steps to the first step, aka currentPrep.steps[0]
+        this.props.updateCurrentStep(currentPrep.steps[0])
+    }
+
     render() {
         console.log('props in ShowPrep container...', this.props)
         if (Object.keys(this.state).length === 0){
@@ -104,7 +112,7 @@ export class ShowPreparation extends Component {
             {console.log('these are the steps and state in the final if statement..', steps, this.state.steps)}
             {console.log('prep is in show state and steps length is greater than 1')}
                 <PrepSpecs prep={this.props.currentPrep}/>
-                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()}/>
+                <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()} reset={this.rerenderPage}/>
                 <StepSummary currentStep={this.props.currentStep}/>
                 
                 <Segment inverted>
