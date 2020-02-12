@@ -3,7 +3,7 @@ import Login from '../components/Login'
 import Signup from '../components/Signup';
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment, Container, Divider } from 'semantic-ui-react'
 
 const background = 'https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
 
@@ -26,32 +26,41 @@ class HomeScreen extends Component {
         //     return <Redirect to='/profile'/>
         // }
         return (
-            <div style={{
-                backgroundImage: `url(${background})`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                height: '100vh'
-            }}>
-
-            <Grid stackable columns={2}>
+            <Container >
+            <Segment inverted>            
+            <Grid stackable columns={2} >
                 {/* <Image src='https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'/> */}
-                <Grid.Column className='home-screen-title-column' textAlign='center' width={11}>
-                    <Segment className='home-title-segment' inverted>
+                <Grid.Column className='home-screen-title-column' textAlign='center' width={11} style={{
+                    backgroundImage: `url(${background})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    height: '80vh'
+                }}>
+                    {/* <Segment className='home-title-segment' inverted> */}
+                {/* <div style={{
+                    backgroundImage: `url(${background})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    height: '80vh'
+                }}> */}
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
-
-                    </Segment>
+                <br/><br/><br/><br/><br/><br/>
+                <h2>adsf ;lkajsdf l;aksjdfl kasdjf;lk asdlfkjalsdkjf lasjdf ;lkjasdf lakjf ljasd flkajsdf ajksd f;ljkas flkjasf l;asj flj lkj</h2>
+                    {/* </div> */}
+                    {/* </Segment> */}
                 </Grid.Column>
                 <Grid.Column  width={5}>
-                <Segment inverted>
+                {/* <Segment inverted> */}
                 {this.state.logIn
                 ? <Login toggleSignIn={this.toggleSignIn}/>
                 : <Signup toggleSignIn={this.toggleSignIn}/>
                 }
-                </Segment>
+                {/* </Segment> */}
                 </Grid.Column>
      
             </Grid>
-            </div>
+            </Segment>
+            </Container>
         );
     }
 }
