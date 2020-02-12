@@ -24,7 +24,7 @@ export class Signup extends Component {
     handleSignup = (e) => {
         e.preventDefault()
         Fetch.signup(this.state.name, this.state.email_address, this.state.password)
-        // .then(console.log)
+        .then(console.log)
         .then(data => {
             const preps = [];
             localStorage.setItem('jwt', data.jwt);
