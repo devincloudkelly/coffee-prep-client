@@ -30,7 +30,10 @@ export class NavBar extends Component {
         }
             const { activeItem } = this.state
             return (
-                <Menu secondary>
+                <Menu pointing secondary size='large' style={{backgroundColor: '#f5f1e7', alignItems: 'center'}}>
+                    <Menu.Item>
+                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-logo.gif')} style={{width: '15rem'}}/>
+                    </Menu.Item>
                 <Link to='/profile'>
                 <Menu.Item 
                     name='profile'
@@ -42,13 +45,14 @@ export class NavBar extends Component {
                     <Menu.Item
                     name='new prep'
                     active={activeItem === 'new prep'}
+                    onClick={this.handleItemClick}
                     />
                 </Link>
                 <Link to='/browse'>
                     <Menu.Item 
                     name='browse'
                     active={activeItem === 'browse'}
-                    // onClick={this.handleBrowse}
+                    onClick={this.handleItemClick}
                     />
                 </Link>
                 <Menu.Menu position='right'>
