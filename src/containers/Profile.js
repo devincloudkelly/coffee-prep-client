@@ -8,10 +8,11 @@ const Profile = (props) => {
 
         return (
             <Container inverted>
-                <Label color='yellow' image>
+                <Label color='yellow' image style={{marginBottom: '12px', marginTop: '8px'}}>
                 Welcome back 
                 <Label.Detail>{props.name}</Label.Detail>
                 </Label>
+                
                 <PrepViewer />
             </Container>
         );

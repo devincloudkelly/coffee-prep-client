@@ -21,8 +21,9 @@ export class PrepBrowser extends Component {
             return (
                 <div>
                 <Container >
+                    <br/>
                     <Divider horizontal>
-                    <Icon className="coffee icon"/> Browse All Coffee Preparations
+                    Browse All Coffee Preparations
                     </Divider>
                     <br/>
                     <div className='ui four stackable cards'>

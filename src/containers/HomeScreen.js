@@ -45,7 +45,7 @@ class HomeScreen extends Component {
                 }}> */}
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
                 <br/><br/><br/><br/><br/><br/>
-                <h2>adsf ;lkajsdf l;aksjdfl kasdjf;lk asdlfkjalsdkjf lasjdf ;lkjasdf lakjf ljasd flkajsdf ajksd f;ljkas flkjasf l;asj flj lkj</h2>
+                <h2>Coffee Mentor allows you to save your favorite coffee preparations, share them with friends, and learn from other </h2>
                     {/* </div> */}
                     {/* </Segment> */}
                 </Grid.Column>
