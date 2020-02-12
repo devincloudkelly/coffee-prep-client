@@ -31,9 +31,15 @@ export class NavBar extends Component {
             const { activeItem } = this.state
             return (
                 <Menu pointing secondary stackable inverted size='large' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
-                    <Menu.Item>
+                <Link to='/profile'>
+                    <Menu.Item
+                        name='profile'
+                        active={activeItem === 'logo'}
+                        onClick={this.handleItemClick}
+                        >
                         <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-press-red-logo-white-text.gif')} style={{width: '13rem'}}/>
                     </Menu.Item>
+                        </Link>
                 <Link to='/profile'>
                 <Menu.Item 
                     name='profile'
