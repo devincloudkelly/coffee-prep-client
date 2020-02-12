@@ -17,8 +17,8 @@ export class Footer extends Component {
             //     </Grid.Row>
             //     </Grid>
             // </Menu>
-            <Segment basic textAlign='center' padded style={{marginTop: '80px'}}>
-            <Menu className='ui bottom fixed menu' inverted textAlign='center' widths={3} style={{backgroundColor: '#364652'}}>
+            <Segment basic textAlign='center' padded >
+            <Menu inverted textAlign='center' widths={3} style={{backgroundColor: '#364652'}}>
                 {/* <Grid.Row> */}
                 <Segment.Group>
 

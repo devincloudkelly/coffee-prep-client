@@ -19,14 +19,8 @@ class HomeScreen extends Component {
     }
     
     render() {
-        const{ location, match, history } = this.props
-        console.log('location, match and history in home screen..', location, match, history)
-        console.log(this.props)
-        // if (localStorage.getItem('jwt')) {
-        //     return <Redirect to='/profile'/>
-        // }
         return (
-            <Container >
+            <Container style={{marginTop: '20px'}}>
             <Segment inverted>            
             <Grid stackable columns={2} >
                 {/* <Image src='https://images.pexels.com/photos/1235717/pexels-photo-1235717.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'/> */}
@@ -36,28 +30,16 @@ class HomeScreen extends Component {
                     backgroundSize: 'cover',
                     height: '80vh'
                 }}>
-                    {/* <Segment className='home-title-segment' inverted> */}
-                {/* <div style={{
-                    backgroundImage: `url(${background})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    height: '80vh'
-                }}> */}
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
-                <br/><br/><br/><br/><br/><br/>
-                <h2>Coffee Mentor allows you to save your favorite coffee preparations, share them with friends, and learn from other </h2>
-                    {/* </div> */}
-                    {/* </Segment> */}
+                <br/><br/><br/><br/>
+                <h2 className='home-screen-snippet'>Coffee Mentor allows you to save your favorite coffee preparations, share them with friends, and learn from the best coffee enthusiasts around the world. Learn, share and start brewing your best!</h2>
                 </Grid.Column>
                 <Grid.Column  width={5}>
-                {/* <Segment inverted> */}
                 {this.state.logIn
                 ? <Login toggleSignIn={this.toggleSignIn}/>
                 : <Signup toggleSignIn={this.toggleSignIn}/>
                 }
-                {/* </Segment> */}
-                </Grid.Column>
-     
+                </Grid.Column>     
             </Grid>
             </Segment>
             </Container>
