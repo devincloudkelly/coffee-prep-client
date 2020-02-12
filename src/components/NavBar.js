@@ -30,9 +30,9 @@ export class NavBar extends Component {
         }
             const { activeItem } = this.state
             return (
-                <Menu pointing secondary size='large' style={{backgroundColor: '#f5f1e7', alignItems: 'center'}}>
+                <Menu pointing secondary size='large' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
                     <Menu.Item>
-                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-logo.gif')} style={{width: '16rem'}}/>
+                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-press-red-logo.gif')} style={{width: '14rem'}}/>
                     </Menu.Item>
                 <Link to='/profile'>
                 <Menu.Item 

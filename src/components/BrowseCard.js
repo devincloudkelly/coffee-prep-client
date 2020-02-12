@@ -44,8 +44,8 @@ export class BrowseCard extends Component {
                     </Card.Description>
                 <Card.Description>{notes}</Card.Description>               
                 </Card.Content>
-                <Button.Group size='tiny' attached-bottom>
-                    <Button className='ui button' onClick={() => this.handleClick(id)}>View</Button>
+                <Button.Group size='tiny'  attached-bottom >
+                    <Button className='ui button' inverted style={{backgroundColor: '#364652'}} onClick={() => this.handleClick(id)}>View</Button>
                 </Button.Group >
             </Card>
         );

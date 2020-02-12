@@ -10,7 +10,7 @@ export class StepForm extends Component {
     state = {
         id: null,
         action: '',
-        duration: null,
+        duration: 0,
         amount: null,
         order: null,
         directions: ''

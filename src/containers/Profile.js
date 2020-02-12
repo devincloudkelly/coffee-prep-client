@@ -8,7 +8,7 @@ const Profile = (props) => {
 
         return (
             <Container inverted>
-                <Label color='teal' image>
+                <Label color='yellow' image>
                 Welcome back 
                 <Label.Detail>{props.name}</Label.Detail>
                 </Label>

@@ -28,7 +28,7 @@ export class ShowStepCard extends Component {
         return (
                 (currentStep.id === id 
                 ?
-                <Card fluid color='grey' style={currentStyle}>
+                <Card fluid style={currentStyle}>
 
                     <Card.Content >
                     <Card.Header>{this.renderStepAction(action)}</Card.Header>
