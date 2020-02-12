@@ -64,9 +64,9 @@ export class Login extends Component {
                         <input type='password' name='password' placeholder='password' onChange={e => this.handleInput(e)}/>
                     </label>
                     </Form.Field>
-                    <Form.Field control={Button}>
-                    Log In
-                    {/* <Button type='submit' value='Log In'></Button> */}
+                    <Form.Field >
+                    {/* Log In */}
+                    <Button type='submit' value='Log In'>Log In</Button>
                     </Form.Field>
                 </Form>
                 <br/>

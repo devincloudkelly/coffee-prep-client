@@ -37,8 +37,8 @@ class HomeScreen extends Component {
                     height: '80vh'
                 }}>
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
-                <br/><br/><br/><br/>
-                <h2 className='home-screen-snippet'>Coffee Mentor allows you to save your favorite coffee preparations, share them with friends, and learn from the best coffee enthusiasts around the world. Learn, share and start brewing your best!</h2>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <h3 className='home-screen-snippet' style={{backgroundColor: 'rgba(26,28,29,0.7)'}}>Coffee Mentor allows you to save your favorite coffee preparations, share them with friends, and learn from the best coffee enthusiasts around the world. Learn, share and start brewing your best!</h3>
                 </Grid.Column>
             </Grid>
             </Segment>
