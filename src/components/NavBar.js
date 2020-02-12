@@ -32,7 +32,7 @@ export class NavBar extends Component {
             return (
                 <Menu pointing secondary size='large' style={{backgroundColor: '#f5f1e7', alignItems: 'center'}}>
                     <Menu.Item>
-                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-logo.gif')} style={{width: '15rem'}}/>
+                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-logo.gif')} style={{width: '16rem'}}/>
                     </Menu.Item>
                 <Link to='/profile'>
                 <Menu.Item 

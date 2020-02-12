@@ -9,6 +9,7 @@ import ShowPreparation from './containers/ShowPreparation';
 import NavBar from './components/NavBar';
 import PrivateRoute from './components/PrivateRoute'
 import Browse from './containers/Browse';
+import Footer from './components/Footer';
 
 
 // home screen and ShowPreparation is public
@@ -31,6 +32,7 @@ function App() {
           <Route path='/browse' component={Browse} />
           <PrivateRoute component={Profile}/>
         </Switch>
+        <Footer/>
       </Router>
 
   );
