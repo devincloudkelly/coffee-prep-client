@@ -11,7 +11,7 @@ export class StepForm extends Component {
         id: null,
         action: '',
         duration: 0,
-        amount: null,
+        amount: 0,
         order: null,
         directions: ''
     }
