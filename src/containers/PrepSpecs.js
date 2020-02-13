@@ -19,7 +19,8 @@ export class PrepSpecs extends Component {
                     </Statistic>
                     <Statistic>
                         <Statistic.Value>{coffee_amount}g</Statistic.Value>
-                        <Statistic.Label>{coffee_brand} {coffee_name}</Statistic.Label>
+                        <Statistic.Label>{coffee_brand}</Statistic.Label>
+                        <Statistic.Label>{coffee_name}</Statistic.Label>
                     </Statistic>
                     <Statistic>
                         <Statistic.Value>{coffee_grind}</Statistic.Value>
