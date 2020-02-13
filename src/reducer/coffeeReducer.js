@@ -41,7 +41,7 @@ const reducer = (state={initialState}, action) => {
             }
         case 'LOG_OUT':
             console.log('logging out in reducer')
-            return {...state,
+            return {
                 loggedIn: false,
                 jwt: '',
                 user: {
@@ -222,6 +222,14 @@ const reducer = (state={initialState}, action) => {
             return {
                 ...state,
                 browser: [...action.preps]
+            }
+        case 'REMOVE_EDITING_PREP':
+            console.log('removing editing prep in reducer...')
+            return {
+                ...state,
+                editingPrep: {
+                    steps: []
+                }
             }
         default:
             console.log('hitting default case statement..')

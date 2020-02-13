@@ -163,5 +163,11 @@ class CoffeeAction {
             preps: preps
         }
     }
+    static removeEditingPrep = () => {
+        return {
+            type: 'REMOVE_EDITING_PREP',
+            payload: 'removing editing prep from store.'
+        }
+    }
 }
 export default CoffeeAction;

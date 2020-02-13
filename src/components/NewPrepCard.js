@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import {Icon, Card, Button} from 'semantic-ui-react'
+import CoffeeAction from '../action/coffeeAction';
+import { connect } from 'react-redux';
 
 export class NewPrepCard extends Component {
 
     handleClick = () => {
+        this.props.removeEditingPrep()
         this.props.history.push('/preparations/new')
     }
 
@@ -26,4 +29,10 @@ export class NewPrepCard extends Component {
     }
 }
 
-export default withRouter(NewPrepCard);
+const mapDispatch = dispatch => {
+    return {
+        removeEditingPrep: () => dispatch(CoffeeAction.removeEditingPrep())
+    }
+}
+
+export default withRouter(connect(null, mapDispatch)(NewPrepCard));

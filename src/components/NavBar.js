@@ -25,6 +25,11 @@ export class NavBar extends Component {
         this.setState({ visible: !this.state.visible})
     }
 
+    handleNewPrep = (e, {name}) => {
+        this.handleItemClick(e, {name})
+        this.props.removeEditingPrep()
+    }
+
     render() {
         if (!this.props.loggedIn){
             return <div>
@@ -65,7 +70,7 @@ export class NavBar extends Component {
                     <Menu.Item
                     name='new prep'
                     active={activeItem === 'new prep'}
-                    onClick={this.handleItemClick}
+                    onClick={this.handleNewPrep}
                     />
                 </Link>
                 <Link to='/browse'>
@@ -98,7 +103,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
     return {
-        logOut: () => dispatch(CoffeeAction.logOut())
+        logOut: () => dispatch(CoffeeAction.logOut()),
+        removeEditingPrep: () => dispatch(CoffeeAction.removeEditingPrep())
     }
 }
 
