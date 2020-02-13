@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import CoffeeAction from '../action/coffeeAction'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Responsive } from 'semantic-ui-react'
 
 export class NavBar extends Component {
     state = {
-        activeItem: ''
+        activeItem: '',
+        visible: false
     }
 
     handleItemClick = (e, {name}) => this.setState({ activeItem: name})
@@ -20,9 +21,9 @@ export class NavBar extends Component {
         console.log('handling profile click')
     }
 
-    // handleBrowse() {
-    //     console.log('fetching preps from navbar link...')
-    // }
+    handleMobileClick = () => {
+        this.setState({ visible: !this.state.visible})
+    }
 
     render() {
         if (!this.props.loggedIn){
@@ -40,9 +41,54 @@ export class NavBar extends Component {
                         </Menu>
             </div>
         }
-            const { activeItem } = this.state
+            const { activeItem, visible } = this.state
             return (
-                <Menu pointing secondary stackable inverted size='large' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
+                <>
+                {/* <Responsive {...Responsive.onlyMobile}>
+                <Menu secondary inverted style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
+                    <Menu.Item
+                        name='profile'
+                        active={activeItem === 'logo'}
+                        onClick={this.handleMobileClick}
+                        >
+                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-press-red-logo-white-text.gif')} style={{width: '13rem'}}/>
+                    </Menu.Item>
+                    <Link to='/profile'>
+                <Menu.Item 
+                    name='profile'
+                    active={activeItem === 'profile'}
+                    onClick={this.handleItemClick}
+                    visible={visible}
+                />
+                </Link>
+                <Link to='/preparations/new'>
+                    <Menu.Item
+                    name='new prep'
+                    active={activeItem === 'new prep'}
+                    onClick={this.handleItemClick}
+                    visible={this.state.visible}
+                    />
+                </Link>
+                <Link to='/browse'>
+                    <Menu.Item 
+                    name='browse'
+                    active={activeItem === 'browse'}
+                    onClick={this.handleItemClick}
+                    visible={this.state.visible}
+                    />
+                </Link>
+                <Menu.Menu position='right'>
+                <Link to='/'><Menu.Item
+                    name='logout'
+                    active={activeItem === 'logout'}
+                    onClick={this.handleLogout}
+                    visible={this.state.visible}
+                />
+                </Link>
+                </Menu.Menu>
+                    </Menu>
+                </Responsive> */}
+                <Menu pointing secondary stackable inverted size='medium' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
                 <Link to='/profile'>
                     <Menu.Item
                         name='profile'
@@ -82,6 +128,7 @@ export class NavBar extends Component {
                 </Link>
                 </Menu.Menu>
             </Menu>
+            </>
         );
     
     }

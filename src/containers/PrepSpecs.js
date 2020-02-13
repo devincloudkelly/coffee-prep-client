@@ -12,7 +12,7 @@ export class PrepSpecs extends Component {
             <Segment inverted >
                 <p style={{textAlign: 'center'}}>Prepare your coffee and brew station according to the specs below. Once ready, start the timer</p>
                 <br/>
-                <Statistic.Group inverted color='grey' widths={2} size='tiny'>
+                <Statistic.Group inverted color='grey' widths={2} alignItems='center' size='tiny'>
                     <Statistic>
                         <Statistic.Value>{device}</Statistic.Value>
                         <Statistic.Label>method</Statistic.Label>
