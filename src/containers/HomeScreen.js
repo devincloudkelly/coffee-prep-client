@@ -45,9 +45,10 @@ class HomeScreen extends Component {
                 </Responsive>
                 <Responsive as={Grid.Column} textAlign='center' width={11} {...Responsive.onlyMobile}>
                     <Divider horizontal inverted>Why Coffee Mentor?</Divider>
-                    <h2 className='home-screen-title'><Icon name='coffee'></Icon> Learn from other coffee enthusiasts.</h2>
-                    <h2 className='home-screen-title'><Icon name='coffee'></Icon> Save your favorite coffee preps</h2>
-                    <h2 className='home-screen-title'><Icon name='coffee'></Icon> Perfect your craft</h2>
+                    <h2 className='home-screen-title' ><Icon name='coffee' style={{color: '#FABC3C'}}></Icon>  Learn from other coffee enthusiasts.</h2>
+                    <h2 className='home-screen-title'><Icon name='coffee' style={{color: '#FABC3C'}}></Icon>  Perfect and save your preps for different beans</h2>
+                    <h2 className='home-screen-title'><Icon name='coffee' style={{color: '#FABC3C'}}></Icon>  Share your preps with your friends</h2>
+                    <h2 className='home-screen-title'><Icon name='coffee' style={{color: '#FABC3C'}}></Icon>  Perfect your craft</h2>
                 </Responsive>
                 {/* <Grid.Column textAlign='center' width={11} style={{
                     backgroundColor: 'gray',
