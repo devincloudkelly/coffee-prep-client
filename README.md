@@ -9,7 +9,7 @@ Welcome! This is the github backend repo for Coffee Mentor. Your single-source t
 
 ## Hosted
 
-Coffee Mentor is currently hosted on AWS for everyone to enjoy. Get started at coffeementorapp.com.
+Coffee Mentor is currently hosted on AWS for everyone to enjoy. Get started at [coffeementorapp.com](http://coffeementorapp.com).
 
 ## How It Works
 ![Coffee Mentor Demo](src/images/coffee-mentor-demo.gif)
