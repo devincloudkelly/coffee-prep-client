@@ -49,7 +49,7 @@ export class NavBar extends Component {
             const { activeItem } = this.state
             return (
                 <>
-                <Menu pointing secondary stackable inverted size='medium' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
+                <Menu pointing secondary stackable inverted style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
                 <Link to='/profile'>
                     <Menu.Item
                         name='profile'
