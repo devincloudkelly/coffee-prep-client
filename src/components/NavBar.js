@@ -41,53 +41,9 @@ export class NavBar extends Component {
                         </Menu>
             </div>
         }
-            const { activeItem, visible } = this.state
+            const { activeItem } = this.state
             return (
                 <>
-                {/* <Responsive {...Responsive.onlyMobile}>
-                <Menu secondary inverted style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
-                    <Menu.Item
-                        name='profile'
-                        active={activeItem === 'logo'}
-                        onClick={this.handleMobileClick}
-                        >
-                        <img src={require('/Users/devinkelly/Flatiron/Mod_5/coffee-mentor-project/coffee-prep-client/src/images/coffee-mentor-press-red-logo-white-text.gif')} style={{width: '13rem'}}/>
-                    </Menu.Item>
-                    <Link to='/profile'>
-                <Menu.Item 
-                    name='profile'
-                    active={activeItem === 'profile'}
-                    onClick={this.handleItemClick}
-                    visible={visible}
-                />
-                </Link>
-                <Link to='/preparations/new'>
-                    <Menu.Item
-                    name='new prep'
-                    active={activeItem === 'new prep'}
-                    onClick={this.handleItemClick}
-                    visible={this.state.visible}
-                    />
-                </Link>
-                <Link to='/browse'>
-                    <Menu.Item 
-                    name='browse'
-                    active={activeItem === 'browse'}
-                    onClick={this.handleItemClick}
-                    visible={this.state.visible}
-                    />
-                </Link>
-                <Menu.Menu position='right'>
-                <Link to='/'><Menu.Item
-                    name='logout'
-                    active={activeItem === 'logout'}
-                    onClick={this.handleLogout}
-                    visible={this.state.visible}
-                />
-                </Link>
-                </Menu.Menu>
-                    </Menu>
-                </Responsive> */}
                 <Menu pointing secondary stackable inverted size='medium' style={{backgroundColor: '#e34b2a', alignItems: 'center'}}>
                 <Link to='/profile'>
                     <Menu.Item

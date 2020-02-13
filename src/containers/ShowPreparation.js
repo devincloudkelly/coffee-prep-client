@@ -6,7 +6,7 @@ import Adapter from '../services/Adapter';
 import CoffeeAction from '../action/coffeeAction';
 import ShowStepCard from '../components/ShowStepCard';
 import { StepSummary } from '../components/StepSummary';
-import { Container, Message, Dimmer, Loader, Segment, Divider, Button, Grid} from 'semantic-ui-react'
+import { Container, Message, Dimmer, Loader, Segment, Divider, Button, Grid, Transition} from 'semantic-ui-react'
 
 
 export class ShowPreparation extends Component {
@@ -157,12 +157,22 @@ export class ShowPreparation extends Component {
 
             {console.log('these are the steps and state in the final if statement..', steps, this.state.steps)}
             {console.log('prep is in show state and steps length is greater than 1')}
-                {this.state.isStarted
+                {/* {this.state.isStarted
                 ? <Segment inverted>
-                    <Divider horizontal inverted>Specs hidden during brew. Press Pause to View.</Divider>
-                </Segment>
+                        <Divider horizontal inverted>Press pause to view specs</Divider>
+                    </Segment>
                 : <PrepSpecs prep={this.props.currentPrep}/>
-                }
+                } */}
+                <Transition visible={!this.state.isStarted} animation='scale' duration={200}>
+                    <Segment inverted>
+                    <PrepSpecs prep={this.props.currentPrep}/>
+                    </Segment>
+                </Transition>
+                {/* <Transition visible={this.state.isStarted} animation='scale' duration={700}>
+                    <Segment inverted>
+                        <Divider horizontal inverted>Press pause to view specs</Divider>
+                    </Segment>
+                </Transition> */}
                 <BrewTimer checkpoints={this.createCheckpoints()} checkpointLength={this.checkpointLength()} reset={this.handleReset} start={this.handleStartPrep} pause={this.handlePause}/>
                 <StepSummary currentStep={this.props.currentStep}/>
                 
