@@ -35,12 +35,16 @@ class HomeScreen extends Component {
                     backgroundImage: `url(${background})`,
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
-                    height: '80vh',
-                    opacity: '0.7'
+                    height: '80vh'
                 }}>
                 <h1 className='home-screen-title'>BREW BETTER COFFEE</h1>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                <h3 className='home-screen-snippet' style={{backgroundColor: '#1a1c1d', color: '#ffffff'}}>Create, Share and Learn from other coffee enthusiasts.</h3>
+
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                {/* <h3 className='home-screen-snippet' style={{backgroundColor: '#1a1c1d', color: '#ffffff'}}>Create, Share and Learn from other coffee enthusiasts.</h3> */}
+                <Segment inverted size='tiny'>
+                <h3 className='home-screen-snippet' ><Icon name='coffee' style={{color: '#FABC3C'}}></Icon>  Learn from other coffee enthusiasts, perfect and share coffee preparations and brew your best coffee.</h3>
+                </Segment>
+
                 {/* </Grid.Column> */}
                 </Responsive>
                 <Responsive as={Grid.Column} textAlign='center' width={11} {...Responsive.onlyMobile}>
