@@ -134,7 +134,6 @@ export class ShowPreparation extends Component {
                 </Segment.Group>
         </Container>)
         }
-        const { steps } = this.props.currentPrep
         return (
             <Container>
                 <Segment.Group>

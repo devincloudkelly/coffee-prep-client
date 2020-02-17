@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Divider, Icon } from 'semantic-ui-react'
+import { Container, Divider } from 'semantic-ui-react'
 import BrowseCard from '../components/BrowseCard';
 
 export class PrepBrowser extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import CoffeeAction from '../action/coffeeAction'
-import { Menu, Responsive } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 export class NavBar extends Component {
     state = {

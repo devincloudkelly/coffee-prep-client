@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Label } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
 export class BrowseCard extends Component {
@@ -24,7 +24,6 @@ export class BrowseCard extends Component {
     
     render() {
         const { id, device, coffee_brand, coffee_name, notes, coffee_amount, coffee_grind } = this.props.prep
-        const prep = this.props.prep
         const user = this.props.prep.user.name
         return (
             <Card raised  onClick>
