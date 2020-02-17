@@ -6,19 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import store from './services/store'
 
 
-// const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-
-// function saveToLocalStorage(state) {
-//     try {
-//         const serializedState = JSON.stringify(state)
-//         localStorage.setItem('state', serializedState)
-//     } catch(e) {
-//         console.log(e)
-//     }
-// }
-
-// store.subscribe(() => saveToLocalStorage(store.getState()))
-
 ReactDOM.render(
 <Provider store={store}>
     <App />   

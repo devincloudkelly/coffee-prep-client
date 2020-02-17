@@ -7,7 +7,7 @@ Welcome! This is the github backend repo for Coffee Mentor. Your single-source t
 * Perfect your brew with our brew mapper, which walks you step by step through every brew
 * Share your preparations with friends
 
-Check out the [backend repo here](https://github.com/devincloudkelly/coffee-prep-backend)
+Check out the [backend repo here](https://github.com/devincloudkelly/coffee-prep-backend).
 
 ## Hosted
 
