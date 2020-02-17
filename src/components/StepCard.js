@@ -25,26 +25,16 @@ export class StepCard extends Component {
 
     handleDelete = (step) => {
         const jwt = this.props.jwt
-        console.log('deleting step...', step)
-        
-
             Adapter.deleteStep(step.id, jwt)
             .then(data => {
-                console.log('steps in state...', this.props.steps, this.props.editingPrep)
-                // this.props.removeStepFromStore(data)
             this.props.removeStepFromEditingPrep(data)
-            console.log('steps in state...', this.props.steps, this.props.editingPrep)
-            //need to update steps in new prep form
-            console.log('just deleted step...', data)
         }, ()=> this.props.editPrepInStore(this.props.editingPrep))
 
     }
 
     handleEdit = step => {
-        console.log('editing step...', step)
         this.props.addEditingStepId(step.id)
         this.props.addEditingStep(step)
-        // add editing step Id here...
     }
 
     render() {

@@ -23,13 +23,9 @@ export class BrowseCard extends Component {
     }
     
     render() {
-        // console.log('prep in prep card', this.props.prep)
         const { id, device, coffee_brand, coffee_name, notes, coffee_amount, coffee_grind } = this.props.prep
         const prep = this.props.prep
         const user = this.props.prep.user.name
-        // if (this.state.isEditing === true ){
-        //     return <Redirect to='/preparations/new'/>
-        // }
         return (
             <Card raised  onClick>
                 <Card.Content onClick={() => this.handleClick(id)} attached>

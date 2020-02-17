@@ -28,7 +28,6 @@ const initialState = {
 const reducer = (state={initialState}, action) => {
     switch(action.type){
         case 'LOGGED_IN_USER':
-            console.log('updating state in reducer w/ logged in user, here is current state and what I am passing in...', action.user)
             return { ...state,
                 loggedIn: true,
                 jwt: action.jwt,
@@ -40,7 +39,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'LOG_OUT':
-            console.log('logging out in reducer')
             return {
                 loggedIn: false,
                 jwt: '',
@@ -65,13 +63,11 @@ const reducer = (state={initialState}, action) => {
                 browser: []
             }
         case 'TOGGLE_STEP_TO_PREP':
-            console.log('toggling step in reducer...')
             return {
                 ...state,
                 addNewStep: !state.addNewStep
             }
         case 'UPDATE_EDITING_PREP':
-            console.log('updating editingPrep in reducer', action.prep)
             return {
                 ...state,
                 showSteps: true,
@@ -81,7 +77,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'ADD_STEP_TO_EDITING_PREP':
-            console.log('adding step to editingPrep in reducer...', action.step)
             return {
                 ...state,
                 editingPrep: {
@@ -94,13 +89,11 @@ const reducer = (state={initialState}, action) => {
                 addNewStep: false
             }
         case 'UPDATE_CURRENT_PREP':
-            console.log('updating current prep in reducer...', action.prep)
             return {
                 ...state,
                 currentPrep: action.prep
             }
         case 'UPDATE_CURRENT_STEP':
-            console.log('updating current step in reducer...', action.step)
             return {
                 ...state,
                 currentStep: action.step
@@ -122,7 +115,6 @@ const reducer = (state={initialState}, action) => {
                 editingId: null
             }
         case 'EDIT_PREP_IN_STORE':
-            console.log('prep being passed to edit prep in store...', action.prep)
             return {
                 ...state,
                 user: {
@@ -138,7 +130,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'PUSH_PREP_TO_STORE':
-            console.log('pushing prep to store..', action.prep)
             return {
                 ...state,
                 user: {
@@ -148,7 +139,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'REMOVE_STEP_FROM_STORE':
-            console.log('removing step in reducer...', action.step)
             return {
                 ...state,
                 user: {
@@ -164,7 +154,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'REMOVE_STEP_FROM_EDITING_PREP':
-            console.log('removing step from editing prep in reducer...', action.step)
             return {
                 ...state, 
                 editingPrep: {
@@ -176,13 +165,11 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         case 'ADD_EDITING_STEP_ID':
-            console.log('adding editing step id in reducer...', action.id)
             return {
                 ...state,
                 editingStepId: action.id
             }
         case 'ADD_STEP_TO_PREP':
-            console.log('adding step to userPrep...', action.step)
             return {
                 ...state,
                 user: {
@@ -218,13 +205,11 @@ const reducer = (state={initialState}, action) => {
                 }
             } 
         case 'ADD_PREPS_TO_BROWSER':
-            console.log('adding preps to browser in reducer...', action.preps)
             return {
                 ...state,
                 browser: [...action.preps]
             }
         case 'REMOVE_EDITING_PREP':
-            console.log('removing editing prep in reducer...')
             return {
                 ...state,
                 editingPrep: {
@@ -232,7 +217,6 @@ const reducer = (state={initialState}, action) => {
                 }
             }
         default:
-            console.log('hitting default case statement..')
             return state
     }
 }

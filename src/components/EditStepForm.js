@@ -26,23 +26,20 @@ export class EditStepForm extends Component {
     handleInput = (e) => {
         return this.setState({
             [e.target.name]: e.target.value
-        }, ()=> console.log(this.state))
+        })
     }
 
     handleSelectInput = (e, { value }) => {
-        console.log(e.target.name, e.target.value, value)
         return this.setState({
             action: value
-        }, ()=>console.log(this.state))
+        })
     }
 
     handleSubmit = e => {
         e.preventDefault()
         const step = this.state
-        console.log('submitting edited step...', step)
         step.preparation_id = this.props.preparation_id
         const jwt = this.props.jwt
-        console.log('submitting step, this is step...', step)
         Adapter.updateStep(step, jwt)
         .then(data => {
             this.props.updateStepInEditingPrep(data)

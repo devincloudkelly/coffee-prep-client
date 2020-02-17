@@ -7,7 +7,6 @@ import {Container, Message, Divider, Icon} from 'semantic-ui-react'
 export class PrepViewer extends Component {
 
     renderPreps = () => {
-        console.log('preps in the prep viewer...', this.props.preps)
         return this.props.preps.map( prep => {
             return <PrepCard key={Math.random()} prep={prep} />
         })
@@ -23,12 +22,10 @@ export class PrepViewer extends Component {
                 <br/>
                 <Container>
                     <Message>
-
                     <Message.Header>
                 You don't have any Coffee Preparations yet.
                     </Message.Header>
                 Time to get to work. Click the box below to create your first coffee prep.
-
                     </Message>
                 <NewPrepCard />
                 </Container>
@@ -43,7 +40,6 @@ export class PrepViewer extends Component {
                 <br/>
                 <div className='ui four stackable cards'>
                 {this.renderPreps()}
-
                 <NewPrepCard />
                 </div>
                 <br/>

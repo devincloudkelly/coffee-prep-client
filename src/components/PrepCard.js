@@ -13,9 +13,7 @@ export class PrepCard extends Component {
     }
     
     handleClick = (id) => {
-        console.log('handling click on prep card. Id being passed through...', id)
         const prepUrl = `/preparations/${id}`
-        // this.props.updateCurrentPrep(this.props.prep)
         this.props.history.push(prepUrl)
     }
 
@@ -23,15 +21,11 @@ export class PrepCard extends Component {
         const newPreps = this.props.preps.filter(prep => {
             return prep.id !== id
         })
-        console.log('deleting prep from prepcard...', id, this.props.jwt)
         Adapter.deletePreparation(id, this.props.jwt)
-        // .then(console.log(this.props.preps, newPreps))
         this.props.updatePreps(newPreps)
     }
 
     handleEdit = (prep) => {
-        console.log('editing prep from prepcard...', prep)
-        // this.props.updateEditingPrep(prep)
         this.props.updateEditingPrep(prep)
         this.props.addEditingId(prep.id)
         this.setState({
@@ -55,12 +49,8 @@ export class PrepCard extends Component {
     }
     
     render() {
-        // console.log('prep in prep card', this.props.prep)
         const { id, device, coffee_brand, coffee_name, notes, coffee_amount, coffee_grind } = this.props.prep
         const prep = this.props.prep
-        // if (this.state.isEditing === true ){
-        //     return <Redirect to='/preparations/new'/>
-        // }
         return (
             <Card raised attached onClick>
                 <Card.Content onClick={() => this.handleClick(id)}>
@@ -70,7 +60,6 @@ export class PrepCard extends Component {
                 <Card.Content attached onClick={() => this.handleClick(id)}>
                     <Card.Description>
                 <h4>{this.renderDevice(device)}</h4>
-
                     </Card.Description>
                 <Card.Description>{notes}</Card.Description>               
                 </Card.Content>
@@ -90,7 +79,6 @@ const mapState  = state => {
         editingId: state.editingId
     }
 }
-
 
 const mapDispatch = dispatch => {
     return {

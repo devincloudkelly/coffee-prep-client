@@ -25,7 +25,6 @@ export class NewPreparation extends Component {
         }
         const id = this.props.editingPrep.id
         const jwt = this.props.jwt
-        console.log('clicking create new guide, this is total time...', totalTime)
         Adapter.editPreparation(totalTime, id, jwt)
         .then(data => this.props.updateCurrentPrep(data))
         .then(() => {this.props.history.push(`/preparations/${id}`)}
@@ -55,7 +54,6 @@ export class NewPreparation extends Component {
                 <PrepForm />
                 <Segment.Group>
                 <StepViewer />
-
                 {this.props.editingStepId !== null
                 ? <EditStepForm />
                 : this.props.showSteps 
@@ -69,7 +67,6 @@ export class NewPreparation extends Component {
                 {this.props.editingPrep.steps < 1
                 ? null
                 : <button className='ui button huge' onClick={this.handleNewGuideClick}>Save This Preparation</button> }
-                
             </Container>
         );
     }

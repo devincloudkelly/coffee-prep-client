@@ -24,7 +24,6 @@ export class ShowStepCard extends Component {
     render() {
         const { id, action, duration, amount } = this.props.step
         const { currentStep } = this.props
-        console.log('current step and id', currentStep, id)
         return (
                 (currentStep.id === id 
                 ?
@@ -37,7 +36,6 @@ export class ShowStepCard extends Component {
                         <Icon name='tint'/>{amount}ml
                     </Card.Description>
                     </Card.Content>
-                    {/* <Progress percent={45} color='green' size='medium'/> */}
                 </Card>
                 : 
                 <Card color='grey' style={normalStyle}>

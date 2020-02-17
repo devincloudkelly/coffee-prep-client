@@ -6,17 +6,12 @@ import { PrepBrowser } from './PrepBrowser';
 import { Container, Dimmer, Loader } from 'semantic-ui-react'
 
 export class Browse extends Component {
-    state = {
-        // mounted: false,
-        // preps: []
-    }
+    state = {}
 
     componentDidMount() {
-        console.log('browser mounted...')
         const jwt = this.props.jwt
         Adapter.fetchAllPreps(jwt)
         .then(preps => {
-            console.log('adding preps to store...')
             this.props.addPrepsToBrowser(preps)
         }, ()=> {
             this.setState({
@@ -24,7 +19,6 @@ export class Browse extends Component {
                 preps: this.props.browser
             })
         })
-        .then(console.log('state after component did mount...', this.state))
     }
     
     render() {
@@ -39,7 +33,6 @@ export class Browse extends Component {
         }
         return (
             <div>
-            {console.log('props in render...', this.props.browser)}
                 <PrepBrowser preps={this.props.browser}/>
             </div>
         );
@@ -47,7 +40,6 @@ export class Browse extends Component {
 }
 
 const mapState = state => {
-    console.log(state)
     return {
         jwt: state.jwt,
         browser: state.browser

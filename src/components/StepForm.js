@@ -4,8 +4,6 @@ import Adapter from '../services/Adapter'
 import CoffeeAction from '../action/coffeeAction';
 import { Form, Segment, Button} from 'semantic-ui-react'
 
-
-
 export class StepForm extends Component {
     state = {
         id: null,
@@ -25,16 +23,14 @@ export class StepForm extends Component {
     ]
 
     handleInput = (e) => {
-        console.log(e.target.name, e.target.value)
         return this.setState({
             [e.target.name]: e.target.value
-        }, ()=>console.log(this.state))
+        })
     }
     handleSelectInput = (e, { value }) => {
-        console.log(e.target.name, e.target.value, value)
         return this.setState({
             action: value
-        }, ()=>console.log(this.state))
+        })
     }
 
     handleSubmit = (e) => {
@@ -42,12 +38,10 @@ export class StepForm extends Component {
         const step = this.state
         step.preparation_id = this.props.preparation_id
         const jwt = this.props.jwt
-        console.log('submitting step, this is step...', step)
         if (!this.props.addEditingStepId){
         Adapter.addStep(step, jwt)
         .then(data => {
             this.props.addStepToEditingPrep(data)
-            // this.props.addStepToPrep(data)
         })
         .then(()=> {
             this.props.editPrepInStore(this.props.editingPrep)
@@ -60,8 +54,6 @@ export class StepForm extends Component {
         return (
             <Segment>
                 <Form onSubmit={this.handleSubmit}>
-
-
                         <h3>Step Specs: </h3>
                     <Form.Group widths='equal'>
                     <Form.Select 
@@ -69,19 +61,7 @@ export class StepForm extends Component {
                         options={this.stepOptions}
                         placeholder='Action'
                         onChange={this.handleSelectInput}
-                    // <label>
-                    //     <h3>Action</h3>
-                    // </label>
-                        // <select name='action' value={this.state.action} >
-                        //     <option value=''>Choose Action</option>
-                        //     <option value='bloom'>Bloom</option>
-                        //     <option value='pour'>Pour</option>
-                        //     <option value='stir'>Stir</option>
-                        //     <option value='wait'>Wait</option>
-                        //     <option value='press'>Press</option>
-                        // </select>
                         />
-                
                         <Form.Field>
                             <label>Duration (seconds)
                             </label>

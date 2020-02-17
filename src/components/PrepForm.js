@@ -34,23 +34,20 @@ export class PrepForm extends Component {
     handleInput = (e) => {
         return this.setState({
             [e.target.name]: e.target.value
-        }, ()=> console.log(this.state))
+        })
     }
 
     handleSelectInput = (e, { value }) => {
-        console.log(e.target.name, e.target.value, value)
         return this.setState({
             coffee_grind: value
-        }, ()=>console.log(this.state))
+        })
     }
     
     submitPrepForm = (e) => {
         e.preventDefault()
         const prep = this.state
-        console.log(prep, this.props.id)
         const jwt = this.props.jwt
         if (!this.state.id){
-            console.log('this is the prep being sent to create...', prep)
             Adapter.addPreparation(prep, jwt)
             .then(data => {
                 this.props.updateEditingPrep(data)
@@ -61,7 +58,6 @@ export class PrepForm extends Component {
             })
             
         } else {
-            console.log('this is the prep being sent to edit...', prep)
             Adapter.editPreparation(prep, prep.id, jwt)
             .then(() => {
                 this.props.editPrepInStore(prep)
@@ -72,7 +68,6 @@ export class PrepForm extends Component {
     }
     
     componentDidMount() {
-        console.log('props on mount', this.props)
         if (this.props.editingId) {
             this.setState({
                 ...this.props.editingPrep
@@ -121,8 +116,6 @@ export class PrepForm extends Component {
                                 <input type='number' name='coffee_amount' value={this.state.coffee_amount} onChange={e => this.handleInput(e)} placeholder='grams of coffee'/>
                         </Form.Field>
                         <Form.Select 
-                            // control={Select}
-                            // fluid
                             label='Grind'
                             options={this.grindOptions}
                             placeholder='Grind'
@@ -134,15 +127,6 @@ export class PrepForm extends Component {
                         <input type='number' name='water_temp' value={this.state.water_temp} onChange={e => this.handleInput(e)} placeholder='water temp'/>
                     </Form.Field>
                     </Form.Group>
-
-                    {/* <h3>Water: </h3> */}
-                    {/* <Form.Group widths='equal'> */}
-
-                    {/* <Form.Field>
-                        <label>Total Water (ml)</label>
-                        <input type='number' name='total_water' value={this.state.total_water} onChange={e => this.handleInput(e)} placeholder='total water'/>
-                    </Form.Field> */}
-                    {/* </Form.Group> */}
                     <h3>Notes: </h3>
                     <Form.Field>
                         <label></label>
@@ -178,6 +162,5 @@ const mapDispatch = dispatch => {
         pushPrepToStore: prep => dispatch(CoffeeAction.pushPrepToStore(prep))
     }
 }
-
 
 export default withRouter(connect(mapState, mapDispatch)(PrepForm));

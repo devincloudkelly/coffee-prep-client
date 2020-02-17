@@ -1,5 +1,5 @@
-const ROOT = 'https://calm-spire-65182.herokuapp.com/api/v1'
-// const ROOT = 'http://localhost:3000/api/v1'
+// const ROOT = 'https://calm-spire-65182.herokuapp.com/api/v1'
+const ROOT = 'http://localhost:3000/api/v1'
 const LOGIN = `${ROOT}/login`
 const SIGNUP = `${ROOT}/users`
 const PROFILE = `${ROOT}/users/`
@@ -15,7 +15,6 @@ class Adapter {
     }
 
     static login = (email, pass) => {
-        console.log('credentials being passed in the fetch to login', email, pass)
         return fetch(LOGIN, {
                 method: 'POST',
                 headers: {
@@ -34,7 +33,6 @@ class Adapter {
     }
 
     static signup = (name, email, pass) => {
-        console.log('credentials being passed in the fetch to signup', name, email, pass)
         return fetch(SIGNUP, {
                 method: 'POST',
                 headers: {
@@ -107,7 +105,6 @@ class Adapter {
     }
 
     static editPreparation = (patchObj, id, jwt) => {
-        console.log('editing prep in adapter... here is what I am passing in...', patchObj, id, jwt)
         return fetch(PREPARATION + '/' + id, {
             method: 'PATCH',
             headers: {
@@ -122,7 +119,6 @@ class Adapter {
     }
 
     static fetchPreparation = (id, jwt) => {
-        console.log('editing prep in adapter... here is what I am passing in...', id, jwt)
         return fetch(PREPARATION + '/' + id, {
             method: 'GET',
             headers: {
@@ -136,7 +132,6 @@ class Adapter {
     }
 
     static deletePreparation = (id, jwt) => {
-        console.log('deleting prep in adapter... here is what I am passing in...', id, jwt)
         return fetch(PREPARATION + '/' + id, {
             method: 'DELETE',
             headers: {
@@ -150,7 +145,6 @@ class Adapter {
     }
 
     static deleteStep = (id, jwt) => {
-        console.log('deleting step in adapter... here is what I am passing in...', id, jwt)
         return fetch(STEP + '/' + id, {
             method: 'DELETE',
             headers: {
@@ -178,7 +172,6 @@ class Adapter {
     }
 
     static fetchAllPreps = jwt => {
-        console.log('fetching all preps in Adapter... here is what I am passing in...', jwt)
         return fetch(PREPARATION, {
             method: 'GET',
             headers: {

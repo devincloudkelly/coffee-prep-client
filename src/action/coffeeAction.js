@@ -3,14 +3,12 @@ class CoffeeAction {
 
     
     static loggedInUser = (id, name, email, preps, jwt) => {
-        console.log('this is the logged in action', preps)
         let newPrep = []
         preps.map(prep => {
             let onlyPrep = prep.prep
             onlyPrep.steps = prep.steps
             newPrep.push(onlyPrep)
         })
-        console.log('this is newprep', newPrep)
     return {
         type: 'LOGGED_IN_USER',
         user: {
@@ -24,7 +22,6 @@ class CoffeeAction {
 }
 
   static logOut = () => {
-    console.log('logging out user...')
     return {
         type: 'LOG_OUT',
         payload: 'logging out user'
@@ -32,7 +29,6 @@ class CoffeeAction {
 
 }
     static toggleStepToPrep = () => {
-        console.log('toggline add step to a prep...')
         return {
             type: 'TOGGLE_STEP_TO_PREP',
             payload: 'toggling step to prep...'
@@ -40,7 +36,6 @@ class CoffeeAction {
     }
 
     static updateEditingPrep = (prep) => {
-        console.log('updating editingPrep in action...', prep)
         return {
             type: 'UPDATE_EDITING_PREP',
             prep: prep
@@ -48,7 +43,6 @@ class CoffeeAction {
     }
 
     static addStepToEditingPrep = (step) => {
-        console.log('adding step to editingPrep..', step)
         return {
             type: 'ADD_STEP_TO_EDITING_PREP',
             step: step
@@ -62,7 +56,6 @@ class CoffeeAction {
     }
 
     static updateCurrentPrep = (prep) => {
-        console.log('updating current prep in action...', prep)
         return {
             type: 'UPDATE_CURRENT_PREP',
             prep: prep
@@ -70,14 +63,12 @@ class CoffeeAction {
     }
 
     static updateCurrentStep = (step) => {
-        console.log('updating current step in action...', step)
         return {
             type: 'UPDATE_CURRENT_STEP',
             step: step
         }
     }
     static updatePreps = preps => {
-        console.log('updating preps in action...', preps)
         return {
             type: 'UPDATING_PREPS',
             preps: preps
@@ -98,7 +89,6 @@ class CoffeeAction {
     }
 
     static editPrepInStore = prep => {
-        console.log('editing prep in store action...', prep)
         return {
             type: 'EDIT_PREP_IN_STORE',
             prep: prep

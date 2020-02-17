@@ -5,11 +5,9 @@ import { Statistic, Segment, Divider } from 'semantic-ui-react'
 export class PrepSpecs extends Component {
 
     render() {
-        console.log('current Prep in prepSpecs...', this.props)
         const { device, coffee_brand, coffee_name, coffee_amount, coffee_grind, total_water, total_time, water_temp, notes} = this.props.prep
         return (
             <>
-            {/* <Segment inverted > */}
                 <p style={{textAlign: 'center'}}>Prepare your coffee and brew station according to the specs below. Once ready, start the timer</p>
                 <Divider horizontal inverted color='grey'>Brew Specs</Divider>
                 <br/>
@@ -40,7 +38,6 @@ export class PrepSpecs extends Component {
                         <Statistic.Label>Total Time</Statistic.Label>
                     </Statistic>
                 </Statistic.Group>
-            {/* </Segment> */}
             <Segment inverted style={{textAlign: 'center'}}>
                 <Divider horizontal inverted color='grey'>Notes</Divider>
                 <h3>{notes}</h3>

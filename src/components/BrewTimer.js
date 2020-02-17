@@ -5,23 +5,14 @@ import { Segment, Button } from 'semantic-ui-react'
 
 export class BrewTimer extends Component {
 
-
-    handleStepChange = (step) => {
-        console.log('handling step change from checkpoint callback...' ,step)
-        // this.updateCurrentStep(step)
-    }
-
     handleReset = () => {
-        console.log('handling resest...')
         this.props.reset()
     }
 
     handleStart = () => {
-        console.log('handling start...')
         this.props.start()
     }
     handlePause = () => {
-        console.log('handling pause...')
         this.props.pause()
     }
 
@@ -66,11 +57,5 @@ const mapState = state => {
     }
 }
 
-// const mapDispatch = dispatch => {
-//     console.log('is dispatch being called')
-//     return {
-//         updateCurrentStep: step => dispatch(CoffeeAction.updateCurrentStep(step))
-//     }
-// }
 
 export default connect(mapState)(BrewTimer);

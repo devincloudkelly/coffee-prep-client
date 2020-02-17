@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Fetch from '../services/Adapter'
-// import {loggedInUser} from '../action/coffeeAction'
 import CoffeeAction from '../action/coffeeAction'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -24,7 +23,6 @@ export class Signup extends Component {
     handleSignup = (e) => {
         e.preventDefault()
         Fetch.signup(this.state.name, this.state.email_address, this.state.password)
-        // .then(console.log)
         .then(data => {
             const preps = [];
             localStorage.setItem('jwt', data.jwt);
@@ -50,14 +48,12 @@ export class Signup extends Component {
                 </label>
                 </Form.Field>
                 <Form.Field>
-
                 <label>
                     Email
                     <input name='email_address'  placeholder='enter your email address' onChange={this.handleInput}/>
                 </label>
                 </Form.Field>
                 <Form.Field>
-
                 <label>
                     Password
                     <input type='password' name='password' placeholder='create a password' onChange={this.handleInput}/>
@@ -66,7 +62,6 @@ export class Signup extends Component {
                 <Form.Field control={Button}>
                     Sign Up
                 </Form.Field>
-                {/* <input type='submit' value='Sign Up'></input> */}
             </Form>
             <br/>
             <p>Already have an account? <a href='#' onClick={this.toggleSignIn}>Sign in here</a></p>

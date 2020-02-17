@@ -8,7 +8,6 @@ import { Icon, Card, Button} from 'semantic-ui-react'
 class NewStepCard extends Component {
 
     handleNewStepClick = () => {
-        console.log('toggling add new step')
         this.props.toggleStepToPrep()
     }
 
