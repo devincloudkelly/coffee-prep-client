@@ -1,5 +1,5 @@
-const ROOT = 'https://calm-spire-65182.herokuapp.com/api/v1'
-// const ROOT = 'http://localhost:3000/api/v1'
+// const ROOT = 'https://calm-spire-65182.herokuapp.com/api/v1'
+const ROOT = 'http://localhost:3000/api/v1'
 const LOGIN = `${ROOT}/login`
 const SIGNUP = `${ROOT}/users`
 const PROFILE = `${ROOT}/users/`

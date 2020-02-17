@@ -12,7 +12,10 @@ export class Browse extends Component {
         const jwt = this.props.jwt
         Adapter.fetchAllPreps(jwt)
         .then(preps => {
-            this.props.addPrepsToBrowser(preps)
+            const filteredPreps = preps.filter(prep => {
+                return prep.steps.length >0
+            })
+            this.props.addPrepsToBrowser(filteredPreps)
         }, ()=> {
             this.setState({
                 mounted: true,
